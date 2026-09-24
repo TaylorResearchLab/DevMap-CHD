@@ -5,7 +5,7 @@ message: >-
 title: DevMap-CHD
 type: dataset
 version: "2026.09.08"
-doi: 10.5281/zenodo.22934495
+doi: 10.5281/zenodo.22934496
 date-released: 2026-09-24
 authors:
   - family-names: Taylor
@@ -13,7 +13,7 @@ authors:
     orcid: https://orcid.org/0000-0002-3302-4610
     affiliation: Children's Hospital of Philadelphia; University of Pennsylvania Perelman School of Medicine
 repository-code: https://github.com/TaylorResearchLab/DevMap-CHD
-url: https://doi.org/10.5281/zenodo.22934495
+url: https://doi.org/10.5281/zenodo.22934496
 license: CC0-1.0
 abstract: >-
   DevMap-CHD is a versioned registry of genes reported or curated in resources
