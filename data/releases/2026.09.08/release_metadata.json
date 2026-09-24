@@ -1,0 +1,30 @@
+{
+  "canonical_genes": 662,
+  "gene_source_memberships": 2177,
+  "identifier_counts": {
+    "ensembl_gene_ids_nonempty": 662,
+    "unique_gene_symbols": 662,
+    "unique_hgnc_ids": 662
+  },
+  "interpretation": "A source membership links a gene to a specific source set under that source's stated definition.",
+  "release_version": "2026.09.08",
+  "resource": "DevMap-CHD",
+  "source_groups": 6,
+  "source_membership_counts": {
+    "chdgene_2026_08_10": 189,
+    "clingen_dosage_gene_2026_08_10": 279,
+    "dong_observed_recessive23": 23,
+    "dong_recessive108": 108,
+    "gencc_clingen_submitter_2026_08_10": 320,
+    "griffin2023_curated_not_final": 196,
+    "griffin2023_supp1_candidates": 556,
+    "griffin2023_supp2_curated": 295,
+    "griffin2023_supp3_denovo": 35,
+    "griffin2023_supp4_lof": 15,
+    "griffin2023_supp5_recessive": 2,
+    "griffin2023_table1_isolated": 18,
+    "griffin2023_table1_syndromic": 81,
+    "sierant_dominant60": 60
+  },
+  "source_sets": 14
+}

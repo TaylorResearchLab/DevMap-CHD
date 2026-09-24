@@ -1,0 +1,10 @@
+column	required	description
+hgnc_id	yes	Stable HGNC identifier including HGNC: prefix.
+gene	yes	Current approved HGNC symbol used as the public display label.
+ensembl_gene_id	yes	Versionless Ensembl gene identifier from the frozen HGNC mapping snapshot.
+approved_hgnc_symbol	yes	Approved HGNC symbol; must equal gene in a canonical release.
+previous_matrix_gene_symbol	no	Historical matrix key retained when canonicalization changed the original key.
+source_symbols	no	Semicolon-delimited source/historical symbols preserved from the upstream union.
+normalization_status	yes	Upstream canonicalization status.
+id_mapping_status	yes	HGNC mapping status from the frozen identifier audit.
+id_mapping_source	yes	Authority used for identifier mapping.

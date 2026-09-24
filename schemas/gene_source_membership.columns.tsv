@@ -1,0 +1,8 @@
+column	required	description
+hgnc_id	yes	Stable HGNC identifier for the member gene.
+gene	yes	Current approved HGNC symbol.
+source_id	yes	Stable DevMap-CHD source/subset identifier resolving to sources/source_manifest.tsv.
+source_group_id	yes	Bibliographic/resource grouping identifier; multiple source_id values may share one source_group_id.
+membership	yes	Always 1 in the long-form membership table; row presence represents membership.
+membership_column	yes	Exact upstream source-membership column from the frozen source matrix.
+source_symbols	no	Semicolon-delimited source/historical symbols retained from the upstream registry.

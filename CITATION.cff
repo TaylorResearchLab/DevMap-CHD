@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: >-
+  If you use DevMap-CHD, please cite this dataset release and the originating
+  source publications/resources represented in sources/source_manifest.tsv.
+title: DevMap-CHD
+type: dataset
+version: "2026.09.08"
+authors:
+  - family-names: Taylor
+    given-names: Deanne M.
+    orcid: https://orcid.org/0000-0002-3302-4610
+    affiliation: Children's Hospital of Philadelphia; University of Pennsylvania Perelman School of Medicine
+repository-code: https://github.com/TaylorResearchLab/DevMap-CHD
+url: https://github.com/TaylorResearchLab/DevMap-CHD
+license: CC0-1.0
+abstract: >-
+  DevMap-CHD is a versioned, source-resolved registry of genes reported or
+  curated in congenital heart disease resources. The 8 September 2026 baseline
+  contains 662 current-HGNC genes drawn from 6 unique source groups represented
+  through 14 provenance-preserving membership sets, with reproducible identifier normalization.
+keywords:
+  - congenital heart disease
+  - CHD
+  - gene registry
+  - provenance
+  - HGNC
+  - DevMap

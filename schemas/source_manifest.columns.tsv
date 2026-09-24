@@ -1,0 +1,18 @@
+column	required	description
+source_id	yes	Stable DevMap-CHD identifier for one source set or defined subset.
+source_group_id	yes	Identifier that groups sets from the same publication or resource.
+membership_column	yes	Source column used to construct membership.
+display_name	yes	Readable name for the source set.
+source_class	yes	Description of the kind of source information represented.
+analysis_role	yes	Role of the set in the registry.
+universe_expands	yes	Whether the source may add genes to the registry.
+expected_public_memberships	yes	Number of positive memberships expected for this source set.
+citation_text	yes	Full citation or resource citation.
+doi	no	DOI when applicable.
+pmid	no	PMID when applicable.
+stable_url	yes	Stable public URL for the publication or resource.
+source_locator	yes	Table, supplement, dataset, filter, or derived set definition.
+source_version_or_date	no	Source version or date when relevant.
+extraction_date	no	Date the source data were extracted for the registry.
+redistribution_status	yes	Statement describing what DevMap-CHD redistributes.
+notes	no	Additional public provenance or interpretation notes.
