@@ -1,0 +1,3 @@
+source_id	release	file_name	source_url	bytes	sha256	relation_type	acquisition_status
+HPO-G2P-20260901	v2026-09-01	genes_to_phenotype.txt	https://github.com/obophenotype/human-phenotype-ontology/releases/download/v2026-09-01/genes_to_phenotype.txt	20821704	507a17bff9c49e6329fbd88b1f91734fa7e9fdea5c06304044c0892eb6ab248c	disease_mediated_gene_phenotype_view	NOT_DOWNLOADED
+HPO-HPOA-20260901	v2026-09-01	phenotype.hpoa	https://github.com/obophenotype/human-phenotype-ontology/releases/download/v2026-09-01/phenotype.hpoa	35816037	e89aa39c8f97bf5a52c5d160f9250a603681d630ade8ec2679d84ac5aece1f72	disease_phenotype	NOT_DOWNLOADED

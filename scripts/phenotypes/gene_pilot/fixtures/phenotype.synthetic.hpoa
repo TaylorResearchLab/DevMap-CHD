@@ -1,0 +1,5 @@
+# synthetic validation fixture, NOT real HPO
+#database_id	disease_name	qualifier	hpo_id	reference	evidence	onset	frequency	sex	modifier	aspect	biocuration
+OMIM:000001	Synthetic disease A		HP:0001631	PMID:00001	TAS		3/5			P	curator[2026-10-31]
+OMIM:000002	Synthetic disease B		HP:0001631	PMID:00002	TAS		HP:0040283			P	curator[2026-10-31]
+OMIM:000002	Synthetic disease B		HP:0000007	PMID:00002	TAS					I	curator[2026-10-31]
