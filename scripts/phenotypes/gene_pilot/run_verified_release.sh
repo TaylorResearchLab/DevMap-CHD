@@ -15,4 +15,4 @@ python run_gene_phenotype_pilot.py \
   --expected-gene-sha256 507a17bff9c49e6329fbd88b1f91734fa7e9fdea5c06304044c0892eb6ab248c \
   --expected-hpoa-sha256 e89aa39c8f97bf5a52c5d160f9250a603681d630ade8ec2679d84ac5aece1f72 \
   --source-release "$RELEASE" --out results
-python -m unittest discover -s tests -v
+python -m unittest discover -s ../../../tests/phenotypes -v
