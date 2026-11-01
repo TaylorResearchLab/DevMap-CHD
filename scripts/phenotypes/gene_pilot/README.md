@@ -59,3 +59,15 @@ Any gene summary line without a matching HPOA disease term is marked `UNMATCHED_
 - Both official asset SHA-256 digests were independently retrieved from the GitHub release metadata.
 - The current execution container could not resolve public download hosts. **The full official files were not downloaded or parsed and real phenotype yields for the 16 genes are NOT MEASURED.** The lack of a source file is an access failure, not zero biological coverage.
 - No GitHub source changes, Notion dataset imports or public DevMap-CHD release were performed.
+
+## Trace HPO associations to published evidence
+
+After running `bash run_verified_release.sh` from this directory, run:
+
+    python audit_hpo_primary_sources.py
+
+This writes `results/primary_source_audit/` with a reference/evidence distribution, per-gene reference coverage, publication leads, curated database leads, unresolved references, a disease-linked gene–HPO provenance index and a checksummed audit manifest. A PMID or DOI is a **publication retrieval lead**, rather than verification of an original clinical gene–phenotype relationship. OMIM and other curated database identifiers require additional tracing. HPOA `reference` documents disease–phenotype evidence; original gene–disease provenance requires a separate source assessment. Neither step asserts variant evidence or patient observations.
+
+Inspect `gene_source_reference_summary.tsv` and `publication_candidates_for_review.tsv` first. Original large HPO source data and results remain local and are ignored by Git.
+
+    PYTHONDONTWRITEBYTECODE=1 python -m unittest discover -s tests/phenotypes -v
