@@ -47,7 +47,7 @@ class TestPhenotypeExporter(unittest.TestCase):
     def test_missing_header_fails(self):
         with tempfile.TemporaryDirectory() as directory:
             source = Path(directory) / "invalid.hpoa"
-            source.write_text("#description: no tabular header\n#date: 2026-09-01\\n")
+            source.write_text("#description: no tabular header\n#date: 2026-09-01\n")
             from export_gene_phenotype_par import source_rows
             with self.assertRaisesRegex(ValueError, "no matching tabular header"):
                 list(source_rows(source, ("database_id", "hpo_id")))
