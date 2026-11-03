@@ -42,7 +42,8 @@ class PubMedScreenTest(unittest.TestCase):
                 "<Article><ArticleTitle>Test</ArticleTitle><Abstract><AbstractText>"
                 "TBX5 haploinsufficiency was associated with atrial septal defect in affected individuals."
                 "</AbstractText></Abstract></Article></MedlineCitation></PubmedArticle></PubmedArticleSet>")
-            result=screen(source,queue,obo,xml,root/"out",max_pairs=10)
+            result=screen(source,queue,obo,xml,root/"out",max_pairs=10,
+                          allow_unpinned_test_inputs=True)
             self.assertEqual(result["screened_sentence_matches"],1)
             self.assertEqual(result["biological_pars_accepted"],0)
             with open(root/"out"/"abstract_candidate_sentences.tsv") as f:
