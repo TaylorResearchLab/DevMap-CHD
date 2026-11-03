@@ -132,6 +132,10 @@ def screen(source_dir,queue_file,obo,xml_file,out,max_pairs=150):
     candidates={r["candidate_id"]:r for r in read_table(source_dir/"par_candidates.tsv",
         ("candidate_id","gene_id","gene_symbol","phenotype_id","disease_id","assertion_state"))}
     labels=load_hpo_labels(obo)
+    expected_obo="93dace952fcb3ec4728818857f6ba76bc2d5312f4d83266519b8694b8e798f22"
+    if checksum(obo)!=expected_obo:
+        raise ValueError("hp.obo does not match pinned HPO v2026-09-01")
+    source_verified(queue_file.parent,(queue_file.name,))
     lead_rows=list(read_table(queue_file,("gene_id","gene_symbol","publication_id","phenotype_count")))
     leads=sorted(lead_rows,key=lambda r:(-int(r["phenotype_count"]),r["gene_symbol"],r["publication_id"]))[:max_pairs]
     allowed={(r["gene_id"],r["publication_id"]) for r in leads}
@@ -207,8 +211,9 @@ def main():
     p.add_argument("--out",type=Path,required=True)
     args=p.parse_args()
     if args.fetch:
-        rows=list(read_table(args.publication_queue,("gene_id","publication_id","phenotype_count")))
-        rows.sort(key=lambda r:-int(r["phenotype_count"]))
+        source_verified(args.publication_queue.parent,(args.publication_queue.name,))
+        rows=list(read_table(args.publication_queue,("gene_id","gene_symbol","publication_id","phenotype_count")))
+        rows.sort(key=lambda r:(-int(r["phenotype_count"]),r["gene_symbol"],r["publication_id"]))
         pmids=[]
         for row in rows[:args.max_gene_publication_pairs]:
             pmid=row["publication_id"].removeprefix("PMID:")
