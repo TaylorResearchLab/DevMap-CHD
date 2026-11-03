@@ -67,6 +67,7 @@ def run(source_dir,gencc_file,out):
             raise ValueError("Unknown candidate gene")
         gene_disease[(r["gene_id"],r["disease_id"])].append(r)
     sep="," if gencc_file.suffix.lower()==".csv" else "\t"
+    gencc_sha=digest(gencc_file)
     gd=[]
     seen=set()
     columns_seen=set()
@@ -94,7 +95,7 @@ def run(source_dir,gencc_file,out):
             "source_submitter":field(row,"submitter_title","submitter_label","submitter_name","submitter"),
             "source_report":field(row,"submitted_as_public_report_url","public_report_url","report_url"),
             "source_pmids":field(row,"submitted_as_pmids","pmids","publication_ids"),
-            "source_release_sha256":digest(gencc_file),
+            "source_release_sha256":gencc_sha,
             "evidence_role":"independent_gene_disease_curation"})
     if not {"sgc_id","version_number","gene_curie"}.issubset(columns_seen):
         raise ValueError("GenCC new-format header required (sgc_id, version_number, gene_curie)")
@@ -129,7 +130,7 @@ def run(source_dir,gencc_file,out):
            "gencc_missing_phenotype_genes.tsv":(GAP_FIELDS,gaps)}
     for name,(fields,rows) in files.items():
         output(out/name,fields,rows)
-    summary={"source":"GenCC new format","source_sha256":digest(gencc_file),
+    summary={"source":"GenCC new format","source_sha256":gencc_sha,
              "hpo_candidate_count":manifest["candidate_count"],
              "gencc_assertions_for_registry_genes":len(gd),
              "genes_with_gencc_assertions":len(by_gene),
