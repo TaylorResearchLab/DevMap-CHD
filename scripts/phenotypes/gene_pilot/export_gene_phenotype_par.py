@@ -31,16 +31,22 @@ def source_rows(path, required):
                 continue
             cells = next(csv.reader([line], delimiter="\t"))
             if header is None:
-                header = [cell.lstrip("#").strip() if i == 0 else cell for i, cell in enumerate(cells)]
-                missing = set(required) - set(header)
-                if missing:
-                    raise ValueError(f"{path}: missing columns {sorted(missing)}")
+                # Official HPO files start with metadata comments before #database_id.
+                # A valid tabular header must contain all required column names.
+                candidate = [cell.lstrip("#").strip() if i == 0 else cell.strip()
+                             for i, cell in enumerate(cells)]
+                if set(required).issubset(candidate):
+                    header = candidate
+                elif not line.startswith("#"):
+                    raise ValueError(f"{path}:{line_number}: missing required header columns {sorted(set(required) - set(candidate))}")
                 continue
             if line.startswith("#"):
                 continue
             if len(cells) != len(header):
                 raise ValueError(f"{path}:{line_number}: malformed source row")
             yield line_number, dict(zip(header, cells))
+        if header is None:
+            raise ValueError(f"{path}: no matching tabular header found; required {sorted(required)}")
 
 def stable_id(prefix, *parts):
     encoded = json.dumps(parts, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
