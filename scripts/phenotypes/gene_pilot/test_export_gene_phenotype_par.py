@@ -15,6 +15,8 @@ class TestPhenotypeExporter(unittest.TestCase):
                 "#ncbi_gene_id\tgene_symbol\thpo_id\tdisease_id\n" +
                 "1\tGENE0\tHP:0000001\tOMIM:111111\n")
             (root / "hpoa.tsv").write_text(
+                "#description: HPO disease-to-phenotype annotations v2026-09-01\\n" +
+                "#date: 2026-09-01\\n" +
                 "#database_id\thpo_id\taspect\tfrequency\tqualifier\treference\tevidence\tonset\tsex\tmodifier\n" +
                 "OMIM:111111\tHP:0000001\tP\t0/19\t\tPMID:1234\tPCS\t\t\t\n" +
                 "OMIM:111111\tHP:0000001\tP\t12/19\t\tPMID:1234\tPCS\t\t\t\n" +
@@ -41,6 +43,14 @@ class TestPhenotypeExporter(unittest.TestCase):
             self.assertEqual(contexts[0]["aspect"], "C")
             self.assertEqual(manifest["explicit_absence_candidates"], 1)
             self.assertEqual(manifest["registry_gene_count"], 662)
+
+    def test_missing_header_fails(self):
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "invalid.hpoa"
+            source.write_text("#description: no tabular header\\n#date: 2026-09-01\\n")
+            from export_gene_phenotype_par import source_rows
+            with self.assertRaisesRegex(ValueError, "no matching tabular header"):
+                list(source_rows(source, ("database_id", "hpo_id")))
 
 if __name__ == "__main__":
     unittest.main()
