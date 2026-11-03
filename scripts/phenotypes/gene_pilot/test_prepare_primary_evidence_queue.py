@@ -59,10 +59,9 @@ class PrimaryEvidenceQueueTest(unittest.TestCase):
                 self.assertEqual(row["direct_gene_disruption_evidence"], "NOT_ASSESSED")
                 self.assertEqual(row["candidate_count"], "1")
             # Original source input is immutable to the queue generator.
-            self.assertEqual(sha(source / "par_candidates.tsv"),
-                             dict(line.strip().split(None, 1) for line in
-                                  (source / "SHA256SUMS.txt").read_text().splitlines())[
-                                      "par_candidates.tsv"])
+            expected = {line.split(None, 1)[1].strip(): line.split(None, 1)[0]
+                        for line in (source / "SHA256SUMS.txt").read_text().splitlines()}
+            self.assertEqual(sha(source / "par_candidates.tsv"), expected["par_candidates.tsv"])
 
     def test_source_checksum_failure(self):
         with tempfile.TemporaryDirectory() as td:
