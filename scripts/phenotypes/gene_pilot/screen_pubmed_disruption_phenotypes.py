@@ -124,7 +124,7 @@ def source_verified(source,names):
     for name in names:
         if name not in hashes or checksum(source/name)!=hashes[name]:
             raise ValueError("Source output differs from pinned manifest: "+name)
-def screen(source_dir,queue_file,obo,xml_file,out,max_pairs=150):
+def screen(source_dir,queue_file,obo,xml_file,out,max_pairs=150,allow_unpinned_test_inputs=False):
     source_verified(source_dir,("par_candidates.tsv","par_evidence.tsv","manifest.json"))
     manifest=json.loads((source_dir/"manifest.json").read_text())
     if manifest.get("reference_release")!="HPO:v2026-09-01" or manifest.get("registry_gene_count")!=662:
@@ -133,9 +133,10 @@ def screen(source_dir,queue_file,obo,xml_file,out,max_pairs=150):
         ("candidate_id","gene_id","gene_symbol","phenotype_id","disease_id","assertion_state"))}
     labels=load_hpo_labels(obo)
     expected_obo="93dace952fcb3ec4728818857f6ba76bc2d5312f4d83266519b8694b8e798f22"
-    if checksum(obo)!=expected_obo:
-        raise ValueError("hp.obo does not match pinned HPO v2026-09-01")
-    source_verified(queue_file.parent,(queue_file.name,))
+    if not allow_unpinned_test_inputs:
+        if checksum(obo)!=expected_obo:
+            raise ValueError("hp.obo does not match pinned HPO v2026-09-01")
+        source_verified(queue_file.parent,(queue_file.name,))
     lead_rows=list(read_table(queue_file,("gene_id","gene_symbol","publication_id","phenotype_count")))
     leads=sorted(lead_rows,key=lambda r:(-int(r["phenotype_count"]),r["gene_symbol"],r["publication_id"]))[:max_pairs]
     allowed={(r["gene_id"],r["publication_id"]) for r in leads}
@@ -208,10 +209,12 @@ def main():
     p.add_argument("--ca-bundle",type=Path,default=Path("/etc/pki/tls/certs/ca-bundle.crt"))
     p.add_argument("--max-gene-publication-pairs",type=int,default=150)
     p.add_argument("--fetch",action="store_true")
+    p.add_argument("--allow-unpinned-test-inputs",action="store_true",help="Synthetic tests only")
     p.add_argument("--out",type=Path,required=True)
     args=p.parse_args()
     if args.fetch:
-        source_verified(args.publication_queue.parent,(args.publication_queue.name,))
+        if not args.allow_unpinned_test_inputs:
+            source_verified(args.publication_queue.parent,(args.publication_queue.name,))
         rows=list(read_table(args.publication_queue,("gene_id","gene_symbol","publication_id","phenotype_count")))
         rows.sort(key=lambda r:(-int(r["phenotype_count"]),r["gene_symbol"],r["publication_id"]))
         pmids=[]
@@ -221,6 +224,7 @@ def main():
         fetched=fetch_pubmed(pmids,args.pubmed_xml,args.ca_bundle)
         print("PubMed articles retrieved:",fetched)
     print(json.dumps(screen(args.hpo_dir,args.publication_queue,args.hpo_obo,
-                            args.pubmed_xml,args.out,args.max_gene_publication_pairs),indent=2))
+                            args.pubmed_xml,args.out,args.max_gene_publication_pairs,
+                            args.allow_unpinned_test_inputs),indent=2))
 if __name__=="__main__":
     main()
