@@ -24,9 +24,11 @@ class PubMindV2Test(unittest.TestCase):
                   [{"hgnc_id":f"HGNC:{i}","approved_hgnc_symbol":f"GENE{i}"} for i in range(662)])
             hpo=root/"hpo";hpo.mkdir()
             write(hpo/"par_candidates.tsv",
-                  ["candidate_id","gene_id","phenotype_id"],
-                  [{"candidate_id":"c1","gene_id":"HGNC:0","phenotype_id":"HP:0000001"},
-                   {"candidate_id":"c2","gene_id":"HGNC:0","phenotype_id":"HP:0000001"}])
+                  ["candidate_id","gene_id","phenotype_id","assertion_state"],
+                  [{"candidate_id":"c1","gene_id":"HGNC:0","phenotype_id":"HP:0000001",
+                    "assertion_state":"disease_mediated_candidate_asserted_present"},
+                   {"candidate_id":"c2","gene_id":"HGNC:0","phenotype_id":"HP:0000001",
+                    "assertion_state":"disease_mediated_candidate_asserted_absent"}])
             (hpo/"manifest.json").write_text(json.dumps({"reference_release":"HPO:v2026-09-01",
                 "registry_gene_count":662,"candidate_count":2}))
             seal(hpo,["par_candidates.tsv","manifest.json"])
@@ -65,6 +67,9 @@ class PubMindV2Test(unittest.TestCase):
                 rows=list(csv.DictReader(f,delimiter="\t"))
             self.assertEqual(rows[0]["hpo_candidate_count"],"2")
             self.assertEqual(rows[0]["gencc_supported_candidate_count"],"1")
+            self.assertEqual(rows[0]["hpo_positive_candidate_count"],"1")
+            self.assertEqual(rows[0]["hpo_absent_candidate_count"],"1")
+            self.assertEqual(rows[0]["integration_status"],"overlap_hpo_reported_presence")
             self.assertEqual(rows[1]["integration_status"],"new_pubmind_gene_hpo")
             self.assertEqual(result["pubmind_gene_publication_pairs"],1)
             self.assertEqual(result["registry_genes"],662)
