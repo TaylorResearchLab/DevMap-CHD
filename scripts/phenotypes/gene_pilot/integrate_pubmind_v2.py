@@ -14,7 +14,8 @@ from pathlib import Path
 
 HPO_FIELDS = ["gene_id", "gene_symbol", "hpo_id", "pubmind_publication_count",
               "pubmind_gene_provenance", "pubmind_association_provenance",
-              "hpo_candidate_ids", "hpo_candidate_count",
+              "hpo_candidate_ids", "hpo_candidate_count", "hpo_positive_candidate_count",
+              "hpo_absent_candidate_count", "hpo_unspecified_candidate_count",
               "gencc_supported_candidate_count", "integration_status",
               "source_row", "source_sha256"]
 GENE_FIELDS = ["gene_id", "gene_symbol", "pubmind_hpo_pairs",
@@ -114,6 +115,7 @@ def integrate(registry,hpo_v2,mondo_v2,publications_v2,
         hpo_pairs[(r["gene_id"],r["phenotype_id"])].add(cid)
     if len(original_candidates)!=hm["candidate_count"]:
         raise ValueError("HPO candidate count mismatch")
+    hpo_candidate_count_by_gene=Counter(r["gene_id"] for r in original_candidates.values())
 
     g_counts=Counter()
     gencc_ids=set()
@@ -156,6 +158,9 @@ def integrate(registry,hpo_v2,mondo_v2,publications_v2,
         per_gene[gid]["hpo"]+=1
         cids=sorted(hpo_pairs.get(key,()))
         supported_count=sum(cid in supported for cid in cids)
+        positive_count=sum(original_candidates[cid].get("assertion_state","").endswith("asserted_present") for cid in cids)
+        absent_count=sum(original_candidates[cid].get("assertion_state","").endswith("asserted_absent") for cid in cids)
+        unspecified_count=len(cids)-positive_count-absent_count
         if not cids:per_gene[gid]["new_hpo"]+=1
         hpo_rows.append({
             "gene_id":gid,"gene_symbol":sym,"hpo_id":hpo,
@@ -163,8 +168,14 @@ def integrate(registry,hpo_v2,mondo_v2,publications_v2,
             "pubmind_gene_provenance":r["gene_provenance"],
             "pubmind_association_provenance":r["association_provenance"],
             "hpo_candidate_ids":";".join(cids),"hpo_candidate_count":len(cids),
+            "hpo_positive_candidate_count":positive_count,
+            "hpo_absent_candidate_count":absent_count,
+            "hpo_unspecified_candidate_count":unspecified_count,
             "gencc_supported_candidate_count":supported_count,
-            "integration_status":"overlap_existing_hpo" if cids else "new_pubmind_gene_hpo",
+            "integration_status":("new_pubmind_gene_hpo" if not cids else
+               "overlap_hpo_reported_presence" if positive_count else
+               "overlap_hpo_explicit_absence" if absent_count and not unspecified_count else
+               "overlap_hpo_unspecified"),
             "source_row":lineno,"source_sha256":hashes[hpo_v2.name]
         })
     if strict_expected and (len(unique_hpo)!=1522 or
@@ -205,7 +216,7 @@ def integrate(registry,hpo_v2,mondo_v2,publications_v2,
     old_hpo_genes={gid for gid,_ in hpo_pairs}
     for gid,sym in sorted(gene_by_id.items()):
         stats=per_gene[gid]
-        hp=stats["hpo"]; hc=sum(len(ids) for (g,_),ids in hpo_pairs.items() if g==gid)
+        hp=stats["hpo"]; hc=hpo_candidate_count_by_gene[gid]
         gc=g_counts[gid]
         gene_rows.append({
             "gene_id":gid,"gene_symbol":sym,
@@ -233,6 +244,9 @@ def integrate(registry,hpo_v2,mondo_v2,publications_v2,
       "pubmind_hpo_placeholder_genes":len(placeholder_hpo),
       "pubmind_hpo_pairs_overlapping_hpo":sum(x["hpo_candidate_count"]>0 for x in hpo_rows),
       "pubmind_hpo_pairs_new_to_hpo":sum(x["hpo_candidate_count"]==0 for x in hpo_rows),
+      "pubmind_hpo_pairs_with_existing_reported_presence":sum(x["hpo_positive_candidate_count"]>0 for x in hpo_rows),
+      "pubmind_hpo_pairs_with_only_explicit_absence":sum(x["integration_status"]=="overlap_hpo_explicit_absence" for x in hpo_rows),
+      "pubmind_hpo_pairs_with_only_unspecified_hpo":sum(x["integration_status"]=="overlap_hpo_unspecified" for x in hpo_rows),
       "pubmind_genes_not_in_hpo_discovery":len(hpo_genes-old_hpo_genes),
       "pubmind_mondo_pairs":sum(x["source_type"]=="PubMind_MONDO" for x in evidence),
       "pubmind_gene_publication_pairs":sum(x["source_type"]=="PubMind_publication" for x in evidence),
