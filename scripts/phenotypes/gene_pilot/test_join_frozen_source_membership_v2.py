@@ -13,6 +13,17 @@ class MembershipInputTests(unittest.TestCase):
             self.assertEqual(locate_matrix(root), path)
             self.assertEqual(next(read_table(path))["HGNC ID"], "HGNC:1")
 
+    def test_prefers_tsv_when_csv_and_tsv_are_present(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            release = Path(tmp) / "02_canonical_registry"
+            release.mkdir()
+            basename = "CHD_Gene_Source_Membership_Matrix_v2_ids_canonical"
+            tsv = release / (basename + ".tsv")
+            csv_file = release / (basename + ".csv")
+            tsv.write_text("HGNC ID\\tApproved HGNC symbol\\nHGNC:1\\tGENE1\\n")
+            csv_file.write_text("HGNC ID,Approved HGNC symbol\\nHGNC:1,GENE1\\n")
+            self.assertEqual(locate_matrix(Path(tmp)), tsv)
+
     def test_one_hot_validation(self):
         self.assertEqual(binary("1", "membership", "HGNC:1"), 1)
         self.assertEqual(binary("0.0", "membership", "HGNC:1"), 0)
