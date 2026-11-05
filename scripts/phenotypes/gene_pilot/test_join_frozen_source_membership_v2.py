@@ -24,6 +24,27 @@ class MembershipInputTests(unittest.TestCase):
             csv_file.write_text("HGNC ID,Approved HGNC symbol\\nHGNC:1,GENE1\\n")
             self.assertEqual(locate_matrix(Path(tmp)), tsv)
 
+    def test_frozen_source_membership_header(self):
+        from join_frozen_source_membership_v2 import MEMBERSHIP
+        expected = [
+            "CHDGENE_table_10Aug26.csv",
+            "Griffin_2023_table1_syndromic.csv",
+            "Griffin_2023_table1_isolated.csv",
+            "Griffin_2023_Supp_Table_1_All_Candidate_Genes.csv",
+            "Griffin_2023_Supp_Table_2_All_Curated_Genes.csv",
+            "Griffin_2023_Supp_Table_3_Curated_De_Novo Variants.csv",
+            "Griffin_2023_Supp_Table_4_Curated_LoF_Variants.csv",
+            "Griffin_2023_Supp_Table_5_Curated_Recessive_Variants.csv",
+            "Griffin_2023_fully_curated_not_final_n196.csv",
+            "Sierant dominant 60",
+            "Dong recessive 108",
+            "Dong observed recessive 23",
+            "GenCC filtered for ClinGen Submitter",
+            "ClinGen_Dosage_GENE-only_10Aug26.csv",
+        ]
+        self.assertEqual(set(MEMBERSHIP), set(expected))
+        self.assertEqual(len(MEMBERSHIP), 14)
+
     def test_one_hot_validation(self):
         self.assertEqual(binary("1", "membership", "HGNC:1"), 1)
         self.assertEqual(binary("0.0", "membership", "HGNC:1"), 0)
