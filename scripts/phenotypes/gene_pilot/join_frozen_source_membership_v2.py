@@ -16,7 +16,7 @@ MEMBERSHIP = [
     "ClinGen_Dosage_GENE-only_10Aug26.csv",
     "Dong observed recessive 23",
     "Dong recessive 108",
-    "GenCC_data_Aug10_2026",
+    "GenCC filtered for ClinGen Submitter",
     "Griffin_2023_Supp_Table_1_All_Candidate_Genes.csv",
     "Griffin_2023_Supp_Table_2_All_Curated_Genes.csv",
     "Griffin_2023_Supp_Table_3_Curated_De_Novo Variants.csv",
