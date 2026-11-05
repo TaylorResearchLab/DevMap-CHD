@@ -72,6 +72,8 @@ def locate_matrix(source):
     hits = sorted(p for p in source.rglob("*") if p.is_file()
                   and p.name.startswith("CHD_Gene_Source_Membership_Matrix_v2_ids_canonical")
                   and p.suffix in (".tsv", ".csv"))
+    if len(hits) == 2 and {p.suffix for p in hits} == {".tsv", ".csv"} and {p.stem for p in hits} == {"CHD_Gene_Source_Membership_Matrix_v2_ids_canonical"}:
+        return next(p for p in hits if p.suffix == ".tsv")
     if len(hits) != 1:
         raise ValueError(f"Expected one frozen v2 membership matrix in {source}, found {len(hits)}: {hits[:8]}")
     return hits[0]
