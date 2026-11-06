@@ -84,6 +84,32 @@ class HPOOntologyAuditTest(unittest.TestCase):
             self.assertEqual(terms["HP:0012826"]["severity_descriptor"],"1")
             self.assertEqual(terms["HP:0033798"]["is_cardiovascular"],"0")
 
+    def test_duplicate_alternate_id_is_explicitly_ambiguous(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp)
+            obo=root/"hp.obo"
+            obo.write_text(ROOTS + """
+[Term]
+id: HP:0090001
+name: First historical term
+alt_id: HP:0001425
+
+[Term]
+id: HP:0090002
+name: Second historical term
+alt_id: HP:0001425
+""")
+            inp=root/"pairs.tsv"
+            create(inp,[("TEST","HP:0001425","new_pubmind_gene_hpo")])
+            manifest=audit(inp,obo,root/"out",expected_counts=False)
+            self.assertEqual(manifest["ontology_term_status"]["ambiguous_alternate_id"],1)
+            self.assertEqual(len(manifest["ambiguous_alternate_terms"]),1)
+            self.assertEqual(manifest["cardiovascular_pairs"],0)
+            with (root/"out"/"pubmind_hpo_terms_ontology_audit.tsv").open() as f:
+                row=next(csv.DictReader(f,delimiter="\\t"))
+            self.assertEqual(row["resolved_hpo_id"],"")
+            self.assertEqual(row["alt_id_mapping"],"HP:0090001;HP:0090002")
+
     def test_duplicate_gene_hpo_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
             root=Path(tmp)
