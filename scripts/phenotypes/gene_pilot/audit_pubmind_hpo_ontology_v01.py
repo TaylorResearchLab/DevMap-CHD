@@ -62,12 +62,14 @@ def ontology(path):
                 elif key=="is_obsolete":
                     record[key]=value.lower()=="true"
         save()
-    alternate={}
+    alternate_targets=defaultdict(set)
     for id_,node in terms.items():
         for alias in node["alt_id"]:
-            if alias in alternate or alias in terms:
-                raise ValueError(f"Repeated alternate HPO ID {alias}")
-            alternate[alias]=id_
+            alternate_targets[alias].add(id_)
+    # Ambiguous aliases are retained with all targets, never arbitrarily mapped.
+    # Primary IDs take precedence over an alternate ID reused elsewhere.
+    alternate={alias:tuple(sorted(targets)) for alias,targets in alternate_targets.items()
+               if alias not in terms}
     return terms,alternate
 
 def term_classifier(terms,alternate):
@@ -81,10 +83,13 @@ def term_classifier(terms,alternate):
                 collected.update(ancestors(parent))
         return frozenset(collected)
     def classify(original):
-        resolved=original if original in terms else alternate.get(original)
+        targets=alternate.get(original,())
+        resolved=original if original in terms else targets[0] if len(targets)==1 else None
         if not resolved:
             return {"source_hpo_id":original,"resolved_hpo_id":"","name":"",
-              "status":"unresolved","alt_id_mapping":"","replaced_by":"","consider":"",
+              "status":"ambiguous_alternate_id" if len(targets)>1 else "unresolved",
+              "alt_id_mapping":";".join(targets) if len(targets)>1 else "",
+              "replaced_by":"","consider":"",
               "is_cardiovascular":0,"is_cardiovascular_morphology":0,
               "is_heart_morphology":0,"is_cardiovascular_physiology":0,
               "severity_descriptor":0,"direct_parent_ids":"","ontology_depth_to_cardiovascular":""}
@@ -189,6 +194,11 @@ def audit(hpo_path,obo_path,out,expected_counts=True):
                             "replaced_by":x["replaced_by"],"consider":x["consider"]}
                           for x in term_rows if x["status"]=="obsolete"],
         "unresolved_terms":[x["source_hpo_id"] for x in term_rows if x["status"]=="unresolved"],
+        "ambiguous_alternate_terms":[{"id":x["source_hpo_id"],"candidate_ids":x["alt_id_mapping"]}
+                                    for x in term_rows if x["status"]=="ambiguous_alternate_id"],
+        "ontology_ambiguous_alternate_ids":{
+            alias:list(targets) for alias,targets in sorted(alt.items()) if len(targets)>1
+        },
         "caution":"Ontology ancestry is a phenotype category, not evidence of congenital onset or gene causality. Source IDs are retained; obsolete term replacements are not applied automatically."
     }
     out.mkdir(parents=True,exist_ok=True)
