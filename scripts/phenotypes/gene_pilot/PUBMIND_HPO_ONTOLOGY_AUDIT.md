@@ -34,12 +34,12 @@ import csv
 from pathlib import Path
 p=Path("results/phenotypes/pubmind_hpo_ontology_v01/pubmind_gene_hpo_cardiovascular_annotations.tsv")
 with p.open(newline="") as f:
-    rows=list(csv.DictReader(f,delimiter="\\t"))
+    rows=list(csv.DictReader(f,delimiter="\t"))
 selected=[r for r in rows if r["integration_status"]=="new_pubmind_gene_hpo" and r["cardiovascular"]=="1"]
-print("Gene\\tHPO\\tPhenotype\\tHeart morphology\\tCardiovascular physiology\\tPubMind publications")
+print("Gene\tHPO\tPhenotype\tHeart morphology\tCardiovascular physiology\tPubMind publications")
 for r in sorted(selected,key=lambda r:(r["gene_symbol"],r["hpo_id"])):
     print(r["gene_symbol"],r["hpo_id"],r["hpo_name"],r["heart_morphology"],
-          r["cardiovascular_physiology"],r["pubmind_publication_count"],sep="\\t")
+          r["cardiovascular_physiology"],r["pubmind_publication_count"],sep="\t")
 print(f"Novel cardiovascular Gene-HPO pairs: {len(selected)}")
 PY
 ```
