@@ -106,7 +106,7 @@ alt_id: HP:0001425
             self.assertEqual(len(manifest["ambiguous_alternate_terms"]),1)
             self.assertEqual(manifest["cardiovascular_pairs"],0)
             with (root/"out"/"pubmind_hpo_terms_ontology_audit.tsv").open() as f:
-                row=next(csv.DictReader(f,delimiter="\\t"))
+                row=next(csv.DictReader(f,delimiter="\t"))
             self.assertEqual(row["resolved_hpo_id"],"")
             self.assertEqual(row["alt_id_mapping"],"HP:0090001;HP:0090002")
 
