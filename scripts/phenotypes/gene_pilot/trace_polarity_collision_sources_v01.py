@@ -122,7 +122,7 @@ def source_frequency_interpretation(row):
             return "invalid_study_frequency_numerator"
         return ("zero_of_study_cohort" if affected == 0
                 else "positive_fraction_in_study_cohort")
-    if re.fullmatch(r"(?:100|[0-9]{1,2}(?:\\.[0-9]+)?)%", freq):
+    if re.fullmatch(r"(?:100|[0-9]{1,2}(?:\.[0-9]+)?)%", freq):
         return ("zero_percentage_in_source" if float(freq[:-1]) == 0
                 else "positive_percentage_in_source")
     return "unresolved_frequency_value"
