@@ -42,3 +42,21 @@ Source full text: https://pmc.ncbi.nlm.nih.gov/articles/PMC5905589/
 5. Return `supported`, `supported_with_narrowing`, `unresolved`, or `contradicted` for each separate term with exact textual/table locator.
 
 **Human approval:** User scientific decision reserved for any new or broadened DevMap claim. The expert-curated original HPOA source assertions remain imported at original scope under 2026-11-07 source policy. This packet does not modify registry or evidence data.
+
+
+## Agent 1 evidence addendum, 2026-11-07: original postmortem report resolves both short-chordae observations
+
+**Newbury-Ecob RA, Zuccollo JM, Rutter N, Young ID.** *Sex linked valvular dysplasia.* Journal of Medical Genetics. 1993;30:873–874. **PMID:8230166**, **PMCID:PMC1016573**, **DOI:10.1136/jmg.30.10.873**.
+
+**Primary text locator:** https://jmg.bmj.com/content/jmedgenet/30/10/873.full.pdf, **page 873, Case reports, Patient 1 (IV:1), postmortem findings**. The infant had prenatal detection of cardiac malformation, neonatal multivalvular dysplasia and died at 24 hours. The original autopsy report describes abnormal **tricuspid and mitral cusps** and then states: **"The chordae were short and irregular."** This is an anatomical, case-specific observation for both valves. In this paragraph the antecedent is the tricuspid and mitral valves; the valve-specific attribution is textually justified. Preserve this exact source passage locator for Agent 2 to check the interpretation.
+
+**Original claim scope:** Both OMIM:314400 -> HP:0006692 (short tricuspid chordae) and OMIM:314400 -> HP:0011580 (short mitral chordae) have an original patient-level clinical anatomy report. Because the paper predates FLNA gene discovery, the original individual IV:1 was **not genetically linked to a verified FLNA sequence variant** in the 1993 report. This paper supports the expert-curated **disease–phenotype** assertions, with subsequent genetic publications supporting the disease–FLNA association separately.
+
+**Further direct source:** Le Tourneau et al. 2018, PMID:29020406, results subsection `Sub-valvular mitral valve apparatus` describes shortened mitral chordae in FLNA variant carriers, with associated developmental valve abnormalities. Its `Aortic, tricuspid, and pulmonary valves` subsection describes tricuspid prolapse and regurgitation but does **not** independently specify shortened tricuspid chordae. Do not attribute the latter to this 2018 cohort.
+
+**Updated Agent 1 proposed source dispositions:**
+- SV-002a OMIM:314400 / HP:0011580 mitral chordae: `phenotype_specific_primary_source_identified`, citing 1993 PMID:8230166 and 2018 PMID:29020406 separately with cohort/patient distinctions.
+- SV-002b OMIM:314400 / HP:0006692 tricuspid chordae: `phenotype_specific_primary_source_identified`, citing the original 1993 Patient 1 postmortem observation (PMID:8230166), pending Agent 2 independent full-text validation.
+- Neither disposition implies that the 1993 patient harbored a sequence-confirmed FLNA variant or that an inferred direct variant-phenotype PAR has been accepted.
+
+**Agent 2 focused review:** Independently verify page 873 source text and anatomical referent of the short and irregular chordae; check neonatal patient IV:1 and distinguish both disease–phenotype claims from FLNA genetic attribution. Separately verify the 2018 mitral evidence and original cohort. The PDF web screenshot endpoint returned 403 during Agent 1's inspection attempt, but primary PDF extracted text and BMJ search excerpt present the same observation. No source PDF is redistributed in GitHub. No user biological decision yet.
