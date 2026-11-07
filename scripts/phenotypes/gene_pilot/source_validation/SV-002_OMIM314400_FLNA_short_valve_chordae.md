@@ -1,7 +1,7 @@
 # SV-002 | OMIM:314400 short valve chordae | Agent 1 primary-source assessment
 
 **Date:** 2026-11-07
-**Status:** Source lead reviewed by Agent 1. Secondary Agent 2 review pending. No direct gene-disruption PAR accepted.
+**Status:** Agent 2 primary-source reviews completed. User accepted both original OMIM:314400 disease–phenotype source assertions on 2026-11-07 at their specified disease scope. No direct FLNA gene or variant disruption–phenotype PAR accepted.
 **Source claim scope:** HPOA disease–phenotype annotations from OMIM:314400, original evidence code PCS. This packet establishes citation mapping evidence at disease phenotype level, not new unreviewed variant-to-phenotype assertions.
 
 ## Original HPOA records
@@ -80,3 +80,24 @@ Patient 1 (IV-1) was a male infant delivered at 37 weeks with prenatal and postn
 **Agent 2 disposition:** Supported at the **OMIM:314400 disease–phenotype source level** for HP:0011580 (short mitral chordae) and HP:0006692 (short tricuspid chordae), representing one neonatal male examined at necropsy. The 1993 report preceded identification of FLNA as the relevant gene and contains no sequence-confirmed FLNA variant for this infant.
 
 SV-002 now has both primary source arms reviewed. The mitral claim has the 1993 neonatal anatomical observation plus 2018 FLNA variant-positive female cohort measurements. The tricuspid claim has the 1993 anatomical observation. These preserve distinct individuals, methods and original source scope. The human scientific disposition remains open. No direct gene disruption–phenotype PAR is accepted by this source verification alone.
+
+
+## User scientific dispositions, 2026-11-07 (authoritative; supersede pending labels above)
+
+**Decision 3a: ACCEPT AT ORIGINAL DISEASE–PHENOTYPE SCOPE** for `OMIM:314400 → HP:0011580`, short chordae tendineae of the **mitral** valve. [Approved DevMap disposition](https://app.notion.com/p/411291878008812794e3df5681283eaa).
+
+**Decision 3b: ACCEPT AT ORIGINAL DISEASE–PHENOTYPE SCOPE** for `OMIM:314400 → HP:0006692`, short chordae tendineae of the **tricuspid** valve. [Approved DevMap disposition](https://app.notion.com/p/411291878008817cb890d2e89f4301a3).
+
+### Original evidence and scope
+
+**Newbury-Ecob et al. 1993, PMID 8230166, PMCID PMC1016573.** Patient 1 (IV-1), male neonate, necropsy after death at 24 hours, page 873. The source describes abnormal **tricuspid and mitral valve** cusps, then states their chordae were short and irregular. This is **one shared original clinical observation**, whose antecedent supports both atrioventricular valves. It is one patient and one original passage, not two independent reports. The published 1993 individual does not have a sequence-confirmed FLNA variant in this paper.
+
+**Le Tourneau et al. 2018, PMID 29020406, PMCID PMC5905589.** Separate genetically characterized cohort evidence supports shortened **mitral** chordae in FLNA variant-positive **women**, measured by echocardiography, compared with variant-negative controls (anterior normalized length P=0.02; posterior P=0.009). The analogous male comparisons were not statistically significant. That study provides no direct measurement of shortened tricuspid chordae; its results do not supply an independent tricuspid source observation.
+
+### Disposition and provenance constraints
+
+Retain the original HPOA disease-subject rows, their source code `PCS` and original `OMIM:314400` reference without rewriting the original source field as a PMID. Attach the original clinical publication IDs and exact case or cohort scope as **additional source-specific provenance** in the review layer. Repeated representation of the 1993 passage under two phenotype labels does not increase the count of independent clinical studies.
+
+**For each accepted disease-level claim:** `devmap_disposition=accepted_by_user`; `accepted_scope=original_HPOA_disease_phenotype`; `direct_gene_phenotype_PAR_accepted=false`.
+
+These are accepted **original disease–phenotype source assertions**. They are not newly accepted FLNA gene disruption → phenotype or variant → phenotype PARs. No sequence-confirmed FLNA variant is attributed to the neonatal 1993 individual. The frozen 662-gene registry, source evidence, prior candidate IDs and existing dataset checksums remain unchanged. The full source review was conducted by Agent 1 and checked by Claude as a second check following prior exposure.
