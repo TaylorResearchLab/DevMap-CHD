@@ -129,6 +129,7 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
         identities[key][state].add(r["candidate_id"])
 
     discovery_links = defaultdict(set)
+    seen_discovery_links = set()
     for r in rows(candidate_dir / "source_discovery_links.tsv",
                   ("source_row_id", "candidate_id", "original_subject",
                    "original_object", "evidence_role")):
@@ -136,8 +137,15 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
             raise ValueError("Discovery link references unknown candidate")
         if r["evidence_role"] != "disease_mediated_discovery_only":
             raise ValueError("Discovery link incorrectly labelled as direct evidence")
+        link_key = (r["source_row_id"], r["candidate_id"])
+        if link_key in seen_discovery_links:
+            raise ValueError("Duplicate original G2P discovery projection")
+        seen_discovery_links.add(link_key)
         discovery_links[r["source_row_id"]].add(r["candidate_id"])
+    if len(seen_discovery_links) != old["g2p_discovery_records"]:
+        raise ValueError("G2P discovery link conservation failure")
     evidence_links = defaultdict(set)
+    seen_evidence_links = set()
     for r in rows(candidate_dir / "par_evidence.tsv",
                   ("source_row_id", "candidate_id", "original_subject",
                    "original_object", "evidence_role")):
@@ -145,14 +153,23 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
             raise ValueError("Evidence references unknown candidate")
         if r["evidence_role"] != "disease_phenotype_annotation":
             raise ValueError("Original HPOA evidence role changed")
+        link_key = (r["source_row_id"], r["candidate_id"])
+        if link_key in seen_evidence_links:
+            raise ValueError("Duplicate original HPOA evidence projection")
+        seen_evidence_links.add(link_key)
         evidence_links[r["source_row_id"]].add(
             (r["candidate_id"], r["original_subject"], r["original_object"])
         )
+    if len(seen_evidence_links) != old["hpoa_evidence_records"]:
+        raise ValueError("HPOA source evidence conservation failure")
     context_lines = set()
     for r in rows(candidate_dir / "disease_context.tsv", ("source_row_id", "disease_id", "aspect")):
         if r["source_row_id"] in context_lines:
             raise ValueError("Repeated disease context source row")
         context_lines.add(r["source_row_id"])
+
+    if len(context_lines) != old["disease_context_records"]:
+        raise ValueError("Disease context conservation failure")
 
     g2p_input = list(source_rows(g2p, G2P_REQUIRED))
     hpoa_input = list(source_rows(hpoa, HPOA_REQUIRED))
