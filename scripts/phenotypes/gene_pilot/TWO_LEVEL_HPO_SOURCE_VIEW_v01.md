@@ -1,6 +1,6 @@
 # DevMap-CHD | Two-level HPO source and discovery view v01
 
-**Status:** Agent 1 implementation. Local synthetic tests passed. Real CHOP HPC output verified on 2026-11-07; Agent 2 code review pending. This is an additive, versioned, provisional view. No direct gene disruption–phenotype PAR is accepted or promoted.
+**Status:** Scientific authority approved this versioned source/discovery identity representation on 2026-11-07. Real CHOP HPC and independent Agent 2 code reviews passed. Direct gene disruption–phenotype PAR promotion and public release remain separately gated. This is an additive, versioned, provisional view. No direct gene disruption–phenotype PAR is accepted or promoted.
 
 ## Scientific rationale
 
@@ -110,3 +110,19 @@ PY
 ```
 
 No exporter rerun is required. User and Agent 2 will review the verified source identities and the pending SV-001/SV-002 scientific dispositions. The existing historical outputs and frozen registry remain untouched.
+
+
+## Scientific authority decision, 2026-11-07 (supersedes earlier identity-pending notes)
+
+**Decision 1: APPROVED for internal DevMap original source assertions and discovery projections.** See the [user's DevMap Communications Log decision](https://app.notion.com/p/4112918780088115808ccc2a3dd5ea55).
+
+- `dmpdsrc1` uses the pinned `hpoa_disease_subject_two_level_v01` profile to identify a source claim from (original disease identifier, `has_phenotype`, original HPO identifier, curator claim negation).
+- `dmpview1` is the versioned gene-keyed `disease_mediated_discovery_only` projection referencing its `dmpdsrc1`. Gene keys on these projections are not observed direct biological claim subjects.
+- Original HPOA source observations retain raw frequency, numerator/denominator, categorical term, onset, sex, qualifier, curator evidence code, publication reference, source line and lineage. `0/N` describes zero observations in a particular cohort, not curator negation. `not_negated` does not mean that every evidence row observed the phenotype.
+- The accepted internal source/discovery identity vocabulary applies to the verified `hpoa_disease_subject_two_level_v01` profile. Changes to its identity semantics require a new versioned profile and appropriate scientific review. This approval does not automatically adopt identities for direct gene disruption or variant–phenotype PARs.
+
+**Existing data custody:** The 662-gene registry, 62,860 historical candidate IDs and completed HPOA evidence and checksum manifests remain unchanged. The audited two-level view preserves 45,548 source claims, 62,832 discovery projections, 63,012 evidence links, and 62,860 legacy mapping rows. The user approved no direct gene disruption–phenotype PAR promotion and no public release.
+
+**Other source dispositions:** [SV-001, narrowed patient observation](https://app.notion.com/p/41129187800881eeab02f31b9a936cc5); [SV-002a, accepted mitral disease–phenotype claim](https://app.notion.com/p/411291878008812794e3df5681283eaa); [SV-002b, accepted tricuspid disease–phenotype claim](https://app.notion.com/p/411291878008817cb890d2e89f4301a3). These decisions retain distinct primary evidence and are not permissions to relabel disease discovery projections as direct gene phenotype assertions.
+
+Historical sections above describe the state before this user approval. The separate edge-case audit, GenCC and HGNC work remain subject to their own review.
