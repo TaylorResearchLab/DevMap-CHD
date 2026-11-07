@@ -21,6 +21,20 @@ def refresh_digest(directory, filename):
     checksum_file.write_text("\n".join(updated) + "\n", encoding="utf-8")
 
 
+def prepared_fixture(root):
+    old, integrity = fixture(root)
+    path = integrity / "audit_manifest.json"
+    manifest = json.loads(path.read_text(encoding="utf-8"))
+    for source in ("g2p", "hpoa"):
+        manifest["four_fate_conservation"][source].update(
+            merged=0, held=0, failed=0
+        )
+    manifest["source_row_counts"] = {"g2p": 4, "hpoa": 4}
+    path.write_text(json.dumps(manifest) + "\\n", encoding="utf-8")
+    refresh_digest(integrity, "audit_manifest.json")
+    return old, integrity
+
+
 def change_original_frequency(folder, old_value, new_value):
     path = folder / "par_evidence.tsv"
     with path.open(encoding="utf-8", newline="") as f:
@@ -46,7 +60,7 @@ class TestTwoLevelEdgeGuard(unittest.TestCase):
     def test_verified_view_with_no_edge_cases(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
-            old, integrity = fixture(root)
+            old, integrity = prepared_fixture(root)
             export(old, integrity, root / "view")
             r = audit(root / "view", old, integrity, root / "guard")
             self.assertEqual(r["original_evidence_links_verified"], 4)
@@ -59,7 +73,7 @@ class TestTwoLevelEdgeGuard(unittest.TestCase):
     def test_NOT_with_reported_frequency_is_flagged(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
-            old, integrity = fixture(root)
+            old, integrity = prepared_fixture(root)
             change_original_frequency(old, "", "3/5")
             # Only the final synthetic record is NOT and has blank frequency;
             # the original helper above changes it to a positive outcome.
@@ -72,7 +86,7 @@ class TestTwoLevelEdgeGuard(unittest.TestCase):
     def test_zero_percent_and_excluded_are_reported_separately(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
-            old, integrity = fixture(root)
+            old, integrity = prepared_fixture(root)
             change_original_frequency(old, "0/19", "0%")
             change_original_frequency(old, "12/19", "HP:0040285")
             export(old, integrity, root / "view")
@@ -85,7 +99,7 @@ class TestTwoLevelEdgeGuard(unittest.TestCase):
     def test_missing_conservation_manifest_key_rejected(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
-            old, integrity = fixture(root)
+            old, integrity = prepared_fixture(root)
             export(old, integrity, root / "view")
             path = root / "view" / "manifest.json"
             manifest = json.loads(path.read_text(encoding="utf-8"))
@@ -98,7 +112,7 @@ class TestTwoLevelEdgeGuard(unittest.TestCase):
     def test_edited_source_evidence_fails_custody_check(self):
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
-            old, integrity = fixture(root)
+            old, integrity = prepared_fixture(root)
             export(old, integrity, root / "view")
             path = root / "view" / "original_hpoa_observations.tsv"
             with path.open("a", encoding="utf-8") as f:
