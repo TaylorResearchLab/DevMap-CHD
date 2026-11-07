@@ -60,3 +60,12 @@ Source full text: https://pmc.ncbi.nlm.nih.gov/articles/PMC5905589/
 - Neither disposition implies that the 1993 patient harbored a sequence-confirmed FLNA variant or that an inferred direct variant-phenotype PAR has been accepted.
 
 **Agent 2 focused review:** Independently verify page 873 source text and anatomical referent of the short and irregular chordae; check neonatal patient IV:1 and distinguish both disease–phenotype claims from FLNA genetic attribution. Separately verify the 2018 mitral evidence and original cohort. The PDF web screenshot endpoint returned 403 during Agent 1's inspection attempt, but primary PDF extracted text and BMJ search excerpt present the same observation. No source PDF is redistributed in GitHub. No user biological decision yet.
+
+
+## Agent 2 source review addendum, 2026-11-07 (partially reviewed)
+
+[Claude's source review](https://app.notion.com/41129187800881fca046e55f2ff85766) independently inspected Le Tourneau 2018 after exposure to Agent 1's source locators. The **2018 cohort evidence supports shortened mitral chordae in FLNA variant-positive women**, rather than an unqualified effect across all variant carriers. In Table 2, normalized chordal length (mm/m²), FLNA-positive versus FLNA-negative women is 10.2 ± 2.2 versus 12.1 ± 2.0 anteriorly (P=0.02) and 10.6 ± 1.9 versus 12.2 ± 2.2 posteriorly (P=0.009). The corresponding male comparisons are not statistically significant (P=0.55 anteriorly and P=0.10 posteriorly). The study provides no tricuspid chordal-length result. Maintain original cohort, valve, sex, modality and PMID provenance as separate clinical evidence from the 1993 neonatal anatomical report.
+
+Claude **has not inspected Newbury-Ecob 1993** because the scanned PDF and page images were inaccessible in the reviewer environment. Agent 1's previous text extraction remains a source lead pending independent visual inspection of p.873 Patient 1 IV:1. The 1993 infant has no sequence-confirmed FLNA attribution in that paper. The original HPOA OMIM:314400–HP:0011580 and OMIM:314400–HP:0006692 PCS assertions remain disease-subject claims without explicit original HPOA PMID fields.
+
+Status: 2018 mitral evidence **supported with narrowing**; 1993 neonatal mitral/tricuspid evidence **awaits Agent 2 primary image review**; human biological disposition pending. No direct FLNA variant–phenotype PAR accepted.
