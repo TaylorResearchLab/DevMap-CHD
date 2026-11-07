@@ -1,6 +1,6 @@
 # DevMap-CHD | Two-level HPO source and discovery view v01
 
-**Status:** Agent 1 implementation. Local synthetic tests passed. Real CHOP HPC output and Agent 2 code review pending. This is an additive, versioned, provisional view. No direct gene disruption–phenotype PAR is accepted or promoted.
+**Status:** Agent 1 implementation. Local synthetic tests passed. Real CHOP HPC output verified on 2026-11-07; Agent 2 code review pending. This is an additive, versioned, provisional view. No direct gene disruption–phenotype PAR is accepted or promoted.
 
 ## Scientific rationale
 
@@ -55,7 +55,7 @@ x = json.loads(p.read_text())
 for k in ("legacy_candidate_count", "provisional_projection_count",
           "legacy_identity_splits_collapsed", "original_evidence_link_count",
           "distinct_original_hpoa_source_rows", "original_discovery_link_count",
-          "affirmed_negated_source_claim_key_conflicts",
+          "not_negated_negated_source_claim_key_conflicts",
           "unclassified_frequency_rows", "unresolved_claim_qualifier_rows",
           "direct_gene_phenotype_assertions_promoted"):
     print(k, x[k], sep="\t")
@@ -65,13 +65,48 @@ for ns in ("OMIM", "ORPHA"):
 PY
 ```
 
-Expected from the already reproduced data: 62,860 original provisional candidate IDs, 62,832 provisional projections after collapsing 28 legacy polarity splits, and full conservation of all original evidence and discovery links. These numbers are **checks to validate**, not reports of a real run of the new exporter. The source evidence record count should match the old producer manifest, expected to be 63,012 linked records. Inspect any unexpected frequency value or curator qualifier rather than assigning a fabricated observation outcome.
+The November 7 real HPC run verified 62,860 legacy candidate IDs, 62,832 provisional projections, 28 reconciled legacy identity splits, 63,012 linked original HPOA evidence records and 62,860 discovery links. All seven output checksums passed. The verified manifest reports 45,712 distinct original HPOA source rows and 45,548 distinct original disease–phenotype source claims. Frequency classification has zero unclassified rows, zero unresolved qualifiers and zero positive-versus-negated source claim key conflicts.
 
 ## Review gates
 
 - Agent 2 independently examines source identity, categorical frequencies, preserved clinical denominators and the conservation manifest. User decides PAR Core identity.
 - The 2026-11-07 expert curated PMID policy remains in effect only at original source claim scope. PubMind machine extracted gene–HPO associations retain secondary review requirements.
-- SV-001 LZTR1–ASD is supported with narrowing in Claude's newer primary text review. SV-002 Le Tourneau 2018 shows statistically shorter mitral chordae in FLNA variant-positive women; the original Newbury-Ecob 1993 neonatal scan remains pending Agent 2 inspection.
+- SV-001 LZTR1–ASD is supported with narrowing in Claude's newer primary text review. SV-002 Le Tourneau 2018 shows statistically shorter mitral chordae in FLNA variant-positive women; Claude subsequently inspected the user-attached Newbury-Ecob 1993 scan, confirming a single neonatal necropsy observation of short and irregular chordae referring to both mitral and tricuspid valves. His review supports both original OMIM:314400 disease–phenotype HPOA assertions at that anatomical scope. See [Claude SV-002 1993 source review](https://app.notion.com/41129187800881349dcac526efbb82d8). User biological disposition remains pending.
 - No direct gene–phenotype PARs may be promoted from these discovery projections; the manifest explicitly records zero accepted direct assertions.
 
 Log all subsequent findings in the DevMap Communications Log. Keep R01 and CHD Spatial records separate.
+
+
+## Real HPC result and reporting correction, November 7, 2026
+
+Four synthetic tests passed. The versioned exporter completed on CHOP HPC. `sha256sum -c SHA256SUMS.txt` returned OK for all seven output files. The manifest reports:
+- 62,860 legacy candidate IDs and 62,832 provisional discovery projections, with 28 legacy polarity splits reconciled.
+- 63,012 original HPOA evidence links, representing 45,712 distinct original HPOA source lines. The difference reflects gene projection multiplicity, not additional independent clinical evidence.
+- 45,548 distinct disease–phenotype source claim groups and 62,860 preserved G2P discovery links.
+- 35,919 categorical-positive, 16,229 observed-positive, 422 observed-zero and 10,442 frequency-unreported evidence links. Their sum equals 63,012.
+- 0 unclassified frequency rows, 0 unresolved claim qualifiers and 0 curator polarity key conflicts.
+- OMIM 27,862 old IDs → 27,834 projections; ORPHA 34,998 old IDs → 34,998 projections.
+- ORPHA 34,955 `not_negated` and 43 `negated` projections; OMIM 27,834 `not_negated` and zero `negated` projections.
+- 0 accepted direct gene–phenotype PARs.
+
+The original documentation's diagnostic referenced the old field `affirmed_negated_source_claim_key_conflicts`. The exporter correctly emits **`not_negated_negated_source_claim_key_conflicts`** after the source-state label changed from `affirmed` to `not_negated`. The field mismatch caused a KeyError in the postrun summary script after successful export and checksum verification. The corrected diagnostic follows.
+
+```bash
+cd /mnt/isilon/taylor_lab/data/projects/DevMap-CHD
+python - <<'PY'
+import json
+from pathlib import Path
+m=json.loads(Path("results/phenotypes/hpo_two_level_projection_v01/manifest.json").read_text())
+for key in ("legacy_candidate_count", "provisional_projection_count",
+            "legacy_identity_splits_collapsed", "original_evidence_link_count",
+            "distinct_original_hpoa_source_rows", "original_discovery_link_count",
+            "not_negated_negated_source_claim_key_conflicts",
+            "unclassified_frequency_rows", "unresolved_claim_qualifier_rows",
+            "direct_gene_phenotype_assertions_promoted"):
+    print(f"{key}\t{m[key]}")
+for ns in ("OMIM", "ORPHA"):
+    print(ns, m["by_namespace"].get(ns))
+PY
+```
+
+No exporter rerun is required. User and Agent 2 will review the verified source identities and the pending SV-001/SV-002 scientific dispositions. The existing historical outputs and frozen registry remain untouched.
