@@ -16,7 +16,7 @@ from pathlib import Path
 HPO_FIELDS=("record_id","candidate_id","original_subject","original_object",
             "source_resource","source_release","source_evidence_code",
             "primary_publication_id","source_reference","source_row_id",
-            "evidence_role","source_curation_status","devmap_disposition",
+            "evidence_role","reference_namespaces","source_curation_status","devmap_disposition",
             "reason")
 GENCC_FIELDS=("gencc_id","gencc_version","gene_id","source_disease_id",
               "source_submitter","source_classification",
@@ -48,6 +48,16 @@ def emit(path,columns,rows):
 def pmids(value):
     return sorted(set(re.findall(r"PMID:\s*([0-9]+)",value or "")))
 
+def namespaces(reference):
+    # Source namespaces are presence indicators; a record may cite several.
+    labels=set()
+    for token in re.split(r"[;,|]",reference or ""):
+        token=token.strip()
+        if not token:continue
+        match=re.match(r"^([A-Za-z][A-Za-z0-9-]*):",token)
+        labels.add(match.group(1).upper() if match else "OTHER")
+    return ";".join(sorted(labels)) if labels else "EMPTY"
+
 def audit(hpo_path,gencc_path,pubmind_path,out,strict=True):
     # HPOA annotates disease/phenotype, even when linked to a gene discovery row.
     hpo=[]
@@ -62,7 +72,15 @@ def audit(hpo_path,gencc_path,pubmind_path,out,strict=True):
         ids=pmids(row["primary_publication_id"])
         # Citation provenance is retained; the original curated disease-HPO
         # observation may be imported, not promoted to direct gene-HPO.
-        state="expert_curated_with_pmid" if ids else "expert_curated_provenance_incomplete"
+        evidence_code=row["source_evidence_code"].upper()
+        electronic=evidence_code=="IEA"
+        ref_ns=namespaces(row["original_reference"])
+        if ids:
+            state="electronic_annotation_with_pmid" if electronic else "expert_curated_with_pmid"
+        elif ref_ns!="EMPTY":
+            state="electronic_annotation_with_source_reference" if electronic else "expert_curated_with_source_reference"
+        else:
+            state="electronic_annotation_without_reference" if electronic else "expert_curated_provenance_incomplete"
         hpo.append({
             "record_id":row["evidence_id"],"candidate_id":row["candidate_id"],
             "original_subject":row["original_subject"],
@@ -74,9 +92,11 @@ def audit(hpo_path,gencc_path,pubmind_path,out,strict=True):
             "source_reference":row["original_reference"],
             "source_row_id":row["source_row_id"],
             "evidence_role":row["evidence_role"],
+            "reference_namespaces":ref_ns,
             "source_curation_status":state,
-            "devmap_disposition":"imported_source_assertion" if ids
-                                  else "provenance_review",
+            "devmap_disposition":("electronic_evidence_review" if electronic else
+                                 "imported_source_assertion" if ids else
+                                 "provenance_review"),
             "reason":"HPOA disease-phenotype curation; gene-HPO traversal remains discovery only"
         })
     gencc=[]
@@ -133,11 +153,13 @@ def audit(hpo_path,gencc_path,pubmind_path,out,strict=True):
             "GenCC":dict(Counter(x["source_curation_status"] for x in gencc)),
             "PubMind":dict(Counter(x["source_curation_status"] for x in pubmind))},
         "hpoa_rows_with_traceable_pmid":sum(bool(pmids(x["primary_publication_id"])) for x in hpo),
+        "hpoa_source_reference_namespaces":dict(sorted(Counter(
+            ns for row in hpo for ns in row["reference_namespaces"].split(";") if ns).items())),
         "gencc_rows_with_pmid_in_this_export":0,
         "pubmind_rows_with_hpo_specific_pmid_in_this_export":0,
         "input_sha256":{"hpoa":sha(hpo_path),"gencc":sha(gencc_path),"pubmind":sha(pubmind_path)},
         "policy":"2026-11-07 approved: expert-curated original assertions with traceable PMID importable at original claim scope; PubMind AI extraction requires secondary review",
-        "interpretation":"No new direct gene disruption-phenotype PARs approved. GenCC missing PMID data requires source-specific retrieval; HPOA original subject is disease."
+        "interpretation":"No new direct gene disruption-phenotype PARs approved. HPOA ORPHA/OMIM references are traceable source identifiers, not missing provenance or automatically PMID verified. HPO IEA remains electronically inferred. GenCC missing PMID data requires source-specific retrieval; HPOA original subject is disease."
     }
     manifest=out/"source_authority_manifest.json"
     manifest.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n")
