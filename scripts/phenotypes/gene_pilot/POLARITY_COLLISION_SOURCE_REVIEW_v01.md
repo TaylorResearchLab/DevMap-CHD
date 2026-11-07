@@ -59,3 +59,12 @@ The expected manifest from the user supplied collision file is 27 groups and 55 
 Claude Agent 2 should independently challenge whether `0/N`, `NOT` and positive categorical frequencies were semantically conserved. If warranted, compare original cited clinical cohorts and any affected patient or onset qualifiers. The original HPOA disease–phenotype record remains the source assertion. A separate direct gene disruption–phenotype observation requires a specific person, variant or mechanistic evidence and the project's independent review procedure.
 
 The PAR Core claim identity and polarity policy remain with the user and PAR Core. Source evidence polarity can be retained independently from identity until that decision. SV-001 and SV-002 remain pending Agent 2 source review and the user's biological disposition.
+
+
+## CHOP HPC real-input result, 2026-11-07
+
+User supplied a completed source trace and synthetic regression output. All 3 tests passed. The source gate returned `source_audit_gate_passed=true`, with **27** collision groups, **55** legacy candidate IDs and **77** original HPOA evidence records. The reported source candidate manifest SHA-256 is `9f3f8bba6bbe4f4deb669ca2ac33b89148ddbe45276aa5f27f3f425839e376e6`; the prior audit manifest SHA-256 is `a8506e714b0aafc00b068893339b6de6059092623f2bb58e80611f07e45cf29d`.
+
+All 15 groups with `asserted_absent` have `source_absence_basis=zero_numerator`; none has an HPOA `NOT` qualifier. These are study-specific `0/N` frequencies in the original disease–phenotype annotations, and are not universal disease negation. TSC1 / OMIM:191100 / HP:0012798 has all three legacy states and includes a positive categorical HPO frequency that the legacy exporter classified as `unspecified`. Four FLNA / OMIM:305620 groups (17, 18, 21 and 22) each have two evidence rows and only one distinct source reference, requiring source-level examination before interpreting the differing frequencies as biologically discordant.
+
+The full `polarity_collision_source_rows.tsv` is retained on CHOP HPC under `results/phenotypes/polarity_collision_source_review_v01/`. Source context interpretation and independent Claude review remain pending. Original candidate identities, frozen gene registry and direct assertion promotion state remain unchanged. The 77 original evidence rows are not 77 independent clinical publications.
