@@ -53,6 +53,8 @@ class SourceAuthorityTests(unittest.TestCase):
             self.assertEqual(h[0]["source_curation_status"],"expert_curated_with_pmid")
             self.assertEqual(h[0]["original_subject"],"OMIM:1")
             self.assertEqual(h[1]["devmap_disposition"],"provenance_review")
+            self.assertEqual(h[1]["source_curation_status"],"expert_curated_with_source_reference")
+            self.assertEqual(h[1]["reference_namespaces"],"OMIM")
             with (root/"out"/"gencc_source_authority.tsv").open() as f:
                 g=list(csv.DictReader(f,delimiter="\t"))
             self.assertEqual(g[0]["source_curation_status"],"expert_curated_provenance_incomplete")
@@ -60,6 +62,34 @@ class SourceAuthorityTests(unittest.TestCase):
             with (root/"out"/"pubmind_source_authority.tsv").open() as f:
                 p=next(csv.DictReader(f,delimiter="\t"))
             self.assertEqual(p["devmap_disposition"],"pending_secondary_review")
+    def test_iea_with_orphanet_reference_is_not_expert_pmid_validation(self):
+        with tempfile.TemporaryDirectory() as d:
+            root=Path(d)
+            hpo=root/"hpo.tsv"
+            write(hpo,["candidate_id","evidence_id","original_subject","original_object",
+                       "source_resource","source_release","source_evidence_code",
+                       "primary_publication_id","original_reference","source_row_id",
+                       "evidence_role"],[
+                {"candidate_id":"c1","evidence_id":"e1","original_subject":"ORPHA:1",
+                 "original_object":"HP:0001631","source_resource":"HPOA",
+                 "source_release":"v2026-09-01","source_evidence_code":"IEA",
+                 "primary_publication_id":"","original_reference":"ORPHA:1",
+                 "source_row_id":"phenotype.hpoa:7",
+                 "evidence_role":"disease_phenotype_annotation"}])
+            gencc=root/"gencc.tsv"
+            write(gencc,["gencc_id","gencc_version","gene_id",
+                         "source_disease_id","source_classification","source_submitter"],[])
+            pm=root/"pub.tsv"
+            write(pm,["gene_id","gene_symbol","hpo_id",
+                      "pubmind_publication_count","source_row"],[])
+            result=audit(hpo,gencc,pm,root/"out",strict=False)
+            self.assertEqual(result["source_curation_status"]["HPOA"],
+                {"electronic_annotation_with_source_reference":1})
+            with (root/"out"/"hpoa_source_authority.tsv").open() as f:
+                row=next(csv.DictReader(f,delimiter="\t"))
+            self.assertEqual(row["devmap_disposition"],"electronic_evidence_review")
+            self.assertEqual(row["reference_namespaces"],"ORPHA")
+
     def test_duplicate_original_evidence_fails(self):
         with tempfile.TemporaryDirectory() as d:
             root=Path(d)
