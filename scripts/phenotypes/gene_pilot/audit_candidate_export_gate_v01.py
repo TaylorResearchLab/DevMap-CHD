@@ -332,12 +332,14 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
     collisions = []
     for key, states in sorted(identities.items()):
         if len(states) > 1:
-            collisions.append(dict(zip(
+            entry = dict(zip(
                 ("gene_id", "disruption_type", "phenotype_id", "disease_id"), key
-            )) | {
-                "polarity_states": ";".join(sorted(states)),
-                "legacy_candidate_ids": ";".join(sorted(cid for v in states.values() for cid in v)),
-            })
+            ))
+            entry["polarity_states"] = ";".join(sorted(states))
+            entry["legacy_candidate_ids"] = ";".join(
+                sorted(cid for v in states.values() for cid in v)
+            )
+            collisions.append(entry)
     fates = {
         "g2p": dict(Counter(r["fate"] for r in g2p_ledger)),
         "hpoa": dict(Counter(r["fate"] for r in hpoa_ledger)),
