@@ -45,7 +45,7 @@ DISCOVERY_COLS = DISCOVERY_SOURCE_FIELDS + ("projection_id", "source_claim_id")
 MAP_COLS = ("legacy_candidate_id", "legacy_candidate_state", "projection_id",
             "source_claim_id", "source_evidence_count", "discovery_link_count")
 NAMESPACE_COLS = ("namespace", "legacy_candidates", "projections",
-                  "affirmed_projections", "negated_projections", "unresolved_projections",
+                  "not_negated_projections", "negated_projections", "unresolved_projections",
                   "source_evidence_links", "categorical_positive_observations",
                   "observed_zero_observations", "frequency_unreported_observations",
                   "unclassified_frequency_observations")
@@ -108,7 +108,7 @@ def interpret(row):
     elif freq == EXCLUDED:
         claim, basis = "negated", "HPO_excluded_frequency_term"
     else:
-        claim, basis = "affirmed", "no_source_negation"
+        claim, basis = "not_negated", "no_source_negation"
     observed = {"evidence_outcome": "frequency_unreported",
                 "frequency_numerator": "", "frequency_denominator": "",
                 "frequency_percent": "", "categorical_frequency_term": ""}
@@ -280,7 +280,7 @@ def export(candidate_dir, audit_dir, out):
         v = summary[ns]
         ec = nspace_evidence[ns]
         namespaces.append(dict(namespace=ns, legacy_candidates=v["legacy_candidates"],
-            projections=v["projections"], affirmed_projections=v["affirmed_projections"],
+            projections=v["projections"], not_negated_projections=v["not_negated_projections"],
             negated_projections=v["negated_projections"],
             unresolved_projections=v["unresolved_projections"],
             source_evidence_links=sum(ec.values()),
@@ -306,7 +306,7 @@ def export(candidate_dir, audit_dir, out):
     conflicts = defaultdict(set)
     for claim in claims_output:
         conflicts[(claim["disease_id"], claim["phenotype_id"])].add(claim["claim_polarity"])
-    conflict_count = sum("negated" in states and "affirmed" in states for states in conflicts.values())
+    conflict_count = sum("negated" in states and "not_negated" in states for states in conflicts.values())
     if sum(int(p["hpoa_evidence_links"]) for p in projection_output) != len(observation_rows):
         raise ValueError("Projected evidence link conservation failed")
     if sum(int(p["g2p_discovery_links"]) for p in projection_output) != len(discovery_rows):
@@ -326,7 +326,7 @@ def export(candidate_dir, audit_dir, out):
         "original_discovery_link_count": len(discovery_rows),
         "evidence_outcome_counts": dict(sorted(counter.items())),
         "claim_polarity_bases": dict(sorted(negation_bases.items())),
-        "affirmed_negated_source_claim_key_conflicts": conflict_count,
+        "not_negated_negated_source_claim_key_conflicts": conflict_count,
         "unclassified_frequency_rows": counter["unclassified_frequency"],
         "unresolved_claim_qualifier_rows": negation_bases["unrecognized_qualifier"],
         "by_namespace": {r["namespace"]: r for r in namespaces},
