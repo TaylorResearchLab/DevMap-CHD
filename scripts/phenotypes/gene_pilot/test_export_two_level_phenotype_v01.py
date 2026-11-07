@@ -92,7 +92,7 @@ class TestTwoLevelHPOView(unittest.TestCase):
             self.assertEqual(result['evidence_outcome_counts']['categorical_positive'],1)
             self.assertEqual(result['evidence_outcome_counts']['frequency_unreported'],1)
             self.assertEqual(result['by_namespace']['ORPHA']['negated_projections'],1)
-            self.assertEqual(result['by_namespace']['OMIM']['affirmed_projections'],1)
+            self.assertEqual(result['by_namespace']['OMIM']['not_negated_projections'],1)
             self.assertEqual(len(read_rows(root/'new'/'legacy_candidate_projection_map.tsv')),4)
             disease=read_rows(root/'new'/'original_disease_phenotype_claims.tsv')
             self.assertEqual({r['disease_id'] for r in disease}, {'ORPHA:2','OMIM:101'})
@@ -103,7 +103,7 @@ class TestTwoLevelHPOView(unittest.TestCase):
             self.assertEqual(observations[1]['frequency_numerator'],'12')
             self.assertEqual(observations[2]['categorical_frequency_term'],'HP:0040284')
             self.assertEqual(observations[0]['sex'],'F')
-            self.assertEqual(observations[0]['claim_polarity'],'affirmed')
+            self.assertEqual(observations[0]['claim_polarity'],'not_negated')
             self.assertEqual(observations[3]['claim_polarity'],'negated')
             checked_sources(root/'new', (
                 'original_disease_phenotype_claims.tsv','original_hpoa_observations.tsv',
@@ -129,9 +129,9 @@ class TestTwoLevelHPOView(unittest.TestCase):
     def test_cohort_zero_not_curator_negation(self):
         pol,basis,obs=interpret({'frequency':'0/19', 'qualifier':''})
         self.assertEqual((pol,basis,obs['evidence_outcome']),
-                         ('affirmed','no_source_negation','observed_zero'))
+                         ('not_negated','no_source_negation','observed_zero'))
         pol,basis,obs=interpret({'frequency':'HP:0040281', 'qualifier':''})
-        self.assertEqual((pol,obs['evidence_outcome']), ('affirmed','categorical_positive'))
+        self.assertEqual((pol,obs['evidence_outcome']), ('not_negated','categorical_positive'))
         pol,basis,obs=interpret({'frequency':'', 'qualifier':'NOT'})
         self.assertEqual((pol,basis), ('negated','NOT_qualifier'))
         pol,basis,obs=interpret({'frequency':'HP:0040285', 'qualifier':''})
@@ -139,7 +139,7 @@ class TestTwoLevelHPOView(unittest.TestCase):
         pol,basis,obs=interpret({'frequency':'2/1', 'qualifier':''})
         self.assertEqual(obs['evidence_outcome'],'unclassified_frequency')
         pol,basis,obs=interpret({'frequency':'30%', 'qualifier':''})
-        self.assertEqual((pol,obs['evidence_outcome']), ('affirmed','observed_positive'))
+        self.assertEqual((pol,obs['evidence_outcome']), ('not_negated','observed_positive'))
 
 
 if __name__=='__main__':
