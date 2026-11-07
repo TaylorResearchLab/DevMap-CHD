@@ -69,3 +69,14 @@ Source full text: https://pmc.ncbi.nlm.nih.gov/articles/PMC5905589/
 Claude **has not inspected Newbury-Ecob 1993** because the scanned PDF and page images were inaccessible in the reviewer environment. Agent 1's previous text extraction remains a source lead pending independent visual inspection of p.873 Patient 1 IV:1. The 1993 infant has no sequence-confirmed FLNA attribution in that paper. The original HPOA OMIM:314400–HP:0011580 and OMIM:314400–HP:0006692 PCS assertions remain disease-subject claims without explicit original HPOA PMID fields.
 
 Status: 2018 mitral evidence **supported with narrowing**; 1993 neonatal mitral/tricuspid evidence **awaits Agent 2 primary image review**; human biological disposition pending. No direct FLNA variant–phenotype PAR accepted.
+
+
+## SCUTER Agent 2 final primary-source check of the 1993 arm, 2026-11-07
+
+[Claude's complete independent source inspection](https://app.notion.com/41129187800881349dcac526efbb82d8) used a user-attached two-page scan of Newbury-Ecob et al. 1993 (PMID 8230166). The necropsy paragraph was checked against the page image. This was a second source check following exposure to Agent 1's original locators.
+
+Patient 1 (IV-1) was a male infant delivered at 37 weeks with prenatal and postnatal evidence of cardiac malformation, including a small left ventricle, outflow obstruction and multivalvular dysplasia. He died at 24 hours. On p. 873 the necropsy paragraph describes abnormal tricuspid and mitral cusps, immediately followed by the finding that the chordae were short and irregular. The next sentence describes aortic and pulmonary valve abnormalities. The anatomical antecedent supports chordae of both atrioventricular valves, while the source states this once collectively rather than giving separate valve-specific measurements.
+
+**Agent 2 disposition:** Supported at the **OMIM:314400 disease–phenotype source level** for HP:0011580 (short mitral chordae) and HP:0006692 (short tricuspid chordae), representing one neonatal male examined at necropsy. The 1993 report preceded identification of FLNA as the relevant gene and contains no sequence-confirmed FLNA variant for this infant.
+
+SV-002 now has both primary source arms reviewed. The mitral claim has the 1993 neonatal anatomical observation plus 2018 FLNA variant-positive female cohort measurements. The tricuspid claim has the 1993 anatomical observation. These preserve distinct individuals, methods and original source scope. The human scientific disposition remains open. No direct gene disruption–phenotype PAR is accepted by this source verification alone.
