@@ -1,7 +1,7 @@
 # DevMap source validation packet SV-001
 ## LZTR1 and atrial septal defect (HP:0001631)
 
-**Status:** Agent 1 primary-source inspection completed 2026-11-07. Pending independent Agent 2 review and user scientific decision. No accepted PAR emitted.
+**Status:** Agent 2 primary-text review completed; user scientific disposition on 2026-11-07 is NARROW TO REPORTED DECIPHER OBSERVATION. Original table provenance and the HP:0001631 normalization qualification retained. No direct gene–phenotype PAR emitted.
 
 **Proposed observation:** In Pagnamenta et al. 2019, one individual carrying a reported de novo LZTR1 c.290G>T (p.Arg97Leu) variant was annotated with atrial septal defect in the source Table 1.
 
@@ -45,3 +45,16 @@ The original Table 1 lists DECIPHER/DDD individual 303983, female, with de novo 
 **Agent 2 proposed narrowed observation for user decision:** DECIPHER individual 303983, female, reported de novo LZTR1 p.(Arg97Leu), has the DECIPHER-submitted ASD phenotype term published in Pagnamenta Table 1 (PMID 30859559), mapped provisionally to HP:0001631; ASD is absent from the article narrative and its ascertainment details are unspecified. Preserve HCM and VSD as additional co-recorded phenotypes rather than evidence that the ASD mapping was independently confirmed.
 
 Status remains **pending user accept/narrow/defer/reject**. PubMind PVID-to-publication attribution and PAR Core identity are separate. No direct phenotype PAR accepted or minted.
+
+
+## User scientific disposition, 2026-11-07 (authoritative; supersedes historical pending labels above)
+
+**Decision 2: NARROW TO REPORTED OBSERVATION.** [Approved disposition in the DevMap Communications Log](https://app.notion.com/p/41129187800881eeab02f31b9a936cc5).
+
+**Accepted source observation:** DECIPHER/DDD individual **303983**, female, with a reported de novo LZTR1 `NM_006767.3:c.290G>T`, p.(Arg97Leu), has the original DECIPHER-submitted phenotype term **"Atria septal defect"** in Pagnamenta et al. 2019, *Clinical Genetics*, Table 1, PMID **30859559**, PMCID **PMC6563422**. The original paper does not give HP:0001631 for that table cell. Translating "Atria septal defect" to HP:0001631 is a documented **curator normalization**, retaining the exact original text.
+
+The Results narrative for this individual reports VSD and hypertrophic cardiomyopathy without an ASD description. ASD ascertainment modality and age are unspecified in the publication. ClinGen's secondary use of the same patient and observation does not constitute a second independent patient. The Umeki PMID 30368668 study remains separate from the 303983 record.
+
+**Disposition fields for source validation:** `devmap_disposition=narrowed_by_user`; `accepted_scope=single_DECIPHER_reported_phenotype_observation`; `source_primary_pmid=30859559`; `normalization_status=curator_mapped_to_HP:0001631`; `direct_gene_phenotype_PAR_accepted=false`. These are review annotations, not modifications to the original HPOA, DECIPHER or PubMind source records.
+
+The user did not accept a generalized causal LZTR1 disruption → ASD claim. Original primary evidence, clinical subject, reported variant, phenotype text and separate mapping remain traceable. The original registry and all historical candidate IDs are unchanged.
