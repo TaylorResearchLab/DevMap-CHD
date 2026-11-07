@@ -272,7 +272,8 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
         })
 
     diseases = []
-    for disease, dc in sorted(disease_counts.items()):
+    for disease in sorted(participating_diseases):
+        dc = disease_counts[disease]
         p = dc["aspect_P"]
         source_state = ("at_least_one_P_onset_field" if dc["p_with_onset"]
                         else "P_rows_without_onset_field" if p
