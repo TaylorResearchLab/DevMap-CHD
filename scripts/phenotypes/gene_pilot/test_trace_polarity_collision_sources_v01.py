@@ -5,7 +5,8 @@ from pathlib import Path
 
 from audit_candidate_export_gate_v01 import audit
 from test_audit_candidate_export_gate_v01 import fixture
-from trace_polarity_collision_sources_v01 import trace
+from trace_polarity_collision_sources_v01 import trace, source_frequency_interpretation
+from export_gene_phenotype_par import polarity
 
 
 def table(path):
@@ -40,6 +41,36 @@ class TestCollisionSourceTrace(unittest.TestCase):
             self.assertEqual(absent[0]["polarity_basis"], "zero_numerator")
             self.assertEqual({r["evidence_role"] for r in review_rows},
                              {"disease_phenotype_annotation"})
+
+    def test_hpo_categorical_frequency_is_distinct_from_legacy_unspecified(self):
+        self.assertEqual(
+            polarity({"qualifier": "", "frequency": "HP:0040283"}), "unspecified"
+        )
+        self.assertEqual(
+            source_frequency_interpretation({
+                "qualifier": "", "frequency": "HP:0040283"
+            }), "positive_HPO_frequency_category_occasional"
+        )
+        self.assertEqual(
+            source_frequency_interpretation({
+                "qualifier": "", "frequency": "0/19"
+            }), "zero_of_study_cohort"
+        )
+        self.assertEqual(
+            source_frequency_interpretation({
+                "qualifier": "NOT", "frequency": ""
+            }), "explicit_NOT_disease_phenotype_negation"
+        )
+        self.assertEqual(
+            source_frequency_interpretation({
+                "qualifier": "", "frequency": ""
+            }), "disease_phenotype_annotation_frequency_unreported"
+        )
+        self.assertEqual(
+            source_frequency_interpretation({
+                "qualifier": "", "frequency": "17.5%"
+            }), "positive_percentage_in_source"
+        )
 
     def test_tampered_collision_review_file_rejected(self):
         with tempfile.TemporaryDirectory() as d:
