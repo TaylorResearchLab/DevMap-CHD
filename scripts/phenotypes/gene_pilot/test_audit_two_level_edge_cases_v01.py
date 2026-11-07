@@ -30,7 +30,7 @@ def prepared_fixture(root):
             merged=0, held=0, failed=0
         )
     manifest["source_row_counts"] = {"g2p": 4, "hpoa": 4}
-    path.write_text(json.dumps(manifest) + "\\n", encoding="utf-8")
+    path.write_text(json.dumps(manifest) + "\n", encoding="utf-8")
     refresh_digest(integrity, "audit_manifest.json")
     return old, integrity
 
