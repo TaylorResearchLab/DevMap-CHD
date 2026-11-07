@@ -8,6 +8,7 @@ import argparse
 import csv
 import hashlib
 import json
+import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
@@ -22,13 +23,16 @@ SOURCE_FIELDS = (
     "source_evidence_code", "original_reference", "primary_publication_id",
     "frequency", "qualifier", "onset", "sex", "modifier", "aspect",
     "source_lineage_key", "source_polarity_verified",
-    "polarity_basis", "evidence_role",
+    "polarity_basis", "source_frequency_interpretation", "evidence_role",
 )
 GROUP_FIELDS = (
     "group_index", "gene_id", "gene_symbol", "disease_id", "phenotype_id",
     "disruption_type", "polarity_states", "candidate_count",
     "original_hpoa_evidence_rows", "distinct_original_hpoa_lines",
     "distinct_references", "pmid_bearing_evidence_rows", "source_absence_basis",
+    "NOT_qualifier_rows", "zero_study_frequency_rows",
+    "positive_HPO_frequency_category_rows",
+    "frequency_unreported_rows", "legacy_unspecified_with_positive_frequency_rows",
     "review_state",
 )
 REQUIRED_COLLISION_FIELDS = (
@@ -86,6 +90,43 @@ def polarity_basis(row):
     if not freq:
         return "no_frequency_in_original_source_row"
     return "frequency_unresolved_by_legacy_profile"
+
+
+# Reference: HPO phenotype.hpoa and frequency documentation.
+# This interpretation supplements, but never rehashes, the legacy candidate state.
+POSITIVE_HPO_FREQUENCY_TERMS = {
+    "HP:0040280": "obligate",
+    "HP:0040281": "very_frequent",
+    "HP:0040282": "frequent",
+    "HP:0040283": "occasional",
+    "HP:0040284": "very_rare",
+}
+
+def source_frequency_interpretation(row):
+    freq = row.get("frequency", "").strip()
+    qualifier = row.get("qualifier", "").strip().upper()
+    if qualifier == "NOT":
+        return "explicit_NOT_disease_phenotype_negation"
+    if qualifier:
+        return "unresolved_non_NOT_qualifier"
+    if not freq:
+        return "disease_phenotype_annotation_frequency_unreported"
+    if freq in POSITIVE_HPO_FREQUENCY_TERMS:
+        return "positive_HPO_frequency_category_" + POSITIVE_HPO_FREQUENCY_TERMS[freq]
+    if freq == "HP:0040285":
+        return "HPO_frequency_excluded_zero_percent"
+    match = re.fullmatch(r"([0-9]+)/([1-9][0-9]*)", freq)
+    if match:
+        affected, total = int(match.group(1)), int(match.group(2))
+        if affected > total:
+            return "invalid_study_frequency_numerator"
+        return ("zero_of_study_cohort" if affected == 0
+                else "positive_fraction_in_study_cohort")
+    if re.fullmatch(r"(?:100|[0-9]{1,2}(?:\\.[0-9]+)?)%", freq):
+        return ("zero_percentage_in_source" if float(freq[:-1]) == 0
+                else "positive_percentage_in_source")
+    return "unresolved_frequency_value"
+
 
 def trace(candidate_dir, audit_dir, out):
     old = verify_export(candidate_dir)
@@ -184,6 +225,7 @@ def trace(candidate_dir, audit_dir, out):
                     "candidate_polarity": candidate_polarity,
                     **e, "source_polarity_verified": observed,
                     "polarity_basis": polarity_basis(e),
+                    "source_frequency_interpretation": source_frequency_interpretation(e),
                 }
                 group_evidence.append(record)
                 evidence_rows.append(record)
@@ -202,6 +244,20 @@ def trace(candidate_dir, audit_dir, out):
             "pmid_bearing_evidence_rows": sum(bool(r.get("primary_publication_id"))
                                               for r in group_evidence),
             "source_absence_basis": ";".join(bases),
+            "NOT_qualifier_rows": sum(r["source_frequency_interpretation"] ==
+                "explicit_NOT_disease_phenotype_negation" for r in group_evidence),
+            "zero_study_frequency_rows": sum(r["source_frequency_interpretation"] ==
+                "zero_of_study_cohort" for r in group_evidence),
+            "positive_HPO_frequency_category_rows": sum(
+                r["source_frequency_interpretation"].startswith(
+                    "positive_HPO_frequency_category_") for r in group_evidence),
+            "frequency_unreported_rows": sum(r["source_frequency_interpretation"] ==
+                "disease_phenotype_annotation_frequency_unreported"
+                for r in group_evidence),
+            "legacy_unspecified_with_positive_frequency_rows": sum(
+                r["candidate_polarity"] == "unspecified"
+                and r["source_frequency_interpretation"].startswith(
+                    "positive_HPO_frequency_category_") for r in group_evidence),
             "review_state": "source_context_pending_independent_interpretation",
         })
     if missing_evidence_ids:
