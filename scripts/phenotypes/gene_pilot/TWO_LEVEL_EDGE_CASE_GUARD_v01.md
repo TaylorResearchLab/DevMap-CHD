@@ -1,6 +1,6 @@
 # DevMap-CHD two-level exporter edge-case guard v01
 
-Status: **Agent 1 implementation awaiting CHOP HPC execution and independent Agent 2 review**. This additive read-only audit addresses the three residual observations in [Claude's 2026-11-07 exporter review](https://app.notion.com/4112918780088146b31ff402d7542e7f). It does not alter the validated `hpoa_disease_subject_two_level_v01` identity profile, historical IDs, source files or frozen registry.
+Status: **CHOP HPC execution passed 2026-11-07; Agent 2 independent edge-guard code review remains open**. This additive read-only audit addresses the three residual observations in [Claude's 2026-11-07 exporter review](https://app.notion.com/4112918780088146b31ff402d7542e7f). It does not alter the validated `hpoa_disease_subject_two_level_v01` identity profile, historical IDs, source files or frozen registry.
 
 ## Scope and scientific distinctions
 
@@ -48,3 +48,20 @@ SV-001 LZTR1–ASD is **supported with narrowing** to the DECIPHER-submitted phe
 SV-002 OMIM:314400 is **supported at original disease–phenotype scope** for short mitral and tricuspid chordae from the 1993 neonatal necropsy, with a separate 2018 female FLNA carrier cohort supporting shortened mitral chordae. The 1993 individual has no sequence-confirmed FLNA variant in the original paper. Biological acceptance remains with the User.
 
 Claude's audit of twelve historical entries, HGNC crosswalk, GenCC submitter and classification evaluation, onset-source missingness and custody of older PubMed screen artifacts remain separate.
+
+
+## CHOP HPC execution result, 2026-11-07
+
+The user ran the new read-only guard against the existing verified outputs after pulling branch `feature/gene-phenotypes` to commit `324132d1c3cbbbbe2048715fb5572ebcf334b002`. All five synthetic tests passed in 0.044 seconds. Real input audit returned `status=no_edge_cases_observed` and `issue_count=0`.
+
+- `original_evidence_links_verified=63012`.
+- `not_with_frequency_rows=0`.
+- `zero_percent_rows=0`.
+- `excluded_frequency_rows=0`.
+- `source_fidelity_passed=true`.
+- `input_conservation_ledger_verified=true`.
+- `edge_cases_require_review=false`.
+- `claim_identity_unchanged=true`; `direct_assertions_promoted=0`.
+- Original view manifest SHA-256 `9b2dcad818fe0a7e609d2e58d9956ac8a2d7f3cf9887745bd47587beeca00e15`; original candidate manifest SHA-256 `9f3f8bba6bbe4f4deb669ca2ac33b89148ddbe45276aa5f27f3f425839e376e6`.
+
+These results confirm that the three edge cases did not occur in the pinned source data. The previously approved identity profile and completed two-level export remain unchanged. The user-approved source identity and biological dispositions are recorded separately in the DevMap Communications Log.
