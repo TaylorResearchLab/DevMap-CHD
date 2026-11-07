@@ -117,6 +117,9 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
             legacy_identity_errors.append(r["candidate_id"])
             continue
         state = r["assertion_state"][len(state_prefix):]
+        if state not in ("asserted_present", "asserted_absent", "unspecified"):
+            legacy_identity_errors.append(r["candidate_id"])
+            continue
         expected = stable_id("dmpcand:", r["gene_id"], r["disruption_type"],
                              r["phenotype_id"], r["disease_id"], state)
         if (r["candidate_id"] != expected or r["gene_id"] not in ids
@@ -164,6 +167,7 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
             exact_g2p[(r["disease_id"], r["hpo_id"])].add(gene)
             g2p_counts[gene] += 1
 
+    participating_diseases = {key[0] for key in exact_g2p}
     expected_evidence = defaultdict(set)
     expected_discovery = defaultdict(set)
     expected_candidates = set()
@@ -182,11 +186,11 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
             }
             expected_candidates.update(expected)
             for gene in found_genes:
-                expected_discovery[(gene, disease, hpo)].update(expected & {
+                expected_discovery[(gene, disease, hpo)].add(
                     stable_id("dmpcand:", gene, "unspecified_disruption", hpo, disease, state)
-                })
+                )
             expected_evidence[locus] = {(cid, disease, hpo) for cid in expected}
-        if disease in {key[0] for key in exact_g2p}:
+        if disease in participating_diseases:
             dc = disease_counts[disease]
             dc[f"aspect_{aspect}"] += 1
             if aspect == "P" and r.get("onset", "").strip():
@@ -195,7 +199,7 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
         if expected:
             fate = "emitted" if expected_evidence[locus] == observed else "failed"
             reason = "hpoa_disease_phenotype_projection" if fate == "emitted" else "source_projection_mismatch"
-        elif disease not in {key[0] for key in exact_g2p}:
+        elif disease not in participating_diseases:
             fate, reason = "held", "disease_outside_exact_g2p_scope"
         elif aspect in ("C", "I", "M", "H"):
             fate = "emitted" if locus in context_lines else "failed"
