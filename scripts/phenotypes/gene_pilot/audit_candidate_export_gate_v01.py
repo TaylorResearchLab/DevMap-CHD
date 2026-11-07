@@ -107,6 +107,7 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
                             "disruption_type", "phenotype_id", "disease_id",
                             "assertion_state")))
     candidate_ids = {r["candidate_id"] for r in candidates}
+    by_candidate_id = {r["candidate_id"]: r for r in candidates}
     if len(candidate_ids) != len(candidates) or len(candidates) != old["candidate_count"]:
         raise ValueError("Duplicate or missing provisional candidates")
     legacy_identity_errors = []
@@ -137,6 +138,10 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
             raise ValueError("Discovery link references unknown candidate")
         if r["evidence_role"] != "disease_mediated_discovery_only":
             raise ValueError("Discovery link incorrectly labelled as direct evidence")
+        candidate = by_candidate_id[r["candidate_id"]]
+        if (r["original_subject"] != candidate["gene_id"]
+                or r["original_object"] != candidate["phenotype_id"]):
+            raise ValueError("Original G2P source subject or object modified")
         link_key = (r["source_row_id"], r["candidate_id"])
         if link_key in seen_discovery_links:
             raise ValueError("Duplicate original G2P discovery projection")
@@ -145,10 +150,14 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
     if len(seen_discovery_links) != old["g2p_discovery_records"]:
         raise ValueError("G2P discovery link conservation failure")
     evidence_links = defaultdict(set)
+    evidence_payloads = defaultdict(list)
+    evidence_counts_by_candidate = Counter()
     seen_evidence_links = set()
     for r in rows(candidate_dir / "par_evidence.tsv",
                   ("source_row_id", "candidate_id", "original_subject",
-                   "original_object", "evidence_role")):
+                   "original_object", "original_predicate", "source_evidence_code",
+                   "original_reference", "frequency", "qualifier", "aspect",
+                   "onset", "sex", "modifier", "evidence_role")):
         if r["candidate_id"] not in candidate_ids:
             raise ValueError("Evidence references unknown candidate")
         if r["evidence_role"] != "disease_phenotype_annotation":
@@ -157,11 +166,16 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
         if link_key in seen_evidence_links:
             raise ValueError("Duplicate original HPOA evidence projection")
         seen_evidence_links.add(link_key)
+        evidence_counts_by_candidate[r["candidate_id"]] += 1
+        evidence_payloads[r["source_row_id"]].append(r)
         evidence_links[r["source_row_id"]].add(
             (r["candidate_id"], r["original_subject"], r["original_object"])
         )
     if len(seen_evidence_links) != old["hpoa_evidence_records"]:
         raise ValueError("HPOA source evidence conservation failure")
+    for candidate in candidates:
+        if int(candidate.get("evidence_count", "0")) != evidence_counts_by_candidate[candidate["candidate_id"]]:
+            raise ValueError("Candidate evidence count conservation failure")
     context_lines = set()
     for r in rows(candidate_dir / "disease_context.tsv", ("source_row_id", "disease_id", "aspect")):
         if r["source_row_id"] in context_lines:
@@ -213,6 +227,16 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
             if aspect == "P" and r.get("onset", "").strip():
                 dc["p_with_onset"] += 1
         observed = evidence_links.get(locus, set())
+        source_field_mismatch = any(
+            e["original_predicate"] != "has_phenotype"
+            or e["original_subject"] != disease
+            or e["original_object"] != hpo
+            or e["source_evidence_code"] != r.get("evidence", "")
+            or e["original_reference"] != r.get("reference", "")
+            or any(e[field] != r.get(field, "") for field in
+                   ("frequency", "qualifier", "aspect", "onset", "sex", "modifier"))
+            for e in evidence_payloads.get(locus, [])
+        )
         if expected:
             fate = "emitted" if expected_evidence[locus] == observed else "failed"
             reason = "hpoa_disease_phenotype_projection" if fate == "emitted" else "source_projection_mismatch"
@@ -225,6 +249,8 @@ def audit(registry, g2p, hpoa, candidate_dir, out, skip_source_sha=False):
             fate, reason = "held", "no_gene_hpo_projection_or_nonphenotype_aspect"
         if observed and not expected:
             fate, reason = "failed", "unjustified_hpoa_evidence_projection"
+        if source_field_mismatch:
+            fate, reason = "failed", "original_source_field_mismatch"
         hpoa_ledger.append({
             "source_row_id": locus, "original_subject": disease,
             "original_object": hpo, "disease_id": disease, "aspect": aspect,
