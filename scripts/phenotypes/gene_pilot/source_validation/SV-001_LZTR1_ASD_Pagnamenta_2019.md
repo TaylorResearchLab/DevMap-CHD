@@ -34,3 +34,14 @@
 
 ### User decision
 Pending (accept / narrow / defer / reject) after Agent 2 primary-source validation. The existing PAR Core claim identity and exporter policy issues remain separate and gate formal accepted PAR emission.
+
+
+## Agent 2 source review addendum, 2026-11-07 (pending user disposition)
+
+[Claude's source review](https://app.notion.com/41129187800881fca046e55f2ff85766) examined the complete Pagnamenta 2019 primary text after reading Agent 1's source locators. This is a **second source check following prior exposure**, not a blinded review. Agent 2 assigned **supported with narrowing**.
+
+The original Table 1 lists DECIPHER/DDD individual 303983, female, with de novo LZTR1 NM_006767.3:c.290G>T p.(Arg97Leu) (proband/mother/father 1/0/0). Its phenotype cell spells the original term **"Atria septal defect"** alongside HCM and VSD. The article provides no HPO identifier for this cell. Mapping that text to HP:0001631 is a curator-level normalization proposal. The narrative identifies VSD and HCM but does not report ASD, and no original ascertainment modality or age for ASD is stated. The table reproduces a DECIPHER-submitted phenotype observation. It is **one source observation**, not a separately described echocardiographic finding. VSD has concordant table and narrative documentation, whereas ASD is table-only.
+
+**Agent 2 proposed narrowed observation for user decision:** DECIPHER individual 303983, female, reported de novo LZTR1 p.(Arg97Leu), has the DECIPHER-submitted ASD phenotype term published in Pagnamenta Table 1 (PMID 30859559), mapped provisionally to HP:0001631; ASD is absent from the article narrative and its ascertainment details are unspecified. Preserve HCM and VSD as additional co-recorded phenotypes rather than evidence that the ASD mapping was independently confirmed.
+
+Status remains **pending user accept/narrow/defer/reject**. PubMind PVID-to-publication attribution and PAR Core identity are separate. No direct phenotype PAR accepted or minted.
