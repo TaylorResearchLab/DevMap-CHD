@@ -146,3 +146,19 @@ HAND1 `p.K132X` DORV/VSD (PMID 28112363), HAND1 `p.R118C` TOF (PMID 27942761) an
 | RBFOX2 2025 cohort | Preserve 19 new / 12 families / 33 combined figure and study-level findings; individual direct claims pending complete full text |
 
 No new direct gene disruption–phenotype PAR has been accepted, and no prior user decisions or original immutable source data have changed. Reviewer entry and its exposure status are documented in [DevMap Communications Log](https://app.notion.com/p/412291878008814a9323f386cc51a647).
+
+## User disposition on Werner 2016 MESP1 observations, 2026-11-08
+
+**Scientific authority APPROVED all three original patient/variant-associated congenital cardiac structural observations at their specific original clinical scope** after the complete-paper independent Agent 2 review. Source publication: Werner et al. 2016, PMID 26694203, Table 2 and associated functional assay table, a single cohort of 647 individuals ascertained for conotruncal and related CHD.
+
+- **p.E104K -> tetralogy of Fallot** (HP:0001636), maternally inherited, luciferase activity 0.08 ± 0.04 versus wild type.
+- **p.L120P -> tetralogy of Fallot** (HP:0001636), de novo, luciferase activity 0.06 ± 0.03.
+- **p.L147Pfs*9 -> conoventricular ventricular septal defect**, original phenotype subtype preserved and mapped to broader HP:0001629, parental inheritance unreported, luciferase activity 0.03 ± 0.02.
+
+The original patient is the subject of each clinical observation; variant identity, inheritance and the in vitro functional assay are accompanying source evidence, not independently accepted claims of genetic causal sufficiency. The four additional Werner source variant rows remain retained in their original evidence stratum and were not included in this three-item decision. Canonical direct causal PAR creation is a separate later step.
+
+- [User's signed scientific decision record in DevMap Communications Log](https://app.notion.com/p/4122918780088184992eee2eb51848c5)
+- [SV-003 evidence and decision packet](https://github.com/TaylorResearchLab/DevMap-CHD/blob/feature/gene-phenotypes/scripts/phenotypes/gene_pilot/source_validation/SV-003_MESP1_Werner2016_three_patient_lesions_APPROVED.md)
+- [Independent Claude review](https://app.notion.com/p/412291878008814a9323f386cc51a647)
+
+**Remaining CHD4 source tasks:** HAND1 original complete paper verification and cohort overlap; ROCK2 variant-specific patient clinical supplements and primary PCGC source lineage; RBFOX2 full primary paper and prior-case deduplication.
