@@ -26,7 +26,7 @@ The frozen source IDs above are **SGC ID without `.version`** because the user's
 
 ## Source review: human clinical observations
 
-### HAND1, primary original full text
+### HAND1, Agent 1 original text reading; Agent 2 abstract-level verification
 
 [Li et al. 2017, PMID 28112363, DOI 10.3892/ijmm.2017.2865, full-text Results: Discovery of a de novo HAND1 mutation](https://www.spandidos-publications.com/10.3892/ijmm.2017.2865?text=fulltext)
 
@@ -40,7 +40,7 @@ The frozen source IDs above are **SGC ID without `.version`** because the user's
 
 - **Abstract-level case report:** one person with tetralogy of Fallot (TOF) and heterozygous `HAND1 p.R118C` in a screened cohort of 165 unrelated CHD patients. Reporter analyses showed reduced transcriptional activity. Full original case locator, variant nomenclature transcript and segregation should be checked before any direct record.
 
-### MESP1, primary original full text
+### MESP1, Agent 1 original text reading; Agent 2 abstract-level verification
 
 [Zhang et al. 2017, PMID 28677747, DOI 10.3892/mmr.2017.6875, full-text Results: Identification of a novel MESP1 mutation in CHD](https://www.spandidos-publications.com/10.3892/mmr.2017.6875?text=fulltext)
 
@@ -52,15 +52,15 @@ The frozen source IDs above are **SGC ID without `.version`** because the user's
 
 [Lahm et al. 2013, PMID 24056064, DOI 10.1016/j.ejmg.2013.09.001](https://pubmed.ncbi.nlm.nih.gov/24056064/) reports MESP1 sequencing in 215 CHD patients and functional activity tests. It establishes a gene/variant association lead; exact variant-to-lesion pairs need full paper review.
 
-[Werner et al. 2015, PMID 26694203](https://pubmed.ncbi.nlm.nih.gov/26694203/) screened 647 patients with conotruncal and related lesions and found MESP1 variants with functional effects. The abstract does not identify the anatomical diagnosis of each variant carrier; retain as **cohort/genetic and functional evidence** pending detailed case extraction.
+[Werner et al. 2016, PMID 26694203](https://pubmed.ncbi.nlm.nih.gov/26694203/) screened 647 patients ascertained for conotruncal and related lesions. **Claude independently checked the complete original paper, including Table 2 and the functional assay table.** Seven variant carriers have patient diagnoses and inheritance information, including three variants with substantial functional impairment and a matched structural lesion (p.E104K TOF, p.L120P TOF, p.L147Pfs*9 conoventricular VSD). See amendment below. Source-supported variant–lesion observations and evidence for molecular causation remain distinct.
 
 ### RBFOX2, mixed human clinical, mechanistic and newer primary cohort
 
-[2025 international clinical study, Sauvestre et al., PMID 41221603, DOI 10.1161/CIRCGEN.125.005231, original full text](https://pmc.ncbi.nlm.nih.gov/articles/PMC12922010/). **This PMID was not printed among the frozen GenCC submission bibliographies and is an additive source lead, not an update to that snapshot.**
+[2025 international clinical study, Sauvestre et al., PMID 41221603, DOI 10.1161/CIRCGEN.125.005231, original article landing page](https://pmc.ncbi.nlm.nih.gov/articles/PMC12922010/). **This PMID was not printed among the frozen GenCC submission bibliographies and is an additive source lead, not an update to that snapshot.**
 
-- **Cohort:** 19 individuals from 12 unrelated families carrying RBFOX2 variants. Reported abnormalities among these 19 include HLHS 10, ascending aortic coarctation/hypoplasia 10, mitral valve defects 7, aortic valve defects 6, VSD 8, ASD 6, DORV in patients P8–P10 and P19, and TOF in P18.
+- **Reported new cohort:** 19 individuals from 12 unrelated families carrying RBFOX2 variants. **Figure 1A displays 33 individuals**, including 14 previously reported ClinVar, DECIPHER and literature cases. Claude verified this denominator in the original figure legend but the complete manuscript PDF remains pending. Reported abnormalities among these 19 include HLHS 10, ascending aortic coarctation/hypoplasia 10, mitral valve defects 7, aortic valve defects 6, VSD 8, ASD 6, DORV in patients P8–P10 and P19, and TOF in P18.
 - **Interpretation:** counts overlap within patients. Original Figure 1 supplies case-specific genetic variants and lesion descriptions. CNVs can encompass RBFOX2 plus adjacent genes, requiring variant interval attribution. Several comparison cases have no complete cardiac phenotyping, which should remain unknown rather than coded as negative.
-- **Original subject and lineage:** 19 patients are the reported cohort; 12 unrelated families are a different denominator. Source draws additionally on previously published cases and DECIPHER/ClinVar; deduplication requires patient/case tracking.
+- **Original subject and lineage:** 19 newly reported patients, 12 unrelated families and the 33 people depicted in the combined figure are three distinct denominators. Source draws additionally on previously published cases and DECIPHER/ClinVar; deduplication requires patient/case tracking.
 
 [Verma et al. 2022, PMID 35137168, DOI 10.1093/nar/gkac055](https://pmc.ncbi.nlm.nih.gov/articles/PMC8881802/) describes conditional Rbfox2 knockout mouse cardiac phenotypes, transcriptional changes and features resembling HLHS. This is **experimental model evidence**, not a second human clinical observation.
 
@@ -79,7 +79,7 @@ The frozen source IDs above are **SGC ID without `.version`** because the user's
 | `NM_004850.5:c.764A>G p.Asp255Gly` | 31941532 | Abnormal heart morphology `HP:0001627` only, plus extracardiac anomaly description |
 | `NM_004850.5:c.116C>T p.Ser39Phe` | 31941532 | Conotruncal defect `HP:0001710` plus extracardiac anomaly description |
 
-**Evidence scope:** this table reports what ClinGen curators attributed to individual source cases, with original source PMIDs. The primary papers still need exact clinical table and variant matching before a direct primary-case PAR. In particular, `HP:0001627` is a nonspecific morphology term and does not identify a CHD lesion. `HP:0001696` is laterality, not automatically a specific intracardiac lesion.
+**Evidence scope:** this table reports what ClinGen curators attributed to individual source cases, with original source PMIDs. Claude checked all three original main texts and verified the variant identifiers, but **none contains the specified lesion-level cardiac observations in its main text**. They require original supplementary patient tables. The p.Gln1242Ter (Q1242*) case was **inherited from a parent without reported significant cardiac disease**. The 2020 source reanalyzed existing PCGC patients; p.S39F was previously reported. The original PCGC study is the clinical cohort source, rather than the 2020 reanalysis. Thus all four specific ROCK2 lesion assignments remain pending supplementary patient-level review. In particular, `HP:0001627` is a nonspecific morphology term and does not identify a CHD lesion. `HP:0001696` is laterality, not automatically a specific intracardiac lesion.
 
 [PanelApp Australia ROCK2](https://panelapp-aus.org/panels/76/gene/ROCK2/) reports the same broad disease, cites the same three PMIDs, and explicitly notes that ClinGen classified the relationship as Limited. It remains a **separate curation submission** rather than an independent patient cohort.
 
@@ -99,3 +99,50 @@ The frozen source IDs above are **SGC ID without `.version`** because the user's
 - Review the distinction between disease class, lesion observation, source PMID and functional variant mechanism; recommend **accept / narrow / defer / reject** for each proposed direct phenotype source claim.
 
 **No direct phenotype PAR promoted; no original HPOA or GenCC source claims modified.**
+
+
+## Independent Agent 2 challenge and packet corrections, 2026-11-08
+
+[Claude's full independent review](https://app.notion.com/p/412291878008814a9323f386cc51a647) was filed after reading this packet. Reviewer exposure is **second check following exposure**: the Agent 2 reviewer read this construction packet first, then independently consulted full original text for Werner 2016, Bowling 2017, Li 2019 and Sevim Bayrak 2020. Agent 2 accessed abstract-level sources for HAND1 Li 2017, HAND1 Wang 2017, MESP1 Zhang 2017 and RBFOX2 Sauvestre 2025 (plus the latter's Figure 1 legend). Full publisher PDFs and inaccessible supplements are needed for independent confirmation of individual source locators in those items. GenCC snapshot source was unavailable to the reviewer, so PMID overlap numbers remain Agent 1's reproducible counts from the user's pinned snapshot printout rather than independent Agent 2 reproduction.
+
+### MESP1 primary paper Werner 2016, PMID 26694203
+
+**Reviewer correction:** the previous packet stopped at the abstract and incorrectly treated the seven variants as lacking case-specific lesions. Table 2 of the full source explicitly identifies each individual carrier's diagnosis, inheritance and controls. Gene transcript **NM_018670.3**, 647 unrelated CHD patients enriched for conotruncal defects (TOF 318, VSD 292, truncus arteriosus 21, interrupted aortic arch 16).
+
+| Original protein variant | Individual phenotype | Inheritance | Luciferase activity (relative to WT) | Two-hybrid activity (relative to WT) | Control observation | Proposed evidence scope |
+| --- | --- | --- | ---: | ---: | --- | --- |
+| p.E104K | TOF (HP:0001636) | Maternal | 0.08 ± 0.04 | 0.56 ± 0.08 | Not seen | Single-patient observation, reduced function; penetrance unresolved |
+| p.L120P | TOF (HP:0001636) | De novo | 0.06 ± 0.03 | 0.32 ± 0.06 | Not seen | Single-patient observation, reduced function |
+| p.L147Pfs*9 | Conoventricular VSD (within HP:0001629) | Unavailable | 0.03 ± 0.02 | 0.05 ± 0.01 | Not seen | Single-patient observation, reduced function |
+| p.P27_D29dup | Conoventricular VSD | Paternal | 0.77 ± 0.21 | 1.02 ± 0.13 | Not seen | Clinical observation retained; function close to WT |
+| p.G70D | Conoventricular VSD | Unavailable | 0.92 ± 0.24 | 1.19 ± 0.21 | Not seen | Clinical observation retained; function close to WT |
+| p.D168G | Conoventricular VSD | Unavailable | 0.97 ± 0.19 | 0.53 ± 0.11 | **Present in 6/97 African-American controls** | Clinical observation retained; weak functional prioritization |
+| p.K268N | mVSD, coarctation, aortic aneurysm | Maternal | 1.17 ± 0.18 | 0.90 ± 0.26 | Not seen | Clinical observation retained; function close to WT |
+
+All seven source observations should remain discoverable. **The first three** have direct patient–variant–lesion pairs and marked functional impairment, making them appropriate for **User accept / narrow / defer / reject review at original individual scope**. The other four remain recorded as variant-associated observations but do not satisfy the same functional-evidence rationale; they are **not discarded from the source ledger**. Maternal transmission of E104K needs a penetrance and parent phenotype annotation. The cVSD subtype must retain the author's original label in addition to any HPO mapping. TOF and conoventricular VSD are lesions in patients selected from a cohort already enriched for such lesions, so cohort ascertainment is material to any quantitative interpretation.
+
+### ROCK2 source correction and lineage
+
+- **Bowling 2017, PMID 28554332**: proband `00265-C` carries `c.2140C>T p.R714X`; the paper reports reduced ROCK2 protein by western blot in an intellectual-disability cohort. The main text does not report the ClinGen-curated ASD/PDA/VSD annotations for this patient.
+- **Li 2019, PMID 30622330**: patient `LAT1349` carries `p.Q1242*`; main Table 1 gives **“Situs anomaly”** without specific lesions. The variant was **inherited**, from a parent with no reported history of significant cardiac disease. The original paper discusses dominant inheritance with incomplete penetrance, and the patient-level lesion details attributed by ClinGen await supplementary verification.
+- **Sevim Bayrak 2020, PMID 31941532**: a reanalysis of the previously published 2,645-trio PCGC cohort. `p.D255G` is a de novo kinase-domain variant in a patient with syndromic CHD; `p.S39F` was reported in prior work. The earlier PCGC reports are the origin of these cases; specific congenital lesion information is reported in supplemental tables S16/S39, which were inaccessible to Agent 2.
+- **Result:** ClinGen's four case-level HPO mappings are valid as *records of ClinGen's curated assessment*. Exact lesion observations remain **unresolved at original publication level**. Do not mint direct original-patient phenotype PARs from the current main-text evidence. PanelApp Moderate and ClinGen Limited are separate source assessments over overlapping primary case reports.
+
+### RBFOX2 original cohort versus combined figure
+
+The 2025 Sauvestre et al. report (PMID 41221603) describes **19 new individuals across 12 unrelated families**. Figure 1A displays **33 total individuals**, including 14 prior cases from published reports, DECIPHER and ClinVar. Cohort frequency denominators such as 10/19 HLHS and 8/19 VSD apply to the newly reported 19, not automatically to all 33. Case-level extraction should distinguish the new cohort from previously reported individuals and identify exact source variants, particularly overlapping CNVs. The P13 CNV was reported as **ACMG class 3**. Agent 2 saw the abstract and Figure 1 legend, not the gated full PDF.
+
+### HAND1 and single-case MESP1 paper evidence bounds
+
+HAND1 `p.K132X` DORV/VSD (PMID 28112363), HAND1 `p.R118C` TOF (PMID 27942761) and MESP1 `p.Q118X` DORV/VSD (PMID 28677747) agree with the paper abstracts. Agent 1 previously reported consultation of the available Spandidos full texts, while **Agent 2 could inspect only abstracts**. The three studies share a senior-author group and use separate CHD cohorts of 158, 165 and 178 patients; cross-cohort patient overlap has not been resolved. Retain as qualified clinical case leads, with independent full-text verification still pending. They are not equivalent to the fully independently checked Werner 2016 individual records.
+
+### Reviewer dispositions and governance
+
+| Evidence item | Recommended present disposition |
+| --- | --- |
+| MESP1 E104K–TOF, L120P–TOF, L147Pfs*9–conoventricular VSD | **Ready for User disposition** at original individual observed-association scope |
+| HAND1 K132X, R118C and MESP1 Q118X | Defer direct acceptance pending independent full publisher texts; preserve abstract-concordant leads |
+| ROCK2 four ClinGen-curated variant/HPO pair groups | Keep curated source assertions; original individual lesion-level verification pending supplements and earlier PCGC cohorts |
+| RBFOX2 2025 cohort | Preserve 19 new / 12 families / 33 combined figure and study-level findings; individual direct claims pending complete full text |
+
+No new direct gene disruption–phenotype PAR has been accepted, and no prior user decisions or original immutable source data have changed. Reviewer entry and its exposure status are documented in [DevMap Communications Log](https://app.notion.com/p/412291878008814a9323f386cc51a647).
