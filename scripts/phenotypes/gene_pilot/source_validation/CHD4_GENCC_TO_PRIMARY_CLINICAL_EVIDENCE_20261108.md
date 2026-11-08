@@ -209,3 +209,38 @@ Agent 1 retrieved and inspected the complete original [Zhang et al. 2017 Spandid
 These are evidence review updates, **not new user dispositions**. Preserve the accepted **SV-003 three MESP1 Werner 2016 observations**, the original source HPOA disease subject `dmpdsrc1` and discovery `dmpview1`, the pinned GenCC source snapshot and the frozen 662 genes. No direct gene disruption–phenotype PAR has been minted.
 
 Request independent DevMap-Claude Agent 2 follow-up on full original HAND1 Li 2017 and MESP1 Zhang 2017 publisher texts, source abbreviation `AA` in Werner 2016, ROCK2 correct supplementary tables and original Jin 2017 patient provenance, and RBFOX2 2025 Figure 1A patient/variant linkage with R32/R33 unknown cardiac phenotype.
+
+## Agent 1 source reconciliation, 2026-11-08: MESP1 anatomy and sex metadata; ROCK2 supplement access
+
+### MESP1 Werner p.K268N: reported cardiac lesion
+
+The source publication [Werner et al. 2016, PMID 26694203](https://pubmed.ncbi.nlm.nih.gov/26694203/) reports patient p.K268N clinical features as `mVSD/CoA/AA`. [Zhang et al. 2017, Table III](https://www.spandidos-publications.com/10.3892/mmr.2017.6875?text=fulltext) explicitly expands this **AA to aortic atresia** in its summary of Werner cases, and the [ClinGen MESP1 gene–disease curation](https://search.clinicalgenome.org/kb/gene-validity/CGGV%3Aassertion_8e86e873-749f-4d44-a1c8-d28405d7dace-2024-09-09T160000.000Z) independently records patient `Proband_Werner P et al 7` with **Aortic valve atresia HP:0010883**, **Coarctation of aorta HP:0001680** and **VSD HP:0001629**, associated with `MESP1 NM_018670.4:c.804G>C p.(Lys268Asn)`. This resolves the previous erroneous expansion of AA as aortic aneurysm. Preserve the original shorthand `mVSD/CoA/AA` in original evidence, the later published **aortic atresia** interpretation and the ClinGen **aortic valve atresia HP:0010883** mapping as separately attributed curated assertions. Exact wording of Werner's own table legend remains to be inspected against the full original text. This p.K268N observation is **outside the three approved SV-003 variants**, with functional assays close to wild type and maternal transmission.
+
+### MESP1 Zhang p.Q118X: upstream sex metadata conflict
+
+The original [Zhang et al. 2017, Results: Identification of a novel MESP1 mutation in CHD](https://www.spandidos-publications.com/10.3892/mmr.2017.6875?text=fulltext) explicitly identifies the 3-month-old `c.352C>T p.Q118X` carrier with DORV and VSD as **female** and also uses female pronouns for the same case. The [ClinGen MESP1 curation scored proband table](https://search.clinicalgenome.org/kb/gene-validity/CGGV%3Aassertion_8e86e873-749f-4d44-a1c8-d28405d7dace-2024-09-09T160000.000Z), entry `Chinese Han Proband Zhang` with the same variant, PMID 28677747, DORV and VSD, reports **Male** in the proband sex column. **This is a source disagreement**, not a second individual. For an original-patient observation, use **female (primary publication)** and preserve **male (ClinGen curator field)** as an unresolved source discrepancy pending ClinGen curator correction or full audit. Do not count the two sources as separate clinical observations. This Q118X observation is pending user approval and is distinct from SV-003.
+
+### ROCK2: verified source supplement URL and retrieval boundary
+
+The source publisher's [2020 Genome Medicine article](https://link.springer.com/article/10.1186/s13073-019-0709-8) identifies **Additional file 1** as an XLSX containing case/control information with **Table S2 filtered de novo variants in cases**. The publisher-linked original file URL is:
+
+`https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13073-019-0709-8/MediaObjects/13073_2019_709_MOESM1_ESM.xlsx`
+
+The text extraction endpoint could confirm the file URL but cannot parse binary XLSX. The separate programmatic download attempted in this session did not succeed, so no local supplement file, source hash or verified ROCK2 case-level lesion row was obtained. This URL is provided as a direct *publisher supplement link* for CHOP HPC download; the original Jin et al. 2017 PCGC data remain the parent case cohort. Original primary evidence for ClinGen's ROCK2 lesion details still requires source- and patient-specific review.
+
+One possible CHOP HPC source acquisition, using the same recognized institutional CA bundle as the pinned GenCC workflow, is:
+
+```bash
+cd /mnt/isilon/taylor_lab/data/projects/DevMap-CHD
+mkdir -p scripts/phenotypes/gene_pilot/inputs/primary_source_supplements
+curl --fail --location --show-error --cacert /etc/pki/tls/certs/ca-bundle.crt \
+  --output scripts/phenotypes/gene_pilot/inputs/primary_source_supplements/13073_2019_709_MOESM1_ESM.xlsx \
+  'https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13073-019-0709-8/MediaObjects/13073_2019_709_MOESM1_ESM.xlsx'
+sha256sum scripts/phenotypes/gene_pilot/inputs/primary_source_supplements/13073_2019_709_MOESM1_ESM.xlsx
+```
+
+The source workbook must be inspected without changing its bytes and the computed digest recorded before derived case row extraction. This source belongs in local evidence custody, not an automated GitHub commit.
+
+### Next Agent 2 review
+
+Challenge the MESP1 source sex disagreement and exact original Werner abbreviation. Verify the publisher XLSX Table S2 ROCK2 rows and link them to the earliest PCGC original individual, if available. Continue independent HAND1, MESP1 and RBFOX2 case reviews. Preserve original source and user-approved SV-003 observations. No additional direct causal PAR issuance.
