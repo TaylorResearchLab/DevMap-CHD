@@ -270,3 +270,19 @@ The user can provide a normal browser attachment for supplemental papers rather 
 The 2020 analysis identifies **ROCK2 p.D255G** as a de novo kinase-domain variant in a syndromic CHD patient and refers to **p.S39F** as previously reported as CHD-associated. [ClinGen's 2024 ROCK2 GCEP Limited curation](https://search.clinicalgenome.org/CCID:008432) records p.D255G with `HP:0001627` **Abnormal heart morphology**, and p.S39F with `HP:0001710` **Conotruncal defect**, but the accessible 2020 main text does not provide individual source lesion documentation. Original case lineage must be checked against [Jin et al., 2017, Nature Genetics, PMID 28991257](https://www.nature.com/articles/ng.3970), **2,871 probands of which 2,645 are trios**, and its published *Supplementary Data Sets 1–12 (XLSX)*, rather than counting the reanalysis as another case.
 
 **Next source analysis:** read Table S2 in the copy already attached on the Notion CHD4 log (not a further user download), identify its exact sample ID, ROCK2 variant, any lesion code and evidence provenance fields. Follow any sample IDs into Jin 2017 supplementary data. Distinguish a broad CHD case category from an original named anatomical lesion and from the later ClinGen HPO curation. Preserve the prior source review and request Agent 2's independent source check. No new direct patient/phenotype PAR is accepted from the supplementary file.
+
+
+## Resolution of ROCK2 Table S2 source access
+
+The user uploaded `13073_2019_709_MOESM1_ESM_TABLE_S2.tsv` as a standalone file on November 8, 2026 (ChatGPT Files ID `file_00000000445881f592c11bb3e3a88732`). Although the Python/container runtime could not mount its filesystem path, the ChatGPT Files direct **read and find** tools parsed the backing TSV. Source analysis has therefore succeeded; the prior apparent access blocker was specific to the Python mount, not to the uploaded data.
+
+The TSV contains 320 data rows and 19 source columns. Exactly two `Gene=ROCK2` records occur at original TSV lines 245 and 246:
+
+- **p.S39F**, `chr2:11484147 G>A`, proband `1-11926`, category **CTD**, EM Yes, NDD No, family history CHD Negative, CADD 27.6.
+- **p.D255G**, `chr2:11367484 T>C`, proband `1-13760`, category **other**, EM Yes, NDD No, family history CHD Negative, CADD 28.4.
+
+Both rows carry `#_mutations_cases=2` because it is the *gene-level repeated total*; the records identify **two distinct patients**, not four. The categories do not provide exact patient-level congenital cardiac anatomical lesions. The publisher's original CTD category covers multiple conotruncal malformations and `other` is a mixed cardiac lesion class. Both source phenotypes remain at source-reported **category level**. ClinGen p.S39F conotruncal defect `HP:0001710` and p.D255G broad abnormal heart morphology `HP:0001627` represent separate later curation, not additional patients.
+
+The full read-only extraction with all raw column values and provenance is in [ROCK2 Table S2 source audit v01](https://github.com/TaylorResearchLab/DevMap-CHD/blob/feature/gene-phenotypes/scripts/phenotypes/gene_pilot/source_validation/ROCK2_SevimBayrak2020_TableS2_source_audit_v01.md) (commit `1ede123393d33429d82560ba282019583afe85b3`). The original XLSX and an explicitly normalized TSV copy are both attached to the [CHD4 DevMap Communications Log](https://app.notion.com/p/4122918780088122a501d23809e7e124). The original user TSV is still preserved in ChatGPT Files by its file ID. Source row genomic assembly requires original publication verification; do not silently remap coordinates.
+
+**Next** match both blinded IDs to Jin et al. 2017 PCGC primary supplemental clinical records for precise anatomical lesions and assess ClinGen's derivative phenotype curation with independent Claude review. No new user approval or direct causal PAR.
