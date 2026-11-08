@@ -52,3 +52,26 @@ The census uses only approved HGNC identity from the frozen registry. The GenCC-
 DevMap source claim identity `dmpdsrc1` and discovery projection `dmpview1` remain approved and unchanged. GenCC association evidence does not automatically create a new directly observed gene disruption–phenotype PAR. No frozen registry modifications, no synthetic disease assignments and no public release are authorized by this diagnostic.
 
 Sources: [MONDO ontology](https://mondo.monarchinitiative.org/), [GenCC downloads](https://thegencc.org/download), [ClinGen gene-disease validity](https://search.clinicalgenome.org/kb/downloads).
+## Real CHOP HPC census, 8 November 2026
+
+User verified fast-forward pull to commit `242f2552ad58648ab491196f050da9785c33224c`; all **5 synthetic tests passed**. Real read-only source census completed on CHOP HPC and printed the same manifest twice, first on stdout and then read from the saved `manifest.json`.
+
+| Real manifest quantity | Count |
+| --- | ---: |
+| Frozen DevMap gene roster | 662 |
+| HPO G2P unmatched genes | 143 |
+| Unmatched genes with any GenCC submission | 63 |
+| Unmatched genes with no GenCC submission | 80 |
+| GenCC submission versions for those 63 genes | 112 |
+| Unmatched genes with any ClinGen-submitted record | 45 |
+| Unmatched genes with one or more Definitive/Strong/Moderate GenCC submissions | **19** |
+| All registry GenCC assertion versions | 4,090 |
+| Registry genes with a GenCC submission | 575 |
+| Source GenCC rows scanned | 30,362 |
+| Direct gene-phenotype PARs promoted | 0 |
+
+The saved manifest reports pinned registry SHA-256 `523cd288c68608d4c1e277930685666895cfb5fd002ee99705e9a5b21caed43c`, pinned GenCC SHA-256 `6b099f2497837c8bb0b62930bcfff13c952869dd52635511da181521ce1cde17` and validated input gap manifest SHA-256 `505bb48050566e3d545600acef9ecb84cba1fbe29c5f25ae44226628e25df256`.
+
+**Interpretation:** 19 genes have at least one GenCC submission with a positive expert-curation classification, which is a **gene–disease** evidence result. They do not consequently acquire a direct phenotype observation. The group of 45 genes with ClinGen submissions is not necessarily contained within or inclusive of those 19; evaluate intersection from the per-gene output. Mapping `disease_curie` to MONDO comes from GenCC and has not independently been revalidated. Multiple submitters may cite the same studies, so independence requires evidence review.
+
+The user did not include the output directory `SHA256SUMS.txt` verification stdout. Request that check before treating the output artifact package as fully verified. Next enumerate the 19 genes and their original submitted disease CURIEs, MONDO mapping, classifications and source references. Review original source scope before any phenotype-level inference, preserving frozen registry and existing approved `dmpdsrc1` / `dmpview1` identities.
