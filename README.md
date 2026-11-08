@@ -2,6 +2,8 @@
 
 DevMap-CHD is a congenital heart defect gene resource from the DevMap project. It compiles gene memberships from published studies and public biomedical resources. Each membership retains its source provenance, and gene identifiers are normalized to current HGNC identifiers.
 
+DevMap seeks to connect human developmental anatomy, cellular gene expression and genetic disease phenotypes within a spatial and temporal reference framework. DevMap-CHD establishes this approach in the developing human heart as a foundation for a future developmental Human Reference Atlas (dHRA).
+
 ## FAIR statement
 
 Every published membership must resolve to a citable source record. That record identifies the publication or resource, the table or subset used, the source version or extraction date when relevant, and the information needed to interpret the membership set.
