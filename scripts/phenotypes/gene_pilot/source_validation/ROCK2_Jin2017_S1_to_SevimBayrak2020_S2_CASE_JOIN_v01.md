@@ -1,6 +1,9 @@
 # ROCK2 | Primary PCGC individual diagnoses linked to original ROCK2 de novo variants
 
-**Date:** 2026-11-08. **Status:** source join completed on user-supplied original published supplementary tables; awaiting independent DevMap-Claude source review and user's biological disposition. No direct causal phenotype PAR issued.
+> **Current authoritative disposition, 2026-11-08:** Deanne Taylor **ACCEPTED the documentation of both original ROCK2 PCGC patient observations while retaining original diagnosis strings**. The source join was independently verified by DevMap-Claude. SV-004a = p.S39F / proband 1-11926 (TOF, bicuspid aortic valve and aortic stenosis). SV-004b = p.D255G / proband 1-13760 (patent ductus arteriosus). This is acceptance at individual clinical co-observation scope. See the [user decision](https://app.notion.com/p/41229187800881d8bbd9d5297820290d) and [SV-004 accepted evidence packet](https://github.com/TaylorResearchLab/DevMap-CHD/blob/feature/gene-phenotypes/scripts/phenotypes/gene_pilot/source_validation/SV-004_ROCK2_PCGC_two_patient_observations_APPROVED.md). The earlier pending review sections below document the pre-decision audit history.
+
+
+**Date:** 2026-11-08. **Current status:** source join independently verified by DevMap-Claude and original individual clinical observations **accepted by scientific authority as SV-004a and SV-004b**. Direct causal gene–phenotype PAR issuance remains a separate decision.
 
 ## Source identity and custody
 
@@ -29,7 +32,7 @@ Both files are **published source datasets referring to the same original PCGC s
 | 2017 S1 source line | **2687** | **2740** |
 | 2020 S2 source line | **245** | **246** |
 
-Source 2017 original row text (tab delimiters shown here as ` | ` only for readability; source fields otherwise unchanged):
+Source 2017 original row text (the ` | ` separators **occur within the source Cardiac Diagnoses field**, and have been preserved verbatim):
 
 - **1-11926:** `1-11926 | PCGC | Trio | CTD | "AORTIC STENOSIS | BICOMMISSURAL (BICUSPID, BILEAFLET, BIFOLIATE) AORTIC VALVE | TETRALOGY OF FALLOT " | Yes | No`.
 - **1-13760:** `1-13760 | PCGC | Trio | other | PATENT DUCTUS ARTERIOSUS | Yes | No`.
@@ -58,3 +61,7 @@ Original coordinate reference genome build must be documented before normalized 
 Preserve the frozen 662-gene registry, 2017/2020 original data, GenCC and HPOA source assertions, and approved `dmpdsrc1` original disease-subject and `dmpview1` gene-keyed discovery relationships. This source join adds no canonical direct causal PAR ID, makes no claim of a second patient sample and does not reassign accepted previous SV-003 MESP1 observations.
 
 **Recommended review:** independently reproduce the two blinded ID matches and source diagnosis strings; verify candidate phenotype HPO identifiers, including separation of broad `AORTIC STENOSIS` from any particular valve stenosis; inspect published clinical reports if detailed severity or onset is required. Confirm no unintended cohort duplication before user disposition.
+
+## Decision and independent reviewer integrity checkpoint
+
+The user's exact acceptance was “I accept the documentation of both patient observations while retaining the original dx strings.” Documented in [SV-004 decision](https://app.notion.com/p/41229187800881d8bbd9d5297820290d). Independent review [DevMap-Claude's completed ROCK2 original-data review](https://app.notion.com/p/4122918780088142a658e15bb37de4d2) independently reproduced the S2 source XLSX and both Jin S1 original diagnosis rows, including source pipe separators and trailing whitespace, with **2,871 distinct blinded IDs**. Publisher S2 XLSX SHA-256 `1ee89cc19b7e88182e5c039e5a5621f6e488a3efaf9342d5cba63381362d9ab9`. Jin S1 user TSV SHA-256 `8089f313183d025f0ad9d5e58d554c5740a15dfb53172492cd03a8c6d3fe03ee`. **SV-004a and SV-004b accepted at original individual documentation scope.** The original diagnosis strings, source paths and patient IDs remain intact. Any HPO label is a separate mapping with an explicit aortic stenosis valvar-level qualification.
