@@ -244,3 +244,18 @@ The source workbook must be inspected without changing its bytes and the compute
 ### Next Agent 2 review
 
 Challenge the MESP1 source sex disagreement and exact original Werner abbreviation. Verify the publisher XLSX Table S2 ROCK2 rows and link them to the earliest PCGC original individual, if available. Continue independent HAND1, MESP1 and RBFOX2 case reviews. Preserve original source and user-approved SV-003 observations. No additional direct causal PAR issuance.
+
+## Source custody: user-uploaded Springer 2020 ROCK2 supplement, 2026-11-08
+
+The user used a normal browser to download the public Springer `Additional file 1` workbook and uploaded it directly to the DevMap conversation. Its original publisher source is:
+
+`https://media.springernature.com/original/springer-static/esm/art%3A10.1186%2Fs13073-019-0709-8/MediaObjects/13073_2019_709_MOESM1_ESM.xlsx`
+
+- Filename: `13073_2019_709_MOESM1_ESM.xlsx` (56,206 bytes).
+- ChatGPT conversation file record: `file_00000000a36481f58069629b3e88204d`.
+- File storage reference: `libfile_fde3_f-88ba5818bbe08191a0926028526b1d2c_776138995fd08191a8e5deba4e8e5ac2`.
+- ChatGPT Files materialization service reported `/mnt/data/files/13073_2019_709_MOESM1_ESM.xlsx`, but this **temporary path was inaccessible from both Python and container spreadsheet analysis runtimes** in that session. The XLSX was readable as file metadata but not as spreadsheet content, indicating storage environment separation, not demonstrated file corruption.
+- A second publisher-source copy was stored **as a real XLSX attachment** in the [DevMap CHD4 Communications Log page](https://app.notion.com/p/4122918780088122a501d23809e7e124). Notion upload ID: `41229187-8008-8129-ac57-00b28b2cb6fc`. This copy also reports 56,206 bytes. SHA-256 equivalence between user and publisher copies has not been independently checked.
+- **Research status:** the source workbook is in durable Notion evidence custody with a link and original filename; individual ROCK2 variant/phenotype rows from Table S2 have not yet been parsed or accepted.
+
+The user can provide a normal browser attachment for supplemental papers rather than following a CHOP HPC `curl` command. The Notion page is the durable source locator for Claude and future DevMap reviews. 
