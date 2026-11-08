@@ -117,7 +117,7 @@ The frozen source IDs above are **SGC ID without `.version`** because the user's
 | p.P27_D29dup | Conoventricular VSD | Paternal | 0.77 ± 0.21 | 1.02 ± 0.13 | Not seen | Clinical observation retained; function close to WT |
 | p.G70D | Conoventricular VSD | Unavailable | 0.92 ± 0.24 | 1.19 ± 0.21 | Not seen | Clinical observation retained; function close to WT |
 | p.D168G | Conoventricular VSD | Unavailable | 0.97 ± 0.19 | 0.53 ± 0.11 | **Present in 6/97 African-American controls** | Clinical observation retained; weak functional prioritization |
-| p.K268N | mVSD, coarctation, aortic aneurysm | Maternal | 1.17 ± 0.18 | 0.90 ± 0.26 | Not seen | Clinical observation retained; function close to WT |
+| p.K268N | mVSD, coarctation, AA (original abbreviation pending confirmation; Zhang 2017 expands AA as **aortic atresia**) | Maternal | 1.17 ± 0.18 | 0.90 ± 0.26 | Not seen | Clinical observation retained; function close to WT |
 
 All seven source observations should remain discoverable. **The first three** have direct patient–variant–lesion pairs and marked functional impairment, making them appropriate for **User accept / narrow / defer / reject review at original individual scope**. The other four remain recorded as variant-associated observations but do not satisfy the same functional-evidence rationale; they are **not discarded from the source ledger**. Maternal transmission of E104K needs a penetrance and parent phenotype annotation. The cVSD subtype must retain the author's original label in addition to any HPO mapping. TOF and conoventricular VSD are lesions in patients selected from a cohort already enriched for such lesions, so cohort ascertainment is material to any quantitative interpretation.
 
@@ -162,3 +162,50 @@ The original patient is the subject of each clinical observation; variant identi
 - [Independent Claude review](https://app.notion.com/p/412291878008814a9323f386cc51a647)
 
 **Remaining CHD4 source tasks:** HAND1 original complete paper verification and cohort overlap; ROCK2 variant-specific patient clinical supplements and primary PCGC source lineage; RBFOX2 full primary paper and prior-case deduplication.
+
+
+## Agent 1 continuation: verified full-text sources and source granularity, 2026-11-08
+
+### HAND1 primary full text rechecked (PMID 28112363)
+
+Original publisher HTML was retrieved and independently inspected by Agent 1 at [Spandidos Li et al. 2017 full text](https://www.spandidos-publications.com/10.3892/ijmm.2017.2865?text=fulltext), **Results: Discovery of a de novo HAND1 mutation**, and Figures 1–2; functional figures 4–5. The original case is a **5-month-old boy**, one of 158 unrelated CHD patients. Variant **HAND1 c.394A>T p.K132X**, heterozygous, absent from both healthy parents and 300 unrelated controls (600 control chromosomes), reported **de novo**. Both **double outlet right ventricle and ventricular septal defect** were observed in this child. The original Results state that all CHDs in the cohort were clinically ascertained by echocardiography; the particular boy's individual diagnostic imaging is not separately shown as a clinical image. The K132X variant showed approximately baseline ANF promoter activity instead of wild type's ~10-fold activation in HeLa cells, and markedly reduced GATA4 synergy in NIH3T3 assays.
+
+**Disposition recommended:** source-specific individual observed association **ready for scientific authority review** after Agent 2 has a chance to challenge the complete publisher Results text. No direct causal gene–phenotype PAR minted. Shared senior-author laboratories and 158/165 cohorts mean possible overlap with the HAND1 p.R118C TOF study remains unresolved; different variants do not imply the same clinical individual.
+
+The distinct HAND1 **p.R118C with TOF**, PMID 27942761, remains abstract-supported only in this review. Its full Springer publication/clinical patient narrative is outstanding.
+
+### MESP1 p.Q118X original full text rechecked (PMID 28677747)
+
+Agent 1 retrieved and inspected the complete original [Zhang et al. 2017 Spandidos publisher article](https://www.spandidos-publications.com/10.3892/mmr.2017.6875?text=fulltext). Original **Results: Identification of a novel MESP1 mutation in CHD**, Figures 1–2, report **one 3-month-old girl** with **double outlet right ventricle plus VSD**, heterozygous **MESP1 c.352C>T p.Q118X**, absent in both clinically unaffected parents and 200 healthy controls (400 chromosomes), reported **de novo**. Functional HEK293 transfection with E47 (Figure 4) reports wild-type activation ~14-fold versus mutant ~1-fold of the E-box reporter. The patient was one of 178 unrelated Chinese Han CHD cases, with syndromic disorders excluded in the original enrollment. The four Werner 2016 observations previously addressed by SV-003 are from a separate paper; this Q118X case **was not part of the three observed associations approved by the User**.
+
+**Disposition recommended:** patient/variant–DORV and patient/variant–VSD source observations ready for User review after Agent 2's complete-text challenge. The original source is a later review of Werner 2016 evidence in Table III as well as a report of the new Q118X case; cited Werner patients do **not** become new independent observations in the Zhang article.
+
+**Source abbreviation discrepancy to resolve:** Original Werner 2016's p.K268N carrier was transcribed in the Agent 2 review as `mVSD/CoA/AA`; Agent 1's previous packet incorrectly expanded `AA` as **aortic aneurysm**. Zhang et al. 2017 Table III restates that Werner observation and explicitly defines **AA as aortic atresia**. This is a clinically consequential difference. Keep the source literal `AA` pending direct rereading of Werner Table 1/2 abbreviation legend. Do not assign a definitive anatomical term for AA until original Werner definition is checked. This ambiguity concerns a variant **outside the SV-003 three approved observations**, which are unaffected.
+
+### RBFOX2: 2025 PMC publisher author-manuscript text is accessible and delineates comparison records
+
+[PMCID PMC12922010, PMID 41221603](https://pmc.ncbi.nlm.nih.gov/articles/PMC12922010/) contains the publicly accessible author's manuscript body, cohort summary, figure legend and molecular analysis discussion. Its **19-person original cohort** includes **7 CNV carriers** (5 intragenic, 2 whole-gene) and **12 SNV carriers**. Figure 1A displays **33 total cases**, mixing these 19 with 14 previously reported clinical/database cases. The text emphasizes the RBFOX2 cardiac-specific transcript `ENST00000405409.6`:
+
+- Four previously reported database cases **R28–R31** carry RBFOX2 intragenic deletions in exons *absent* from the expressed cardiac transcript.
+- Cases **R32 and R33** carry frameshifts in exons that are present in that cardiac transcript, but the authors explicitly state that their **cardiac phenotype information is unavailable**. Code the cardiac phenotype for R32/R33 **unknown**, not clinically unaffected.
+- Patient **P13 CNV** was given discordant tool classifications (AnnotSV class 3 and Achropuce class 5); preserve both assessments and the supporting coordinate intervals instead of forcing a pathogenicity label.
+- The paper reports DORV for P8–P10 and P19 and TOF for P18 (family F11). These identifiers are patient-specific text leads, with exact variants and complete lesion panels dependent on Figure 1A/case table review.
+
+**Disposition:** retain the 19-case cohort associations and detailed molecular/transcript annotations as a source-backed aggregate; patient-level variant–phenotype extraction remains pending faithful table/figure review. Do not count R28–R33 as six confirmed phenotype-negative individuals.
+
+### ROCK2: correction of supplement table descriptions and primary cohort lineage
+
+[Sevim Bayrak et al. 2020, PMC6961332](https://pmc.ncbi.nlm.nih.gov/articles/PMC6961332/) explicitly describes:
+
+- **Additional file 1, Table S2**: original case de novo variant data and broad CHD phenotype grouping. This is a more relevant place to look for a ROCK2 patient–variant–lesion link.
+- **Additional file 5, Table S16**: **gene prioritization scores**, not a patient-specific cardiac phenotype table.
+- **Additional file 8, Table S39**: computational functional impact assessments of variants, not a patient-level anatomical diagnosis table.
+- The 2020 analysis reuses PCGC cases from the original Jin et al. 2017 study, [PMID 28991257, DOI 10.1038/ng.3970](https://pubmed.ncbi.nlm.nih.gov/28991257/). This is an original cohort source, whereas the 2020 report is a computational reanalysis.
+
+**Correction to earlier Agent 2 locator:** in the Nov 8 review Table S16 and S39 were suggested as proband-phenotype locations. The publisher's own descriptions show those are gene scoring and functional prediction tables. Supplement Table S2 and the original Jin 2017 supplementary *individual-level* clinical/variant records are more appropriate for case-level verification. No supplementary workbook has yet been downloaded or parsed here. ROCK2 lesion-specific claims remain **ClinGen-curated observations awaiting original patient-level source confirmation**.
+
+### Scope and governance
+
+These are evidence review updates, **not new user dispositions**. Preserve the accepted **SV-003 three MESP1 Werner 2016 observations**, the original source HPOA disease subject `dmpdsrc1` and discovery `dmpview1`, the pinned GenCC source snapshot and the frozen 662 genes. No direct gene disruption–phenotype PAR has been minted.
+
+Request independent DevMap-Claude Agent 2 follow-up on full original HAND1 Li 2017 and MESP1 Zhang 2017 publisher texts, source abbreviation `AA` in Werner 2016, ROCK2 correct supplementary tables and original Jin 2017 patient provenance, and RBFOX2 2025 Figure 1A patient/variant linkage with R32/R33 unknown cardiac phenotype.
