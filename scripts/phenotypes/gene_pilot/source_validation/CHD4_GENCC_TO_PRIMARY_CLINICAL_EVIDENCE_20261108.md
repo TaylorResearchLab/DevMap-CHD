@@ -157,7 +157,7 @@ No new direct gene disruption–phenotype PAR has been accepted, and no prior us
 
 The original patient is the subject of each clinical observation; variant identity, inheritance and the in vitro functional assay are accompanying source evidence, not independently accepted claims of genetic causal sufficiency. The four additional Werner source variant rows remain retained in their original evidence stratum and were not included in this three-item decision. Canonical direct causal PAR creation is a separate later step.
 
-- [User's signed scientific decision record in DevMap Communications Log](https://app.notion.com/p/4122918780088184992eee2eb51848c5)
+- [User-approved scientific decision record in DevMap Communications Log](https://app.notion.com/p/4122918780088184992eee2eb51848c5)
 - [SV-003 evidence and decision packet](https://github.com/TaylorResearchLab/DevMap-CHD/blob/feature/gene-phenotypes/scripts/phenotypes/gene_pilot/source_validation/SV-003_MESP1_Werner2016_three_patient_lesions_APPROVED.md)
 - [Independent Claude review](https://app.notion.com/p/412291878008814a9323f386cc51a647)
 
