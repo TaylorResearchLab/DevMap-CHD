@@ -68,5 +68,45 @@
     "qualification": "Great artery vascular morphology; gestational age and onset not supplied",
     "hpo_source_release": "v2026-09-01",
     "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-005a",
+    "original_phenotype_text": "DORV",
+    "hpo_id": "HP:0001719",
+    "hpo_label": "Double outlet right ventricle",
+    "mapping_kind": "source_term_normalization",
+    "qualification": "Index case reports both DORV and VSD; representation of named lesion, not second patient",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-005a",
+    "original_phenotype_text": "VSD",
+    "hpo_id": "HP:0001629",
+    "hpo_label": "Ventricular septal defect",
+    "mapping_kind": "source_term_normalization",
+    "qualification": "Index case reports both DORV and VSD; representation of named lesion, not second patient",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-005b",
+    "original_phenotype_text": "DORV",
+    "hpo_id": "HP:0001719",
+    "hpo_label": "Double outlet right ventricle",
+    "mapping_kind": "source_term_normalization",
+    "qualification": "Index case reports both DORV and VSD; representation of named lesion, not second patient",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-005b",
+    "original_phenotype_text": "VSD",
+    "hpo_id": "HP:0001629",
+    "hpo_label": "Ventricular septal defect",
+    "mapping_kind": "source_term_normalization",
+    "qualification": "Index case reports both DORV and VSD; representation of named lesion, not second patient",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
   }
 ]
