@@ -43,3 +43,17 @@ The paper also mentions a previously reported de novo 111-kb CNV involving RBFOX
 **Previous independently reviewed context:** [CHD4 initial Claude source review](https://app.notion.com/p/412291878008814a9323f386cc51a647) already identified the **n=33 vs 19** denominator discrepancy. This document independently checks that distinction using the original author manuscript and puts detailed extraction gates on the remaining case pairs.
 
 **Scientific status:** original source and cohort-level findings recorded. No user approval, new causal PAR or accepted gene disruption–phenotype relation. The SV-003/SV-004 approved ledger remains unchanged.
+
+## 2026-11-09 independent original figure review and correction flags
+
+The user supplied the Sauvestre et al. 2025 **seven-page** author manuscript PDF `nihms-2126382`, **SHA-256 `9e46dd253a90184a8aaaf864925cf2673d770fe490d7c4f943fa43583e0b417d`**. DevMap-Claude inspected the full 1312×1800 embedded Figure 1 image on page 6 at native resolution and independently transcribed all 19 new `P` cases and 14 historical/database `R` cases. The detailed source findings and diagnostic flags are preserved in the [completed Claude log](https://app.notion.com/p/41329187800881d7bda2e57e66284612).
+
+**Important source corrections to the earlier audit:**
+
+- **P12, F7** carries RBFOX2 p.Arg249Cys but **no cardiac or extracardiac feature is marked** and the pedigree symbols show an unshaded variant carrier. A `P` row is therefore not automatically an observed affected cardiac patient. Preserve 19 original figure rows and distinguish **18 or fewer recorded cardiac phenotype carriers** from the 19 total; do not classify P12 as a confirmed CHD case. The 19-case published denominators can still be reproduced as reported.
+- **P18 and R24** share exact reported gross deletion breakpoints `chr22:33,519,384-36,552,435` (hg38). P18 has TOF and R24 (DECIPHER 364039) has HLHS plus pulmonary arterial hypertension. This raises **possible duplicate patient identity and divergent phenotype documentation**, rather than proof of two independent persons. Do not finalize unique-person counts or merge records until author/DECIPHER confirmation.
+- **P17** is labelled `intragenic deletion 3 Mb` in Figure 1A, although the reported genomic span `chr22:32,863,077-35,939,011` is much larger than the RBFOX2 gene. Preserve the original source label and flag a **gross deletion likely** interpretation separately.
+- **R30, R31, R32 and R33** all have cardiac columns marked `NR` (not reported). Previous audit named only R32/R33 as unknown. Correct to R30–R33.
+- RBFOX2 P7 carries `c.352C>T p.Gln118*`. This overlaps in notation with **MESP1 p.Q118X** and is not the same molecular observation. Use gene/transcript/source-scoped variant identifiers.
+
+**Machine-readable transcription:** [33 source records](RBFOX2_Sauvestre2025_Figure1A_33_source_records_v01.json). [Review packet](RBFOX2_Sauvestre2025_Figure1A_CASE_REVIEW_v01.md). The approved SV-003/SV-004 ledger remains at five cases. Figure 1A's 19/14 membership and the 19-row published feature counts (10 HLHS, 10 coarctation, 7 mitral, 6 aortic valve, 8 VSD, 6 ASD) remain verified. No direct causal phenotype PARs or new accepted patient assertions.
