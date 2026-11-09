@@ -68,6 +68,22 @@ def verify(data):
     if (byp["P7"]["source_variant_text"] != "c.352C>T p.Gln118*" or
         data["reference_transcript"] != "NM_001349999.2"):
         raise ValueError("Gene/transcript-specific variant key unsafe")
+    expected_shared_variant = {"P2": "P1", "P3": "P1", "P4": "P1",
+                               "P11": "P10", "P12": "P10",
+                               "P15": "P14", "P16": "P14"}
+    for person in people:
+        if person["variant_gene"] != "RBFOX2":
+            raise ValueError("Source gene key missing or altered: " + person["id"])
+    for child, parent in expected_shared_variant.items():
+        person, linked = byp[child], byp[parent]
+        resolved = person.get("resolved_gene_variant_from_related_case")
+        if (person.get("source_variant_reference") != parent or
+            person.get("source_variant_text") != "same" or
+            not isinstance(resolved, dict) or
+            resolved.get("gene") != "RBFOX2" or
+            resolved.get("case_id") != parent or
+            resolved.get("source_variant_text") != linked["source_variant_text"]):
+            raise ValueError("RBFOX2 familial variant reference broken: " + child)
     if Counter(p["inheritance"] for p in people) != Counter(
         {"De novo": 8, "Paternal": 3, "Maternal": 4, "NA": 4}
     ):
