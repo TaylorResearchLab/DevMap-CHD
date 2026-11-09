@@ -24,17 +24,32 @@
       "pmid": "26694203",
       "locator": "Table 2"
     },
-    "original_chromosome": null,
-    "original_position": null,
-    "original_ref": null,
-    "original_alt": null,
-    "genome_build": null,
+    "original_chromosome": "15",
+    "original_position": 90294153,
+    "original_ref": "C",
+    "original_alt": "T",
+    "genome_build": "hg19",
     "source_metadata": {
       "extracardiac_manifestations": null,
       "neurodevelopmental_disorder": null,
-      "family_history_chd": null
+      "family_history_chd": null,
+      "source_sex": "F",
+      "source_ethnicity": "CA",
+      "parental_genotypes": {
+        "father": "WT",
+        "mother": "Carrier"
+      },
+      "control_counts": {
+        "CA": "0/99",
+        "AA": "0/97"
+      },
+      "control_count_scope": "Werner2016 Table 2 per variant, per ancestry group",
+      "source_variant_table": "Werner 2016 Table 2, hg19 labelled coordinate column"
     },
-    "causality_status": "not_adjudicated"
+    "causality_status": "not_adjudicated",
+    "original_genomic_variant_text": "chr15:90294153C>T",
+    "original_cDNA_variant_text": "c.310G>A",
+    "source_reference_transcript": "NM_018670.3"
   },
   {
     "observation_id": "SV-003b",
@@ -61,17 +76,32 @@
       "pmid": "26694203",
       "locator": "Table 2"
     },
-    "original_chromosome": null,
-    "original_position": null,
-    "original_ref": null,
-    "original_alt": null,
-    "genome_build": null,
+    "original_chromosome": "15",
+    "original_position": 90294104,
+    "original_ref": "A",
+    "original_alt": "G",
+    "genome_build": "hg19",
     "source_metadata": {
       "extracardiac_manifestations": null,
       "neurodevelopmental_disorder": null,
-      "family_history_chd": null
+      "family_history_chd": null,
+      "source_sex": "F",
+      "source_ethnicity": "CA",
+      "parental_genotypes": {
+        "father": "WT",
+        "mother": "WT"
+      },
+      "control_counts": {
+        "CA": "0/99",
+        "AA": "0/97"
+      },
+      "control_count_scope": "Werner2016 Table 2 per variant, per ancestry group",
+      "source_variant_table": "Werner 2016 Table 2, hg19 labelled coordinate column"
     },
-    "causality_status": "not_adjudicated"
+    "causality_status": "not_adjudicated",
+    "original_genomic_variant_text": "chr15:90294104A>G",
+    "original_cDNA_variant_text": "c.359T>C",
+    "source_reference_transcript": "NM_018670.3"
   },
   {
     "observation_id": "SV-003c",
@@ -98,17 +128,32 @@
       "pmid": "26694203",
       "locator": "Table 2"
     },
-    "original_chromosome": null,
+    "original_chromosome": "15",
     "original_position": null,
-    "original_ref": null,
+    "original_ref": "TC",
     "original_alt": null,
-    "genome_build": null,
+    "genome_build": "hg19",
     "source_metadata": {
       "extracardiac_manifestations": null,
       "neurodevelopmental_disorder": null,
-      "family_history_chd": null
+      "family_history_chd": null,
+      "source_sex": "F",
+      "source_ethnicity": "AAm (no Hisp)",
+      "parental_genotypes": {
+        "father": "N/A",
+        "mother": "N/A"
+      },
+      "control_counts": {
+        "CA": "0/99",
+        "AA": "0/97"
+      },
+      "control_count_scope": "Werner2016 Table 2 per variant, per ancestry group",
+      "source_variant_table": "Werner 2016 Table 2, hg19 labelled coordinate column"
     },
-    "causality_status": "not_adjudicated"
+    "causality_status": "not_adjudicated",
+    "original_genomic_variant_text": "chr15:90294027_90294028delTC",
+    "original_cDNA_variant_text": "c.436_437delAG",
+    "source_reference_transcript": "NM_018670.3"
   },
   {
     "observation_id": "SV-004a",
