@@ -1,6 +1,6 @@
 # Accepted individual clinical observations v01
 
-**Status:** read-only structured documentation of scientific authority decisions SV-003 and SV-004. Source claims, original published data and the frozen 662-gene registry are unchanged. This ledger does not issue direct gene–phenotype causal PARs.
+**Status:** read-only structured documentation of scientific authority decisions SV-003, SV-004 and SV-005. Source claims, original published data and the frozen 662-gene registry are unchanged. This ledger does not issue direct gene–phenotype causal PARs.
 
 ## Source scope and record classes
 
@@ -8,12 +8,12 @@ This is a deliberately small scientific evidence layer distinct from the existin
 
 | File | Unit | Records |
 | --- | --- | ---: |
-| `approved_clinical_observations_v01.json` | One approved original patient/variant clinical observation | 5 |
-| `hpo_mapping_candidates_v01.json` | One source diagnosis token mapped to a reviewed HPO candidate | 7 |
+| `approved_clinical_observations_v01.json` | One approved original patient/variant clinical observation | 7 |
+| `hpo_mapping_candidates_v01.json` | One source diagnosis token mapped to a reviewed HPO candidate | 11 |
 | `functional_evidence_v01.json` | One original MESP1 functional assay result linked to an accepted case | 6 |
-| `secondary_curation_records_v01.json` | ClinGen normalized phenotype descriptions of the **same** two ROCK2 patients, without added individual evidence | 2 |
+| `secondary_curation_records_v01.json` | ClinGen descriptions of **the same** two ROCK2 patients and one MESP1 sex discrepancy, without added independent patients | 3 |
 
-The clinical ledger includes **MESP1 SV-003a/b/c** from one Werner et al. 2016 cohort and **ROCK2 SV-004a/b** from one original PCGC cohort, documented by Jin et al. 2017 with a variant reanalysis by Sevim Bayrak et al. 2020. Two publications describing a PCGC subject are **one patient**, not independent replicates.
+The clinical ledger includes **MESP1 SV-003a/b/c** from one Werner et al. 2016 cohort, **ROCK2 SV-004a/b** from one original PCGC cohort and **HAND1 SV-005a / MESP1 SV-005b** from separately published 2017 index cases, documented by Jin et al. 2017 with a variant reanalysis by Sevim Bayrak et al. 2020. Two publications describing a PCGC subject are **one patient**, not independent replicates.
 
 Accepted clinical diagnosis strings remain in `original_diagnosis_field`. The JSON format is intentional because it preserves literal `| ` separator characters and **trailing spaces** in the ROCK2 `Cardiac Diagnoses` fields from the Jin 2017 original table.
 
@@ -42,6 +42,18 @@ The original Werner 2016 Table 2 provides an explicitly labelled **hg19** column
 Each of these rows records original Werner control counts `0/99 CA` and `0/97 AA`, with the original source ethnic classifications `CA`, `CA` and `AAm (no Hisp)` respectively. Original source allele strings remain distinct from a VCF-normalized representation. The ROCK2 source table does **not** declare its assembly, so ROCK2 genome builds remain null.
 
 The separate secondary curator file records ClinGen `CCID:008432` broad `HP:0001710` for ROCK2 p.S39F and `HP:0001627` for p.D255G as **two curator descriptions of the same two original PCGC patients**, not independent clinical evidence.
+
+## New independent 2017 index cases accepted under SV-005
+
+[SV-005 scientific authority decision](https://app.notion.com/p/413291878008818c8aaacc09589dfa9a), November 9, 2026, approves two original case observations after [Claude's independent full-paper verification](https://app.notion.com/p/41329187800881d7bda2e57e66284612).
+
+- **HAND1 p.K132X**, source `c.394A>T`, one 5-month-old boy, original report `congenital DORV, as well as VSD`, de novo from parental testing, PMID 28112363, original cohort 158 patients.
+- **MESP1 p.Q118X**, source `c.352C>T`, one 3-month-old girl, original report `DORV and VSD`, de novo from parental testing, PMID 28677747, original cohort 178 patients.
+- HPO candidates `HP:0001719` DORV and `HP:0001629` VSD are kept as separate mappings for each case.
+- No published clinical patient ID was available in the reviewed text. The ledger uses internal **gene + cDNA variant + PMID** source keys, distinct from published patient identifiers. **RBFOX2 P7 `c.352C>T` is a different gene and person** from MESP1 p.Q118X.
+- The MESP1 source identifies the patient as **female**; [ClinGen CCID:008509](https://search.clinicalgenome.org/CCID:008509) describes the same individual as **Male**. A separate secondary-curation record retains both values with the same-patient lineage and correction state `user_authorized_not_submitted`. The user authorized a ClinGen correction request, with actual submission pending.
+
+All seven approved records remain individual **source clinical co-observations**, not causal PARs. Functional evidence from Li and Zhang can be recorded separately from the six Werner assay values after direct original figure transcription if needed.
 
 ## HPO mapping discipline
 
@@ -98,3 +110,7 @@ The source comparator uses original SHA-256 values `8089f313183d025f0ad9d5e58d55
 ## Next independent review
 
 DevMap-Claude should review the three JSON record classes against the original approved SV-003 and SV-004 evidence packets, verify the stable source patient identities and literal field fidelity, review the HPO specificity flags, and execute the committed validator and tests in an independent repository checkout. Canonical direct causal PAR generation remains outside this ledger's scope.
+
+## Validation status after SV-005
+
+The ledger includes **7 accepted cases, 11 candidate HPO mappings, 6 source functional assay entries and 3 separate secondary ClinGen curation entries**. The fixed-data validator and its Python tests were updated for the two accepted cases and the original-female versus curator-male conflict. The prior independent tests verified the earlier five-case source ledger. This expanded seven-case version requires a fresh independent repository execution before its automated verification status is claimed complete. The optional original file checksum comparator continues to validate the two ROCK2 PCGC cases against the original S1/S2 files.
