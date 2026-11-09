@@ -154,8 +154,13 @@ def verify(data):
         sex_curation["secondary_curator_sex"], sex_curation["correction_status"]) != (
         "CCID:008509", "MESP1",
         "NM_018670.4(MESP1):c.352C>T (p.Gln118Ter)",
-        "Female", "Male", "user_authorized_not_submitted"):
+        "Female", "Male", "submitted_by_user_pending_clingen_response"):
         raise ValueError("ClinGen MESP1 original-female and curator-male discrepancy altered")
+    if (sex_curation["correction_submission_date"] != "2026-11-09" or
+        sex_curation["correction_submission_basis"] != "user_reported_submission" or
+        sex_curation["correction_acknowledgement_id"] is not None or
+        sex_curation["clingen_record_verified_corrected"] is not False):
+        raise ValueError("ClinGen correction submission status or pending response altered")
     if sex_curation["record_class"] != "secondary_curator_demographic_annotation_disagrees_with_original_not_independent_patient":
         raise ValueError("ClinGen demographic annotation incorrectly promoted to clinical evidence")
     keys = [(f["observation_id"], f["assay"]) for f in functional]
