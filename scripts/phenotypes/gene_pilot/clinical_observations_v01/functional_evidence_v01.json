@@ -1,0 +1,68 @@
+[
+  {
+    "observation_id": "SV-003a",
+    "source_pmid": "26694203",
+    "source_locator": "Werner et al. 2016, experimental functional assay table",
+    "protein_variant": "p.E104K",
+    "assay": "luciferase_reporter",
+    "reported_value": 0.08,
+    "reported_plus_minus": 0.04,
+    "reported_reference": "wild_type",
+    "evidence_type": "experimental_functional_observation"
+  },
+  {
+    "observation_id": "SV-003a",
+    "source_pmid": "26694203",
+    "source_locator": "Werner et al. 2016, experimental functional assay table",
+    "protein_variant": "p.E104K",
+    "assay": "two_hybrid",
+    "reported_value": 0.56,
+    "reported_plus_minus": 0.08,
+    "reported_reference": "wild_type",
+    "evidence_type": "experimental_functional_observation"
+  },
+  {
+    "observation_id": "SV-003b",
+    "source_pmid": "26694203",
+    "source_locator": "Werner et al. 2016, experimental functional assay table",
+    "protein_variant": "p.L120P",
+    "assay": "luciferase_reporter",
+    "reported_value": 0.06,
+    "reported_plus_minus": 0.03,
+    "reported_reference": "wild_type",
+    "evidence_type": "experimental_functional_observation"
+  },
+  {
+    "observation_id": "SV-003b",
+    "source_pmid": "26694203",
+    "source_locator": "Werner et al. 2016, experimental functional assay table",
+    "protein_variant": "p.L120P",
+    "assay": "two_hybrid",
+    "reported_value": 0.32,
+    "reported_plus_minus": 0.06,
+    "reported_reference": "wild_type",
+    "evidence_type": "experimental_functional_observation"
+  },
+  {
+    "observation_id": "SV-003c",
+    "source_pmid": "26694203",
+    "source_locator": "Werner et al. 2016, experimental functional assay table",
+    "protein_variant": "p.L147Pfs*9",
+    "assay": "luciferase_reporter",
+    "reported_value": 0.03,
+    "reported_plus_minus": 0.02,
+    "reported_reference": "wild_type",
+    "evidence_type": "experimental_functional_observation"
+  },
+  {
+    "observation_id": "SV-003c",
+    "source_pmid": "26694203",
+    "source_locator": "Werner et al. 2016, experimental functional assay table",
+    "protein_variant": "p.L147Pfs*9",
+    "assay": "two_hybrid",
+    "reported_value": 0.05,
+    "reported_plus_minus": 0.01,
+    "reported_reference": "wild_type",
+    "evidence_type": "experimental_functional_observation"
+  }
+]
