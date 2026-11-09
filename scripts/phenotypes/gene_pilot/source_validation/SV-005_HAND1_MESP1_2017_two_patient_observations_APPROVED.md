@@ -52,3 +52,7 @@ Both newly accepted observations can be appended to the **approved clinical obse
 Existing SV-003 three MESP1 Werner observations and SV-004 two ROCK2 PCGC observations remain accepted and unchanged. Accepted original human observations now total **7** across these decisions. Additional experimental work, pathogenicity classification, penetrance, direct causal gene disruption–phenotype PAR issuance and broader disease validity are separate evidence dimensions.
 
 The original DevMap-CHD 662-gene registry, approved HPOA disease-scope records, GenCC source classifications and frozen releases remain unchanged.
+
+## ClinGen external correction submission, 2026-11-09
+
+The user reported **submitting the requested correction to ClinGen** for MESP1 p.Q118X (PMID 28677747, CCID:008509) on November 9, 2026. Record status as **submitted by user, pending ClinGen response and verification**. The request concerns the original female proband reported as male in the ClinGen case curation. The method, tracking number and recipient acknowledgement were not provided. Preserve the original female and secondary male entries until the resource confirms an amendment; a report of submission is not confirmation of an implemented correction.
