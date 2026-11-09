@@ -238,5 +238,103 @@
       "source_cadd_score": 28.4
     },
     "causality_status": "not_adjudicated"
+  },
+  {
+    "observation_id": "SV-005a",
+    "record_class": "accepted_patient_variant_clinical_coobservation",
+    "decision_id": "SV-005",
+    "decision_date": "2026-11-09",
+    "decision_url": "https://app.notion.com/p/413291878008818c8aaacc09589dfa9a",
+    "disposition": "accepted_at_original_clinical_observation_scope",
+    "gene_symbol": "HAND1",
+    "source_patient_id": null,
+    "source_patient_key_kind": "internal_gene_variant_publication_scoped_case_reference",
+    "internal_case_key": "PMID:28112363:HAND1:c.394A>T",
+    "protein_variant_original": "p.K132X",
+    "inheritance_reported": "de_novo_by_parental_testing",
+    "original_diagnosis_field": "DORV and VSD",
+    "original_diagnosis_field_name": "Original Results patient-level DORV and VSD diagnosis wording",
+    "clinical_primary_source": {
+      "pmid": "28112363",
+      "doi": "10.3892/ijmm.2017.2865",
+      "locator": "Original publisher Results, index case clinical description",
+      "cohort_size": 158,
+      "study": "Li et al. 2017"
+    },
+    "variant_source": {
+      "pmid": "28112363",
+      "doi": "10.3892/ijmm.2017.2865",
+      "locator": "Original Results and parental testing"
+    },
+    "original_cDNA_variant_text": "c.394A>T",
+    "source_reference_transcript": null,
+    "original_chromosome": null,
+    "original_position": null,
+    "original_ref": null,
+    "original_alt": null,
+    "genome_build": null,
+    "source_metadata": {
+      "source_sex": "M",
+      "age_at_publication": "5 months",
+      "source_cohort": "Chinese Han unrelated CHD cases",
+      "family_history_chd": "none reported",
+      "parental_mutation_test": "variant absent in both parents",
+      "control_sampling": "300 unrelated individuals",
+      "source_phenotype_terms": [
+        "DORV",
+        "VSD"
+      ],
+      "clinGen_source_sex": null
+    },
+    "causality_status": "not_adjudicated"
+  },
+  {
+    "observation_id": "SV-005b",
+    "record_class": "accepted_patient_variant_clinical_coobservation",
+    "decision_id": "SV-005",
+    "decision_date": "2026-11-09",
+    "decision_url": "https://app.notion.com/p/413291878008818c8aaacc09589dfa9a",
+    "disposition": "accepted_at_original_clinical_observation_scope",
+    "gene_symbol": "MESP1",
+    "source_patient_id": null,
+    "source_patient_key_kind": "internal_gene_variant_publication_scoped_case_reference",
+    "internal_case_key": "PMID:28677747:MESP1:c.352C>T",
+    "protein_variant_original": "p.Q118X",
+    "inheritance_reported": "de_novo_by_parental_testing",
+    "original_diagnosis_field": "DORV and VSD",
+    "original_diagnosis_field_name": "Original Results patient-level DORV and VSD diagnosis wording",
+    "clinical_primary_source": {
+      "pmid": "28677747",
+      "doi": "10.3892/mmr.2017.6875",
+      "locator": "Original publisher Results, index case clinical description",
+      "cohort_size": 178,
+      "study": "Zhang et al. 2017"
+    },
+    "variant_source": {
+      "pmid": "28677747",
+      "doi": "10.3892/mmr.2017.6875",
+      "locator": "Original Results and parental testing"
+    },
+    "original_cDNA_variant_text": "c.352C>T",
+    "source_reference_transcript": null,
+    "original_chromosome": null,
+    "original_position": null,
+    "original_ref": null,
+    "original_alt": null,
+    "genome_build": null,
+    "source_metadata": {
+      "source_sex": "F",
+      "age_at_publication": "3 months",
+      "source_cohort": "Chinese Han unrelated CHD cases",
+      "family_history_chd": "none reported",
+      "parental_mutation_test": "variant absent in both parents",
+      "control_sampling": "400 reference chromosomes",
+      "source_phenotype_terms": [
+        "DORV",
+        "VSD"
+      ],
+      "clinGen_source_sex": "Male, curator value in CCID:008509; conflicting original source female"
+    },
+    "causality_status": "not_adjudicated"
   }
 ]
