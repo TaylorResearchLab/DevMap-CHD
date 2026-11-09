@@ -11,6 +11,7 @@ This is a deliberately small scientific evidence layer distinct from the existin
 | `approved_clinical_observations_v01.json` | One approved original patient/variant clinical observation | 5 |
 | `hpo_mapping_candidates_v01.json` | One source diagnosis token mapped to a reviewed HPO candidate | 7 |
 | `functional_evidence_v01.json` | One original MESP1 functional assay result linked to an accepted case | 6 |
+| `secondary_curation_records_v01.json` | ClinGen normalized phenotype descriptions of the **same** two ROCK2 patients, without added individual evidence | 2 |
 
 The clinical ledger includes **MESP1 SV-003a/b/c** from one Werner et al. 2016 cohort and **ROCK2 SV-004a/b** from one original PCGC cohort, documented by Jin et al. 2017 with a variant reanalysis by Sevim Bayrak et al. 2020. Two publications describing a PCGC subject are **one patient**, not independent replicates.
 
@@ -27,6 +28,20 @@ Each approved observation retains decision ID and date, source gene and original
 For ROCK2, the genomic assembly remains null because Table S2 did not declare a build. De novo is qualified by the `filtered de novo variant` report in a trio cohort. For both PCGC patients, `EM=Yes` is a binary extracardiac indicator and does not enumerate extracardiac phenotypes; `NDD=No` is the original cohort label. The original study's `Cardiac Category` remains distinct from the individual `Cardiac Diagnoses` field.
 
 Werner 2016's luciferase and two-hybrid assay values are in a **separate experimental evidence table**. `reported_plus_minus` preserves the published ± values without independently asserting their statistical definition. Functional measurements are not counted as additional clinical subjects.
+
+## Source metadata completed after Claude's independent review
+
+The original Werner 2016 Table 2 provides an explicitly labelled **hg19** column for all three accepted MESP1 variants. The clinical ledger now retains the source genomic strings and cDNA alleles for transcript `NM_018670.3`, in addition to sex, original ethnicity designations and parental genotypes.
+
+| Approved case | Source hg19 | Source cDNA | Sex | Father / Mother |
+| --- | --- | --- | --- | --- |
+| p.E104K | chr15:90294153C>T | c.310G>A | F | WT / Carrier |
+| p.L120P | chr15:90294104A>G | c.359T>C | F | WT / WT |
+| p.L147Pfs*9 | chr15:90294027_90294028delTC | c.436_437delAG | F | N/A / N/A |
+
+Each of these rows records original Werner control counts `0/99 CA` and `0/97 AA`, with the original source ethnic classifications `CA`, `CA` and `AAm (no Hisp)` respectively. Original source allele strings remain distinct from a VCF-normalized representation. The ROCK2 source table does **not** declare its assembly, so ROCK2 genome builds remain null.
+
+The separate secondary curator file records ClinGen `CCID:008432` broad `HP:0001710` for ROCK2 p.S39F and `HP:0001627` for p.D255G as **two curator descriptions of the same two original PCGC patients**, not independent clinical evidence.
 
 ## HPO mapping discipline
 
@@ -61,9 +76,24 @@ python scripts/phenotypes/gene_pilot/clinical_observations_v01/validate_approved
 python -m unittest discover -s scripts/phenotypes/gene_pilot/clinical_observations_v01 -p 'test_*.py' -v
 ```
 
-The validator locks the five approved observation IDs, original source diagnosis strings (including trailing spaces), gene/variant identity, patient linkage, user disposition scope, seven HPO mappings and their specificity flags, and six functional measurements. Any alteration raises a `ValueError`.
+The validator locks the five approved observation IDs, source diagnosis strings (including trailing spaces), original Werner hg19/cDNA and parent metadata, gene/variant identity, two same-patient ClinGen curator assignments, user disposition scope, seven HPO mappings and six functional measurements. Alterations raise a `ValueError`.
 
-**Development check:** seven synthetic and source integrity scenarios passed in a local equivalent validation fixture. The three GitHub JSON files also passed independent in-session direct content checks for all five identities, original diagnosis strings, mapped terms, source separation and functional record counts. The committed Python scripts still require a fresh run against the **repository checkout** on CHOP HPC before labeling the repository-level validation complete.
+**Prior development check:** seven initial tests passed on Claude\'s independent checkout. The updated ten ledger tests plus three direct source reconciliation tests, source metadata changes and secondary curator records require a fresh independent run before full review closure.
+
+## Direct source comparison against original published files
+
+The companion validator `verify_original_sources_v01.py` can check the accepted ROCK2 records against the actual **Jin 2017 S1 TSV** and original **Sevim Bayrak 2020 publisher XLSX**. It verifies the independent source SHA-256 digests from Claude's inspection before comparing the literal original S1 clinical fields and S2 variant values. The source comparison uses Python standard library TSV and XLSX XML reading. It reads source bytes without changing the original datasets.
+
+```bash
+python scripts/phenotypes/gene_pilot/clinical_observations_v01/verify_original_sources_v01.py \
+  --s1-tsv /path/to/NIHMS906719-supplement-supp_datasets_TABLE_S1.tsv.txt \
+  --s2-xlsx /path/to/13073_2019_709_MOESM1_ESM.xlsx
+python -m unittest discover -s scripts/phenotypes/gene_pilot/clinical_observations_v01 -p 'test_*.py' -v
+```
+
+The source comparator uses original SHA-256 values `8089f313183d025f0ad9d5e58d554c5740a15dfb53172492cd03a8c6d3fe03ee` (Jin original S1 TSV) and `1ee89cc19b7e88182e5c039e5a5621f6e488a3efaf9342d5cba63381362d9ab9` (Sevim original XLSX). Direct source comparison is optional when those exact files are accessible and is additional to the fixed-value ledger validator. The companion `test_verify_original_sources_v01.py` supplies synthetic S1 and S2 sources with test-specific digests to exercise parsing and failed-checksum behavior.
+
+**Validation status:** Claude confirmed the initial 7/7 tests and original ROCK2 source agreement on an independent checkout. The **updated** ten ledger tests, three source reconciliation tests and added metadata/lineage records have been committed for a fresh independent run. This documentation does not claim the updated scripts or the new source comparison have already been executed on HPC.
 
 ## Next independent review
 
