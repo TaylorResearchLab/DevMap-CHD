@@ -42,6 +42,20 @@ class Figure1ATests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError,"P17 original"):
             verify(bad)
 
+    def test_familial_variant_reference_includes_gene(self):
+        bad = copy.deepcopy(self.data)
+        child = next(p for p in bad["new_cohort"] if p["id"] == "P2")
+        child["resolved_gene_variant_from_related_case"]["gene"] = "MESP1"
+        with self.assertRaisesRegex(ValueError, "familial variant"):
+            verify(bad)
+
+    def test_familial_variant_reference_has_no_whitespace(self):
+        bad = copy.deepcopy(self.data)
+        child = next(p for p in bad["new_cohort"] if p["id"] == "P2")
+        child["source_variant_reference"] = " P1"
+        with self.assertRaisesRegex(ValueError, "familial variant"):
+            verify(bad)
+
     def test_p7_gene_variant_collision_guard(self):
         bad = copy.deepcopy(self.data)
         next(p for p in bad["new_cohort"] if p["id"]=="P7")["source_variant_text"]="c.352C>T MESP1"
