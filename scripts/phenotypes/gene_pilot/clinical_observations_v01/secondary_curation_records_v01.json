@@ -48,7 +48,11 @@
     "curation_discrepancy_basis": "Zhang et al. 2017 Results says 3-month-old female and her parents",
     "gene_disease_validity": "Moderate",
     "evidence_role": "same_patient_secondary_curation_transcription_correction_requested",
-    "correction_status": "user_authorized_not_submitted",
-    "correction_route": "https://search.clinicalgenome.org/CCID:008509"
+    "correction_status": "submitted_by_user_pending_clingen_response",
+    "correction_route": "https://search.clinicalgenome.org/CCID:008509",
+    "correction_submission_date": "2026-11-09",
+    "correction_submission_basis": "user_reported_submission",
+    "correction_acknowledgement_id": null,
+    "clingen_record_verified_corrected": false
   }
 ]
