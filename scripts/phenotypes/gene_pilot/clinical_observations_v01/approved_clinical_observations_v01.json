@@ -192,7 +192,8 @@
       "family_history_chd": "Negative",
       "cohort": "PCGC",
       "sample_type": "Trio",
-      "cardiac_category": "CTD"
+      "cardiac_category": "CTD",
+      "source_cadd_score": 27.6
     },
     "causality_status": "not_adjudicated"
   },
@@ -233,7 +234,8 @@
       "family_history_chd": "Negative",
       "cohort": "PCGC",
       "sample_type": "Trio",
-      "cardiac_category": "other"
+      "cardiac_category": "other",
+      "source_cadd_score": 28.4
     },
     "causality_status": "not_adjudicated"
   }
