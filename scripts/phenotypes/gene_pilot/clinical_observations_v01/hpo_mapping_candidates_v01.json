@@ -1,0 +1,72 @@
+[
+  {
+    "observation_id": "SV-003a",
+    "original_phenotype_text": "TOF",
+    "hpo_id": "HP:0001636",
+    "hpo_label": "Tetralogy of Fallot",
+    "mapping_kind": "source_term_normalization",
+    "qualification": "TOF is the original shorthand",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-003b",
+    "original_phenotype_text": "TOF",
+    "hpo_id": "HP:0001636",
+    "hpo_label": "Tetralogy of Fallot",
+    "mapping_kind": "source_term_normalization",
+    "qualification": "TOF is the original shorthand",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-003c",
+    "original_phenotype_text": "cVSD",
+    "hpo_id": "HP:0001629",
+    "hpo_label": "Ventricular septal defect",
+    "mapping_kind": "broader_than_source_subtype",
+    "qualification": "Retain conoventricular subtype; no subtype erasure",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-004a",
+    "original_phenotype_text": "AORTIC STENOSIS",
+    "hpo_id": "HP:0001650",
+    "hpo_label": "Aortic valve stenosis",
+    "mapping_kind": "flagged_candidate_adds_valvar_level",
+    "qualification": "Source does not specify stenosis level; HPO synonym adds valvar anatomy; physiology branch",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-004a",
+    "original_phenotype_text": "BICOMMISSURAL (BICUSPID, BILEAFLET, BIFOLIATE) AORTIC VALVE",
+    "hpo_id": "HP:0001647",
+    "hpo_label": "Bicuspid aortic valve",
+    "mapping_kind": "source_term_normalization",
+    "qualification": "Parent term; no specific raphe subtype",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-004a",
+    "original_phenotype_text": "TETRALOGY OF FALLOT",
+    "hpo_id": "HP:0001636",
+    "hpo_label": "Tetralogy of Fallot",
+    "mapping_kind": "source_term_normalization",
+    "qualification": "Exact named lesion",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  },
+  {
+    "observation_id": "SV-004b",
+    "original_phenotype_text": "PATENT DUCTUS ARTERIOSUS",
+    "hpo_id": "HP:0001643",
+    "hpo_label": "Patent ductus arteriosus",
+    "mapping_kind": "timing_unknown",
+    "qualification": "Great artery vascular morphology; gestational age and onset not supplied",
+    "hpo_source_release": "v2026-09-01",
+    "mapping_record_status": "independent_reviewer_checked_not_a_replacement_for_source_text"
+  }
+]
