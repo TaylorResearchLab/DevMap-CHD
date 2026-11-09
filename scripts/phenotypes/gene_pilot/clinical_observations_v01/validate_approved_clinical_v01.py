@@ -18,6 +18,8 @@ SOURCE_DX = {
     "SV-003c": ("MESP1", "p.L147Pfs*9", "cVSD"),
     "SV-004a": ("ROCK2", "p.S39F", "AORTIC STENOSIS | BICOMMISSURAL (BICUSPID, BILEAFLET, BIFOLIATE) AORTIC VALVE | TETRALOGY OF FALLOT "),
     "SV-004b": ("ROCK2", "p.D255G", "PATENT DUCTUS ARTERIOSUS "),
+    "SV-005a": ("HAND1", "p.K132X", "congenital DORV, as well as VSD"),
+    "SV-005b": ("MESP1", "p.Q118X", "DORV and VSD"),
 }
 EXPECTED_MESP1 = {
     "SV-003a": ("hg19", "15", 90294153, "C", "T", "chr15:90294153C>T", "c.310G>A", "F", "CA", "WT", "Carrier"),
@@ -38,6 +40,8 @@ EXPECTED_TERMS = {
         ("TETRALOGY OF FALLOT", "HP:0001636"),
     ],
     "SV-004b": [("PATENT DUCTUS ARTERIOSUS", "HP:0001643")],
+    "SV-005a": [("DORV", "HP:0001719"), ("VSD", "HP:0001629")],
+    "SV-005b": [("DORV", "HP:0001719"), ("VSD", "HP:0001629")],
 }
 EXPECTED_ASSAYS = {
     ("SV-003a", "luciferase_reporter"): (0.08, 0.04),
@@ -67,7 +71,8 @@ def verify(data):
         if (row["record_class"] != "accepted_patient_variant_clinical_coobservation"
             or row["causality_status"] != "not_adjudicated"):
             raise ValueError("Claim scope changed: " + ident)
-        if (row["decision_id"] != ident[:6] or row["decision_date"] != "2026-11-08"
+        expected_date = "2026-11-09" if ident.startswith("SV-005") else "2026-11-08"
+        if (row["decision_id"] != ident[:6] or row["decision_date"] != expected_date
             or row["disposition"] != "accepted_at_original_clinical_observation_scope"):
             raise ValueError("Decision changed: " + ident)
         if gene == "ROCK2":
@@ -79,7 +84,7 @@ def verify(data):
                 or row["variant_source"]["pmid"] != "31941532"
                 or row["variant_source"]["refers_to_same_patient"] is not True):
                 raise ValueError("PCGC lineage or genomic build changed: " + ident)
-        else:
+        elif ident in EXPECTED_MESP1:
             if (row["source_patient_id"] is not None
                 or row["source_patient_key_kind"] != "internal_variant_scoped_case_reference"
                 or row["clinical_primary_source"]["pmid"] != "26694203"):
@@ -97,6 +102,22 @@ def verify(data):
             if (row["source_reference_transcript"] != "NM_018670.3"
                 or meta["control_counts"] != {"CA": "0/99", "AA": "0/97"}):
                 raise ValueError("Werner Table 2 source transcript or controls altered: " + ident)
+        else:
+            expected = {"SV-005a": ("HAND1", "p.K132X", "c.394A>T", "M", "28112363", "5 months", 158),
+                        "SV-005b": ("MESP1", "p.Q118X", "c.352C>T", "F", "28677747", "3 months", 178)}[ident]
+            actual_case = (row["gene_symbol"], row["protein_variant_original"],
+                           row["original_cDNA_variant_text"], row["source_metadata"]["source_sex"],
+                           row["clinical_primary_source"]["pmid"], row["source_metadata"]["age_at_publication"],
+                           row["clinical_primary_source"]["cohort_size"])
+            if actual_case != expected:
+                raise ValueError("SV-005 original patient variant identity changed: " + ident)
+            if (row["source_patient_id"] is not None
+                or row["source_patient_key_kind"] != "internal_gene_variant_publication_scoped_case_reference"
+                or row["internal_case_key"] != f"PMID:{expected[4]}:{expected[0]}:{expected[2]}"
+                or row["inheritance_reported"] != "de_novo_by_parental_testing"):
+                raise ValueError("SV-005 original source scope or inheritance altered: " + ident)
+            if row["genome_build"] is not None:
+                raise ValueError("SV-005 genome build was not established by reviewed case: " + ident)
     actual = Counter((m["observation_id"], m["original_phenotype_text"], m["hpo_id"]) for m in mappings)
     expected = Counter((i, t, h) for i, terms in EXPECTED_TERMS.items() for t, h in terms)
     if actual != expected:
@@ -112,10 +133,10 @@ def verify(data):
             if row["mapping_kind"] != "broader_than_source_subtype":
                 raise ValueError("Conoventricular subtype flag missing")
 
-    if len(secondary) != 2:
+    if len(secondary) != 3:
         raise ValueError("Secondary curation census altered")
     by_secondary = {row["primary_case_observation_id"]: row for row in secondary}
-    if set(by_secondary) != set(EXPECTED_SECONDARY):
+    if set(by_secondary) != (set(EXPECTED_SECONDARY) | {"SV-005b"}):
         raise ValueError("Secondary curation linkage altered")
     for ident, (patient, variant, hpo) in EXPECTED_SECONDARY.items():
         row = by_secondary[ident]
@@ -127,6 +148,16 @@ def verify(data):
             "secondary_curator_phenotype_annotation_not_independent_patient", "Limited",
             "31941532", "28991257"):
             raise ValueError("Secondary curator source is mislinked: " + ident)
+    sex_curation = by_secondary["SV-005b"]
+    if (sex_curation["source_record_id"], sex_curation["gene_symbol"],
+        sex_curation["source_variant"], sex_curation["primary_source_sex"],
+        sex_curation["secondary_curator_sex"], sex_curation["correction_status"]) != (
+        "CCID:008509", "MESP1",
+        "NM_018670.4(MESP1):c.352C>T (p.Gln118Ter)",
+        "Female", "Male", "user_authorized_not_submitted"):
+        raise ValueError("ClinGen MESP1 original-female and curator-male discrepancy altered")
+    if sex_curation["record_class"] != "secondary_curator_demographic_annotation_disagrees_with_original_not_independent_patient":
+        raise ValueError("ClinGen demographic annotation incorrectly promoted to clinical evidence")
     keys = [(f["observation_id"], f["assay"]) for f in functional]
     if len(keys) != len(set(keys)) or set(keys) != set(EXPECTED_ASSAYS):
         raise ValueError("Functional assay census altered")
