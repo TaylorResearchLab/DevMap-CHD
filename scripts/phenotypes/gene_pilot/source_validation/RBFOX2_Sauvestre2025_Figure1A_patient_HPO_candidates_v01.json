@@ -5,7 +5,7 @@
   "source_data_file": "RBFOX2_Sauvestre2025_Figure1A_33_source_records_v01.json",
   "candidate_scope": "gene_scoped_individual_source_feature_not_accepted",
   "ontology_target": "HPO:v2026-09-01",
-  "ontology_readiness": "candidate_hpo_ids_require_pinned_hp_obo_and_figure_review",
+  "ontology_readiness": "pinned_ontology_mapping_checked_for_nonnull_candidates_some_source_categories_unresolved",
   "stats": {
     "new_P_cases": 19,
     "candidates": 60,
@@ -18,8 +18,11 @@
     "asd": 6,
     "tof": 1,
     "p18_hold": 1,
-    "pinned_hpo_checked": 0,
-    "independently_accepted": 0
+    "pinned_hpo_checked": 50,
+    "independently_accepted": 0,
+    "unmapped_source_features": 10,
+    "ontology_component_HLHS": 10,
+    "exact_morphological_LVNC": 2
   },
   "source_feature_candidates": [
     {
@@ -33,15 +36,17 @@
       "source_variant_reference": null,
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -62,7 +67,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -83,7 +89,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -104,7 +111,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -125,7 +132,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -138,15 +146,17 @@
       "source_variant_reference": "P1",
       "figure_feature_source_column": "Other cardiac",
       "original_feature_text": "LV non-compaction",
-      "hpo_candidate": "HP:0012817",
-      "hpo_label_candidate": "Noncompaction cardiomyopathy",
-      "mapping_scope": "candidate_broader_or_related",
-      "qualification": "Preserve original LV non-compaction; verify direct phenotype correspondence",
+      "hpo_candidate": "HP:0030682",
+      "hpo_label_candidate": "Left ventricular noncompaction",
+      "mapping_scope": "exact_source_morphology_term",
+      "qualification": "Exact pinned HPO morphology term for source left ventricular non-compaction. Does not assert noncompaction cardiomyopathy HP:0012817.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": null,
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -167,7 +177,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -180,15 +191,17 @@
       "source_variant_reference": "P1",
       "figure_feature_source_column": "Other cardiac",
       "original_feature_text": "LV non-compaction",
-      "hpo_candidate": "HP:0012817",
-      "hpo_label_candidate": "Noncompaction cardiomyopathy",
-      "mapping_scope": "candidate_broader_or_related",
-      "qualification": "Preserve original LV non-compaction; verify direct phenotype correspondence",
+      "hpo_candidate": "HP:0030682",
+      "hpo_label_candidate": "Left ventricular noncompaction",
+      "mapping_scope": "exact_source_morphology_term",
+      "qualification": "Exact pinned HPO morphology term for source left ventricular non-compaction. Does not assert noncompaction cardiomyopathy HP:0012817.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": null,
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -209,7 +222,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -230,7 +244,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -251,7 +266,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -272,7 +288,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -293,7 +310,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -314,7 +331,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -327,15 +344,17 @@
       "source_variant_reference": null,
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -356,7 +375,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -377,7 +397,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -398,7 +419,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -419,7 +441,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -432,15 +454,17 @@
       "source_variant_reference": null,
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -461,7 +485,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -482,7 +507,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -503,7 +529,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -524,7 +551,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -537,15 +565,17 @@
       "source_variant_reference": null,
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -566,7 +596,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -587,7 +618,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -608,7 +640,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -629,7 +662,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -650,7 +684,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -671,7 +705,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -684,15 +718,17 @@
       "source_variant_reference": null,
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -713,7 +749,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -734,7 +771,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -755,7 +793,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -776,7 +815,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -797,7 +836,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -818,7 +857,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -831,15 +871,17 @@
       "source_variant_reference": null,
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -860,7 +902,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -881,7 +924,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -902,7 +946,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -923,7 +968,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -944,7 +990,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -965,7 +1012,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -986,7 +1034,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -999,15 +1047,17 @@
       "source_variant_reference": null,
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1020,15 +1070,17 @@
       "source_variant_reference": "P14",
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1049,7 +1101,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1070,7 +1123,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1083,15 +1137,17 @@
       "source_variant_reference": null,
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1112,7 +1168,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1133,7 +1190,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1154,7 +1212,7 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "no_candidate_mapping_source_category_unresolved"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1175,7 +1233,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "held_possible_duplicate_R24",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1188,15 +1247,17 @@
       "source_variant_reference": null,
       "figure_feature_source_column": "HLHS",
       "original_feature_text": "HLHS",
-      "hpo_candidate": null,
-      "hpo_label_candidate": null,
-      "mapping_scope": "pending_pinned_hpo_review",
-      "qualification": "HLHS is a compound clinical diagnosis. HP:0004383 appears as Hypoplastic left heart/ventricle in other sources; exact pinned phenotype equivalence requires review.",
+      "hpo_candidate": "HP:0004383",
+      "hpo_label_candidate": "Hypoplastic left ventricle",
+      "mapping_scope": "ontology_directed_component_of_reported_HLHS",
+      "qualification": "Original source diagnosis HLHS remains unchanged. HPO comment for HP:0004383 directs coding hypoplastic left ventricle and separately documented components in HLHS; this is a component annotation and not an exact HLHS equivalent.",
       "approval_status": "source_lead_unaccepted",
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "component_representation_role": "component_of_reported_HLHS_not_equivalent_diagnosis",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1217,7 +1278,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1238,7 +1300,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1259,7 +1322,8 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     },
     {
       "record_class": "unaccepted_RBFOX2_patient_source_feature_HPO_candidate",
@@ -1280,7 +1344,11 @@
       "original_feature_present_in_figure": true,
       "patient_disposition": "source_review_pending",
       "hpo_ontology_target_release": "v2026-09-01",
-      "hpo_pinned_release_check": "pending_Claude_independent_check"
+      "hpo_pinned_release_check": "agent2_verified_pinned_hp_obo_v2026_09_01",
+      "hpo_pinned_release_review": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
     }
-  ]
+  ],
+  "hpo_mapping_approval_scope": "user_approved_HLHS_component_HP0004383_and_LVNC_HP0030682_2026_11_09",
+  "hpo_mapping_approval_not_equivalent_to_patient_case_acceptance": true,
+  "ontology_review_log": "https://app.notion.com/p/41329187800881768e47e192af0fec50"
 }
