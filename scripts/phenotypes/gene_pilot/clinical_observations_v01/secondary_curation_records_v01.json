@@ -32,5 +32,23 @@
     "curation_status": "same_PCGC_patient_not_new_evidence",
     "gene_disease_validity": "Limited",
     "evidence_role": "curator_broad_category_of_existing_case"
+  },
+  {
+    "curation_id": "ClinGen:CCID:008509:MESP1:p.Q118X:sex",
+    "record_class": "secondary_curator_demographic_annotation_disagrees_with_original_not_independent_patient",
+    "source_resource": "ClinGen",
+    "source_record_id": "CCID:008509",
+    "gene_symbol": "MESP1",
+    "primary_case_observation_id": "SV-005b",
+    "source_variant": "NM_018670.4(MESP1):c.352C>T (p.Gln118Ter)",
+    "original_clinical_source_pmid": "28677747",
+    "primary_source_sex": "Female",
+    "secondary_curator_sex": "Male",
+    "sex_discrepancy_status": "confirmed_original_female_curator_male",
+    "curation_discrepancy_basis": "Zhang et al. 2017 Results says 3-month-old female and her parents",
+    "gene_disease_validity": "Moderate",
+    "evidence_role": "same_patient_secondary_curation_transcription_correction_requested",
+    "correction_status": "user_authorized_not_submitted",
+    "correction_route": "https://search.clinicalgenome.org/CCID:008509"
   }
 ]
