@@ -14,7 +14,8 @@ HPO_SOURCE_TERM_CANDIDATES = {
     "VSD": "HP:0001629", "ASD": "HP:0001631",
     "TOF": "HP:0001636", "Large PDA": "HP:0001643",
     "Mitral stenosis": "HP:0001718", "Mitral atresia": "HP:0011560",
-    "LV non-compaction": "HP:0012817",
+    "LV non-compaction": "HP:0030682",
+    "HLHS": "HP:0004383",
     "Pulmonary valve stenosis": "HP:0001642",
     "Abnormal tricuspid valve": "HP:0001702",
 }
@@ -52,7 +53,7 @@ def verify(source, mapping):
     if mapping["primary_figure_source_pdf_sha256"] != source["source_pdf_sha256"]:
         raise ValueError("Source PDF identity changed")
     if (mapping["ontology_target"] != "HPO:v2026-09-01" or
-        mapping["ontology_readiness"] != "candidate_hpo_ids_require_pinned_hp_obo_and_figure_review"):
+        mapping["ontology_readiness"] != "pinned_ontology_mapping_checked_for_nonnull_candidates_some_source_categories_unresolved"):
         raise ValueError("Pinned HPO review status altered")
     records = mapping["source_feature_candidates"]
     by_id = {p["id"]:p for p in people}
@@ -71,17 +72,28 @@ def verify(source, mapping):
         if (r["source_variant_text"] != person["source_variant_text"] or
             r["source_variant_reference"] != person["source_variant_reference"]):
             raise ValueError("Original patient variant source join mismatch")
-        if (r["approval_status"] != "source_lead_unaccepted" or
-            r["hpo_pinned_release_check"] != "pending_Claude_independent_check"):
+        if r["approval_status"] != "source_lead_unaccepted":
             raise ValueError("Unapproved source feature promoted")
+        expected_hpo_check = ("agent2_verified_pinned_hp_obo_v2026_09_01"
+                              if r["hpo_candidate"] is not None
+                              else "no_candidate_mapping_source_category_unresolved")
+        if r["hpo_pinned_release_check"] != expected_hpo_check:
+            raise ValueError("Pinned HPO source review status changed")
         term = r["original_feature_text"]
         if term in HPO_SOURCE_TERM_CANDIDATES:
             if r["hpo_candidate"] != HPO_SOURCE_TERM_CANDIDATES[term]:
                 raise ValueError("Candidate HPO identifier changed: " + term)
         elif r["hpo_candidate"] is not None:
             raise ValueError("Unresolved HPO term silently mapped: " + term)
-        if term == "HLHS" and r["hpo_candidate"] is not None:
-            raise ValueError("HLHS syndrome-to-HPO level unresolved")
+        if term == "HLHS":
+            if (r["hpo_candidate"] != "HP:0004383" or
+                r["mapping_scope"] != "ontology_directed_component_of_reported_HLHS" or
+                r.get("component_representation_role") != "component_of_reported_HLHS_not_equivalent_diagnosis"):
+                raise ValueError("HLHS HPO component incorrectly equated with original diagnosis")
+        if term == "LV non-compaction":
+            if (r["mapping_scope"] != "exact_source_morphology_term" or
+                r["hpo_candidate"] != "HP:0030682"):
+                raise ValueError("LV noncompaction morphology mapping altered")
         if r["figure_patient_id"] == "P18" and r["patient_disposition"] != "held_possible_duplicate_R24":
             raise ValueError("P18 possible duplicate hold removed")
     if map_count != source_count:
@@ -98,9 +110,15 @@ def verify(source, mapping):
         "asd":sum(k[2]=="ASD" for k in map_count),
         "tof":sum(k[2]=="TOF" for k in map_count),
         "p18_hold":sum(k[0]=="P18" for k in map_count),
-        "pinned_hpo_checked":0,"independently_accepted":0
+        "pinned_hpo_checked":sum(x["hpo_candidate"] is not None for x in records),
+        "unmapped_source_features":sum(x["hpo_candidate"] is None for x in records),
+        "ontology_component_HLHS":sum(x["original_feature_text"] == "HLHS" and x["hpo_candidate"] == "HP:0004383" for x in records),
+        "exact_morphological_LVNC":sum(x["original_feature_text"] == "LV non-compaction" and x["hpo_candidate"] == "HP:0030682" for x in records),
+        "independently_accepted":0
     }
-    if stats != expected or len(records) != 60:
+    if (stats != expected or len(records) != 60 or
+        stats["pinned_hpo_checked"] != 50 or stats["unmapped_source_features"] != 10 or
+        stats["ontology_component_HLHS"] != 10 or stats["exact_morphological_LVNC"] != 2):
         raise ValueError("RBFOX2 mapping summary changed")
     for key, expected_num in SOURCE_COUNTS.items():
         observed = sum(k[2] == key for k in map_count)
@@ -111,7 +129,7 @@ def verify(source, mapping):
     return {"status":"source_projection_conserved",
             "new_cohort":19,"individuals_with_recorded_features":18,
             "candidate_mappings":len(records),"approved_new_cases":0,
-            "pinned_HPO_review":"pending"}
+            "pinned_HPO_review":"reviewed_candidates_with_unresolved_source_categories"}
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
