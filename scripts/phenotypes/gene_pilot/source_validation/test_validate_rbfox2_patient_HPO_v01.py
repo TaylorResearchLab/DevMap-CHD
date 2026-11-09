@@ -29,6 +29,9 @@ class TestRBFOX2HPOProjection(unittest.TestCase):
         m=copy.deepcopy(self.mapping)
         row=copy.deepcopy(m["source_feature_candidates"][0])
         row["figure_patient_id"]="P12"
+        source_p12 = next(x for x in self.source["new_cohort"] if x["id"] == "P12")
+        row["source_variant_text"] = source_p12["source_variant_text"]
+        row["source_variant_reference"] = source_p12["source_variant_reference"]
         m["source_feature_candidates"].append(row)
         with self.assertRaisesRegex(ValueError,"Source phenotype"):
             verify(self.source,m)
