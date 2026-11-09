@@ -64,3 +64,22 @@ P13's intragenic 5 kb deletion carries **ACMG class 3** under AnnotSV while Achr
 5. Propose patient-specific observed clinical records to the User for acceptance only after source identity and phenotype specificity checks. Any user approval covers observed patient/variant/lesion co-observations; classification and causal PAR remain separate.
 
 **Review record:** [Claude's 2026-11-09 independent Figure 1A transcription](https://app.notion.com/p/41329187800881d7bda2e57e66284612), with previous [Agent A 19-versus-33 cohort review](RBFOX2_Sauvestre2025_original_cohort_scope_AUDIT_v01.md). Approved SV-003 (MESP1 Werner) and SV-004 (ROCK2 PCGC) remain exactly **5** approved cases in the separate clinical ledger.
+
+## 2026-11-09 provisional individual phenotype mapping
+
+[Machine-readable per-patient source phenotype and HPO candidate table](RBFOX2_Sauvestre2025_Figure1A_patient_HPO_candidates_v01.json) contains **60 original source-feature records** across **18 of the 19 P-labelled individuals**. P12, the family F7 variant carrier with no marked cardiac feature, has **zero** phenotype records. These 60 entries are *feature observations within patients*, not 60 patients and not 60 causal gene–phenotype assertions. All remain **unaccepted source leads** pending the new independent Agent 2 review.
+
+The source column and phenotype term are retained for each record, with variant source text and source family reference. The six original summary counts are conserved exactly: **HLHS 10, CoA 10, DORV 4, VSD 8, ASD 6, TOF 1**. Overlapping anatomical features are counted once per individual and category.
+
+Candidate HPO representations retain the original term as the authority:
+
+- CoA `HP:0001680`, DORV `HP:0001719`, VSD `HP:0001629`, ASD `HP:0001631`, TOF `HP:0001636`.
+- Source-specific **mitral stenosis** `HP:0001718` and **mitral atresia** `HP:0011560`; large PDA `HP:0001643` with size qualifier preserved. Other lexical candidates include noncompaction cardiomyopathy `HP:0012817` for source LV non-compaction and broad pulmonic stenosis `HP:0001642` for source pulmonary valve stenosis, with specificity qualifications.
+- **HLHS (10 cases)** is retained as the original syndrome term with a **null HPO identifier** pending comparison against pinned `hp.obo` release `v2026-09-01`. Some secondary sources use `HP:0004383` for *hypoplastic left heart* or *hypoplastic left ventricle*; the exact phenotype/syndrome scope and pinned term definition require checking. Assigning the ventricular phenotype alone may lose the original syndrome specificity.
+- Broad source categories such as *aortic valve* or *mitral valve*, and compound *hypertrophic and dilated right heart, tricuspid insufficiency*, retain their source wording and null mapped HPO pending specific anatomical or physiologic distinction. Shone syndrome is also kept as a source name without a fabricated single-term equivalence.
+
+These are *candidate normalization records*. None has passed the pinned release term/ancestry check, and none has been biologically accepted. The source Figure 1A transcript and original patient record remain unmodified. The complete table preserves the P18/R24 possible-duplicate hold.
+
+**Familial source variant reference correction.** Seven P rows have family-associated *same* variant references. The [source transcription JSON](RBFOX2_Sauvestre2025_Figure1A_33_source_records_v01.json) now records exact `source_variant_reference` IDs for P2/P3/P4→P1, P11/P12→P10 and P15/P16→P14. An earlier display reference had an accidental leading space before `P1`. Family variant expansion is stored in a **separate resolved reference field** with RBFOX2 gene identity, while the source display remains `same`. This does not add independent variants.
+
+**Read-only checks:** [33-record Figure 1A validator](validate_rbfox2_figure1a_v01.py), [60-feature source projection validator](validate_rbfox2_patient_HPO_v01.py), and their mutation tests. The current GitHub records passed **10 direct independent in-session JavaScript consistency checks** on the source and HPO candidate data. Python test execution and a direct check against pinned `hp.obo` and original Figure 1A remain assigned to the receiving DevMap-Claude reviewer under [Agent 2 S7 handoff](https://app.notion.com/p/4132918780088182ba7ad4e01ce0722f).
