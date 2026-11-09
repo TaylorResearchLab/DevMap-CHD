@@ -43,7 +43,10 @@
       "inheritance": "Paternal",
       "gnomad_v4": "0",
       "acmg_class": 4,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P2",
@@ -56,12 +59,22 @@
       "coarctation": false,
       "other_cardiac": "LV non-compaction",
       "extracardiac_feature_marked": false,
-      "source_variant_text": "same as P1",
-      "source_variant_reference": " P1",
+      "source_variant_text": "same",
+      "source_variant_reference": "P1",
       "inheritance": "Paternal",
       "gnomad_v4": "0",
       "acmg_class": 4,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_information_scope": "same_variant_as_source_family_index_case",
+      "figure_variant_transcription_basis": "reviewer shorthand 'same' for a shared familial variant; expanded by explicit index-case reference",
+      "resolved_gene_variant_from_related_case": {
+        "gene": "RBFOX2",
+        "case_id": "P1",
+        "source_variant_text": "c.547C>T p.Arg183Trp"
+      },
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P3",
@@ -74,12 +87,22 @@
       "coarctation": true,
       "other_cardiac": "LV non-compaction",
       "extracardiac_feature_marked": false,
-      "source_variant_text": "same as P1",
-      "source_variant_reference": " P1",
+      "source_variant_text": "same",
+      "source_variant_reference": "P1",
       "inheritance": "NA",
       "gnomad_v4": "0",
       "acmg_class": 4,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_information_scope": "same_variant_as_source_family_index_case",
+      "figure_variant_transcription_basis": "reviewer shorthand 'same' for a shared familial variant; expanded by explicit index-case reference",
+      "resolved_gene_variant_from_related_case": {
+        "gene": "RBFOX2",
+        "case_id": "P1",
+        "source_variant_text": "c.547C>T p.Arg183Trp"
+      },
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P4",
@@ -92,12 +115,22 @@
       "coarctation": true,
       "other_cardiac": null,
       "extracardiac_feature_marked": false,
-      "source_variant_text": "same as P1",
-      "source_variant_reference": " P1",
+      "source_variant_text": "same",
+      "source_variant_reference": "P1",
       "inheritance": "Paternal",
       "gnomad_v4": "0",
       "acmg_class": 4,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_information_scope": "same_variant_as_source_family_index_case",
+      "figure_variant_transcription_basis": "reviewer shorthand 'same' for a shared familial variant; expanded by explicit index-case reference",
+      "resolved_gene_variant_from_related_case": {
+        "gene": "RBFOX2",
+        "case_id": "P1",
+        "source_variant_text": "c.547C>T p.Arg183Trp"
+      },
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P5",
@@ -115,7 +148,10 @@
       "inheritance": "De novo",
       "gnomad_v4": "0",
       "acmg_class": 5,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P6",
@@ -133,7 +169,10 @@
       "inheritance": "De novo",
       "gnomad_v4": "0",
       "acmg_class": 5,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P7",
@@ -151,7 +190,10 @@
       "inheritance": "De novo",
       "gnomad_v4": "0",
       "acmg_class": 5,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P8",
@@ -169,7 +211,10 @@
       "inheritance": "De novo",
       "gnomad_v4": "1 htz",
       "acmg_class": 5,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P9",
@@ -187,7 +232,10 @@
       "inheritance": "De novo",
       "gnomad_v4": "0",
       "acmg_class": 5,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P10",
@@ -205,7 +253,10 @@
       "inheritance": "Maternal",
       "gnomad_v4": "0",
       "acmg_class": 4,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P11",
@@ -218,12 +269,22 @@
       "coarctation": true,
       "other_cardiac": null,
       "extracardiac_feature_marked": true,
-      "source_variant_text": "same as P10",
+      "source_variant_text": "same",
       "source_variant_reference": "P10",
       "inheritance": "Maternal",
       "gnomad_v4": "0",
       "acmg_class": 4,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_information_scope": "same_variant_as_source_family_index_case",
+      "figure_variant_transcription_basis": "reviewer shorthand 'same' for a shared familial variant; expanded by explicit index-case reference",
+      "resolved_gene_variant_from_related_case": {
+        "gene": "RBFOX2",
+        "case_id": "P10",
+        "source_variant_text": "c.745C>T p.Arg249Cys"
+      },
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P12",
@@ -236,12 +297,22 @@
       "coarctation": false,
       "other_cardiac": null,
       "extracardiac_feature_marked": false,
-      "source_variant_text": "same as P10",
+      "source_variant_text": "same",
       "source_variant_reference": "P10",
       "inheritance": "NA",
       "gnomad_v4": "0",
       "acmg_class": 4,
-      "status": "no_recorded_cardiac_feature"
+      "status": "no_recorded_cardiac_feature",
+      "variant_information_scope": "same_variant_as_source_family_index_case",
+      "figure_variant_transcription_basis": "reviewer shorthand 'same' for a shared familial variant; expanded by explicit index-case reference",
+      "resolved_gene_variant_from_related_case": {
+        "gene": "RBFOX2",
+        "case_id": "P10",
+        "source_variant_text": "c.745C>T p.Arg249Cys"
+      },
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P13",
@@ -259,7 +330,10 @@
       "inheritance": "De novo",
       "gnomad_v4": "NR",
       "acmg_class": 3,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P14",
@@ -277,7 +351,10 @@
       "inheritance": "Maternal",
       "gnomad_v4": "NR",
       "acmg_class": 5,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P15",
@@ -290,12 +367,22 @@
       "coarctation": false,
       "other_cardiac": null,
       "extracardiac_feature_marked": false,
-      "source_variant_text": "same as P14",
+      "source_variant_text": "same",
       "source_variant_reference": "P14",
       "inheritance": "Maternal",
       "gnomad_v4": "NR",
       "acmg_class": 5,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_information_scope": "same_variant_as_source_family_index_case",
+      "figure_variant_transcription_basis": "reviewer shorthand 'same' for a shared familial variant; expanded by explicit index-case reference",
+      "resolved_gene_variant_from_related_case": {
+        "gene": "RBFOX2",
+        "case_id": "P14",
+        "source_variant_text": "intragenic del 144 kb chr22:35,655,541-35,799,766"
+      },
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P16",
@@ -308,12 +395,22 @@
       "coarctation": true,
       "other_cardiac": null,
       "extracardiac_feature_marked": true,
-      "source_variant_text": "same as P14",
+      "source_variant_text": "same",
       "source_variant_reference": "P14",
       "inheritance": "NA",
       "gnomad_v4": "NR",
       "acmg_class": 5,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_information_scope": "same_variant_as_source_family_index_case",
+      "figure_variant_transcription_basis": "reviewer shorthand 'same' for a shared familial variant; expanded by explicit index-case reference",
+      "resolved_gene_variant_from_related_case": {
+        "gene": "RBFOX2",
+        "case_id": "P14",
+        "source_variant_text": "intragenic del 144 kb chr22:35,655,541-35,799,766"
+      },
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P17",
@@ -331,7 +428,10 @@
       "inheritance": "De novo",
       "gnomad_v4": "NR",
       "acmg_class": 5,
-      "status": "published_intragenic_label_questioned"
+      "status": "published_intragenic_label_questioned",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P18",
@@ -349,7 +449,10 @@
       "inheritance": "NA",
       "gnomad_v4": "NR",
       "acmg_class": 5,
-      "status": "possible_duplicate_of_R24_hold"
+      "status": "possible_duplicate_of_R24_hold",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "P19",
@@ -367,7 +470,10 @@
       "inheritance": "De novo",
       "gnomad_v4": "NR",
       "acmg_class": 5,
-      "status": "unaccepted_source_lead"
+      "status": "unaccepted_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_pmid": "41221603",
+      "source_figure": "Figure 1A"
     }
   ],
   "previously_reported": [
@@ -377,7 +483,9 @@
       "cardiac_status": "HLHS",
       "variant_source_text": "intronic c.1299+1G>C",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R21",
@@ -385,7 +493,9 @@
       "cardiac_status": "HLHS",
       "variant_source_text": "111 kb del",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R22",
@@ -393,7 +503,9 @@
       "cardiac_status": "HLHS",
       "variant_source_text": "F p.Gly224Arg de novo",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R23",
@@ -401,7 +513,9 @@
       "cardiac_status": "HLHS",
       "variant_source_text": "gross del 3.5 Mb",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R24",
@@ -409,7 +523,9 @@
       "cardiac_status": "HLHS plus pulmonary arterial hypertension",
       "variant_source_text": "F gross del 3.03 Mb chr22:33,519,384-36,552,435",
       "source_population": "previously_reported_or_database",
-      "status": "possible_duplicate_of_P18_hold"
+      "status": "possible_duplicate_of_P18_hold",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R25",
@@ -417,7 +533,9 @@
       "cardiac_status": "ASD",
       "variant_source_text": "F 5.5 Mb de novo",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R26",
@@ -425,7 +543,9 @@
       "cardiac_status": "HCM",
       "variant_source_text": "F 1.82 Mb de novo",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R27",
@@ -433,7 +553,9 @@
       "cardiac_status": "mitral",
       "variant_source_text": "M 1.12 Mb de novo",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R28",
@@ -441,7 +563,9 @@
       "cardiac_status": "only extracardiac features marked",
       "variant_source_text": "M intragenic del 83 kb, inherited from normal parent, ACMG 3",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R29",
@@ -449,7 +573,9 @@
       "cardiac_status": "only extracardiac features marked",
       "variant_source_text": "intragenic del 37 kb",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R30",
@@ -457,7 +583,9 @@
       "cardiac_status": "cardiac NR",
       "variant_source_text": "84 kb",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R31",
@@ -465,7 +593,9 @@
       "cardiac_status": "cardiac NR",
       "variant_source_text": "3 kb ACMG 2",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R32",
@@ -473,7 +603,9 @@
       "cardiac_status": "cardiac NR",
       "variant_source_text": "frameshift",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     },
     {
       "id": "R33",
@@ -481,7 +613,10 @@
       "cardiac_status": "cardiac NR",
       "variant_source_text": "M frameshift",
       "source_population": "previously_reported_or_database",
-      "status": "unaccepted_secondary_source_lead"
+      "status": "unaccepted_secondary_source_lead",
+      "variant_gene": "RBFOX2",
+      "source_figure": "Figure 1A"
     }
-  ]
+  ],
+  "transcription_revision": "v01.1 source family shared variant references repaired; prior P1 aliases had leading whitespace"
 }
