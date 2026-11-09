@@ -14,9 +14,9 @@ class TestClinicalObservations(unittest.TestCase):
 
     def test_approved_ledger_counts(self):
         self.assertEqual(verify(self.data), {
-            "status": "passed", "approved_clinical_cases": 5,
-            "hpo_mapping_records": 7, "functional_measurement_records": 6,
-            "direct_causal_pars_issued": 0, "secondary_curator_assignments": 2})
+            "status": "passed", "approved_clinical_cases": 7,
+            "hpo_mapping_records": 11, "functional_measurement_records": 6,
+            "direct_causal_pars_issued": 0, "secondary_curator_assignments": 3})
 
     def test_verbatim_source_trailing_space(self):
         bad = copy.deepcopy(self.data)
@@ -69,6 +69,28 @@ class TestClinicalObservations(unittest.TestCase):
         bad = copy.deepcopy(self.data)
         bad["secondary"][0]["original_primary_patient_id"] = "new_patient"
         with self.assertRaisesRegex(ValueError, "Secondary curator"):
+            verify(bad)
+
+
+    def test_new_accepted_case_identity_includes_gene(self):
+        bad = copy.deepcopy(self.data)
+        case = next(x for x in bad["observations"] if x["observation_id"] == "SV-005b")
+        case["gene_symbol"] = "RBFOX2"
+        with self.assertRaisesRegex(ValueError, "Original clinical diagnosis or variant"):
+            verify(bad)
+
+    def test_clingen_sex_discrepancy_kept_as_curator_annotation(self):
+        bad = copy.deepcopy(self.data)
+        case = next(x for x in bad["secondary"] if x["primary_case_observation_id"] == "SV-005b")
+        case["secondary_curator_sex"] = "Female"
+        with self.assertRaisesRegex(ValueError, "original-female and curator-male"):
+            verify(bad)
+
+    def test_sv005_original_source_case_has_no_invented_patient_id(self):
+        bad = copy.deepcopy(self.data)
+        case = next(x for x in bad["observations"] if x["observation_id"] == "SV-005a")
+        case["source_patient_id"] = "invented_subject_id"
+        with self.assertRaisesRegex(ValueError, "source scope"):
             verify(bad)
 
     def test_functional_measurement_change_rejected(self):
