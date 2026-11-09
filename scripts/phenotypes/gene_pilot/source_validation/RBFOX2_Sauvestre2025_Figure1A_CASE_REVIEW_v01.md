@@ -63,7 +63,7 @@ P13's intragenic 5 kb deletion carries **ACMG class 3** under AnnotSV while Achr
 4. Preserve P12 as a carrier without *recorded* cardiac malformation in the figure. Do not use P12 as a documented affected CHD individual.
 5. Propose patient-specific observed clinical records to the User for acceptance only after source identity and phenotype specificity checks. Any user approval covers observed patient/variant/lesion co-observations; classification and causal PAR remain separate.
 
-**Review record:** [Claude's 2026-11-09 independent Figure 1A transcription](https://app.notion.com/p/41329187800881d7bda2e57e66284612), with previous [Agent A 19-versus-33 cohort review](RBFOX2_Sauvestre2025_original_cohort_scope_AUDIT_v01.md). Approved SV-003 (MESP1 Werner) and SV-004 (ROCK2 PCGC) remain exactly **5** approved cases in the separate clinical ledger.
+**Review record:** [Claude's 2026-11-09 independent Figure 1A transcription](https://app.notion.com/p/41329187800881d7bda2e57e66284612), with previous [Agent A 19-versus-33 cohort review](RBFOX2_Sauvestre2025_original_cohort_scope_AUDIT_v01.md). Approved SV-003 (3 MESP1 Werner), SV-004 (2 ROCK2 PCGC) and SV-005 (HAND1 K132X and MESP1 Q118X) together comprise **7 approved clinical observations** in the separate ledger as of November 9, 2026. The RBFOX2 source candidates in this packet add **zero** accepted cases.
 
 ## 2026-11-09 provisional individual phenotype mapping
 
