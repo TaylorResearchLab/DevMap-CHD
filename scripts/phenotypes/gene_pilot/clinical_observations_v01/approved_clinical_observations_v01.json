@@ -1,0 +1,195 @@
+[
+  {
+    "observation_id": "SV-003a",
+    "record_class": "accepted_patient_variant_clinical_coobservation",
+    "decision_id": "SV-003",
+    "decision_date": "2026-11-08",
+    "decision_url": "https://app.notion.com/p/4122918780088184992eee2eb51848c5",
+    "disposition": "accepted_at_original_clinical_observation_scope",
+    "gene_symbol": "MESP1",
+    "source_patient_id": null,
+    "source_patient_key_kind": "internal_variant_scoped_case_reference",
+    "internal_case_key": "PMID:26694203:p.E104K",
+    "protein_variant_original": "p.E104K",
+    "inheritance_reported": "maternal",
+    "original_diagnosis_field": "TOF",
+    "original_diagnosis_field_name": "Werner2016 Table 2 disease abbreviation",
+    "clinical_primary_source": {
+      "pmid": "26694203",
+      "locator": "Table 2, MESP1 p.E104K",
+      "cohort_size": 647,
+      "study": "Werner et al. 2016"
+    },
+    "variant_source": {
+      "pmid": "26694203",
+      "locator": "Table 2"
+    },
+    "original_chromosome": null,
+    "original_position": null,
+    "original_ref": null,
+    "original_alt": null,
+    "genome_build": null,
+    "source_metadata": {
+      "extracardiac_manifestations": null,
+      "neurodevelopmental_disorder": null,
+      "family_history_chd": null
+    },
+    "causality_status": "not_adjudicated"
+  },
+  {
+    "observation_id": "SV-003b",
+    "record_class": "accepted_patient_variant_clinical_coobservation",
+    "decision_id": "SV-003",
+    "decision_date": "2026-11-08",
+    "decision_url": "https://app.notion.com/p/4122918780088184992eee2eb51848c5",
+    "disposition": "accepted_at_original_clinical_observation_scope",
+    "gene_symbol": "MESP1",
+    "source_patient_id": null,
+    "source_patient_key_kind": "internal_variant_scoped_case_reference",
+    "internal_case_key": "PMID:26694203:p.L120P",
+    "protein_variant_original": "p.L120P",
+    "inheritance_reported": "de_novo",
+    "original_diagnosis_field": "TOF",
+    "original_diagnosis_field_name": "Werner2016 Table 2 disease abbreviation",
+    "clinical_primary_source": {
+      "pmid": "26694203",
+      "locator": "Table 2, MESP1 p.L120P",
+      "cohort_size": 647,
+      "study": "Werner et al. 2016"
+    },
+    "variant_source": {
+      "pmid": "26694203",
+      "locator": "Table 2"
+    },
+    "original_chromosome": null,
+    "original_position": null,
+    "original_ref": null,
+    "original_alt": null,
+    "genome_build": null,
+    "source_metadata": {
+      "extracardiac_manifestations": null,
+      "neurodevelopmental_disorder": null,
+      "family_history_chd": null
+    },
+    "causality_status": "not_adjudicated"
+  },
+  {
+    "observation_id": "SV-003c",
+    "record_class": "accepted_patient_variant_clinical_coobservation",
+    "decision_id": "SV-003",
+    "decision_date": "2026-11-08",
+    "decision_url": "https://app.notion.com/p/4122918780088184992eee2eb51848c5",
+    "disposition": "accepted_at_original_clinical_observation_scope",
+    "gene_symbol": "MESP1",
+    "source_patient_id": null,
+    "source_patient_key_kind": "internal_variant_scoped_case_reference",
+    "internal_case_key": "PMID:26694203:p.L147Pfs*9",
+    "protein_variant_original": "p.L147Pfs*9",
+    "inheritance_reported": "not_reported",
+    "original_diagnosis_field": "cVSD",
+    "original_diagnosis_field_name": "Werner2016 Table 2 disease abbreviation",
+    "clinical_primary_source": {
+      "pmid": "26694203",
+      "locator": "Table 2, MESP1 p.L147Pfs*9",
+      "cohort_size": 647,
+      "study": "Werner et al. 2016"
+    },
+    "variant_source": {
+      "pmid": "26694203",
+      "locator": "Table 2"
+    },
+    "original_chromosome": null,
+    "original_position": null,
+    "original_ref": null,
+    "original_alt": null,
+    "genome_build": null,
+    "source_metadata": {
+      "extracardiac_manifestations": null,
+      "neurodevelopmental_disorder": null,
+      "family_history_chd": null
+    },
+    "causality_status": "not_adjudicated"
+  },
+  {
+    "observation_id": "SV-004a",
+    "record_class": "accepted_patient_variant_clinical_coobservation",
+    "decision_id": "SV-004",
+    "decision_date": "2026-11-08",
+    "decision_url": "https://app.notion.com/p/41229187800881d8bbd9d5297820290d",
+    "disposition": "accepted_at_original_clinical_observation_scope",
+    "gene_symbol": "ROCK2",
+    "source_patient_id": "1-11926",
+    "source_patient_key_kind": "published_blinded_id",
+    "internal_case_key": "1-11926",
+    "protein_variant_original": "p.S39F",
+    "inheritance_reported": "de_novo_filtered_trio",
+    "original_diagnosis_field": "AORTIC STENOSIS | BICOMMISSURAL (BICUSPID, BILEAFLET, BIFOLIATE) AORTIC VALVE | TETRALOGY OF FALLOT ",
+    "original_diagnosis_field_name": "Jin2017 S1 Cardiac Diagnoses literal field",
+    "clinical_primary_source": {
+      "pmid": "28991257",
+      "locator": "Supplementary Data Set 1, source TSV line 2687",
+      "cohort_size": 2871,
+      "study": "Jin et al. 2017"
+    },
+    "variant_source": {
+      "pmid": "31941532",
+      "locator": "Sevim Bayrak 2020 Table S2, source TSV line 245, secondary PCGC reanalysis",
+      "refers_to_same_patient": true
+    },
+    "original_chromosome": "2",
+    "original_position": 11484147,
+    "original_ref": "G",
+    "original_alt": "A",
+    "genome_build": null,
+    "source_metadata": {
+      "extracardiac_manifestations": "Yes, not enumerated",
+      "neurodevelopmental_disorder": "No, cohort label",
+      "family_history_chd": "Negative",
+      "cohort": "PCGC",
+      "sample_type": "Trio",
+      "cardiac_category": "CTD"
+    },
+    "causality_status": "not_adjudicated"
+  },
+  {
+    "observation_id": "SV-004b",
+    "record_class": "accepted_patient_variant_clinical_coobservation",
+    "decision_id": "SV-004",
+    "decision_date": "2026-11-08",
+    "decision_url": "https://app.notion.com/p/41229187800881d8bbd9d5297820290d",
+    "disposition": "accepted_at_original_clinical_observation_scope",
+    "gene_symbol": "ROCK2",
+    "source_patient_id": "1-13760",
+    "source_patient_key_kind": "published_blinded_id",
+    "internal_case_key": "1-13760",
+    "protein_variant_original": "p.D255G",
+    "inheritance_reported": "de_novo_filtered_trio",
+    "original_diagnosis_field": "PATENT DUCTUS ARTERIOSUS ",
+    "original_diagnosis_field_name": "Jin2017 S1 Cardiac Diagnoses literal field",
+    "clinical_primary_source": {
+      "pmid": "28991257",
+      "locator": "Supplementary Data Set 1, source TSV line 2740",
+      "cohort_size": 2871,
+      "study": "Jin et al. 2017"
+    },
+    "variant_source": {
+      "pmid": "31941532",
+      "locator": "Sevim Bayrak 2020 Table S2, source TSV line 246, secondary PCGC reanalysis",
+      "refers_to_same_patient": true
+    },
+    "original_chromosome": "2",
+    "original_position": 11367484,
+    "original_ref": "T",
+    "original_alt": "C",
+    "genome_build": null,
+    "source_metadata": {
+      "extracardiac_manifestations": "Yes, not enumerated",
+      "neurodevelopmental_disorder": "No, cohort label",
+      "family_history_chd": "Negative",
+      "cohort": "PCGC",
+      "sample_type": "Trio",
+      "cardiac_category": "other"
+    },
+    "causality_status": "not_adjudicated"
+  }
+]
