@@ -18,11 +18,30 @@ class TestRBFOX2HPOProjection(unittest.TestCase):
     def test_source_token_conservation(self):
         r=verify(self.source,self.mapping)
         self.assertEqual((r["candidate_mappings"],r["individuals_with_recorded_features"]),(60,18))
+        self.assertEqual(r["pinned_HPO_review"],"reviewed_candidates_with_unresolved_source_categories")
 
-    def test_hlhs_syndrome_unresolved(self):
+    def test_hlhs_component_annotation_preserves_original_syndrome(self):
         m=copy.deepcopy(self.mapping)
-        next(x for x in m["source_feature_candidates"] if x["original_feature_text"]=="HLHS")["hpo_candidate"]="HP:0004383"
-        with self.assertRaisesRegex(ValueError,"Unresolved HPO"):
+        row=next(x for x in m["source_feature_candidates"] if x["original_feature_text"]=="HLHS")
+        self.assertEqual(row["hpo_candidate"],"HP:0004383")
+        self.assertEqual(row["original_feature_text"],"HLHS")
+        row["mapping_scope"]="exact_source_term_equivalence"
+        with self.assertRaisesRegex(ValueError,"HLHS HPO component"):
+            verify(self.source,m)
+
+    def test_hlhs_candidate_cannot_revert_to_unverified(self):
+        m=copy.deepcopy(self.mapping)
+        row=next(x for x in m["source_feature_candidates"] if x["original_feature_text"]=="HLHS")
+        row["hpo_candidate"]=None
+        with self.assertRaisesRegex(ValueError,"Pinned HPO|Candidate HPO"):
+            verify(self.source,m)
+
+    def test_lv_noncompaction_morphology_not_cardiomyopathy(self):
+        m=copy.deepcopy(self.mapping)
+        row=next(x for x in m["source_feature_candidates"] if x["original_feature_text"]=="LV non-compaction")
+        self.assertEqual(row["hpo_candidate"],"HP:0030682")
+        row["hpo_candidate"]="HP:0012817"
+        with self.assertRaisesRegex(ValueError,"Candidate HPO"):
             verify(self.source,m)
 
     def test_p12_no_hpo_inference(self):
