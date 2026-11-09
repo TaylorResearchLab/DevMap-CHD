@@ -252,8 +252,8 @@
     "internal_case_key": "PMID:28112363:HAND1:c.394A>T",
     "protein_variant_original": "p.K132X",
     "inheritance_reported": "de_novo_by_parental_testing",
-    "original_diagnosis_field": "DORV and VSD",
-    "original_diagnosis_field_name": "Original Results patient-level DORV and VSD diagnosis wording",
+    "original_diagnosis_field": "congenital DORV, as well as VSD",
+    "original_diagnosis_field_name": "Li2017 Results original narrative wording, index case",
     "clinical_primary_source": {
       "pmid": "28112363",
       "doi": "10.3892/ijmm.2017.2865",
@@ -302,7 +302,7 @@
     "protein_variant_original": "p.Q118X",
     "inheritance_reported": "de_novo_by_parental_testing",
     "original_diagnosis_field": "DORV and VSD",
-    "original_diagnosis_field_name": "Original Results patient-level DORV and VSD diagnosis wording",
+    "original_diagnosis_field_name": "Zhang2017 Results original narrative wording, index case",
     "clinical_primary_source": {
       "pmid": "28677747",
       "doi": "10.3892/mmr.2017.6875",
