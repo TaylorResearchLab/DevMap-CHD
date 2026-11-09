@@ -61,3 +61,15 @@ The earlier HAND1 p.R118C TOF source [Wang et al. 2017, PMID 27942761](https://p
 6. Report per-record **supported / narrow / defer / reject** recommendations. **Human authority must disposition any additional clinical observation before moving it into the approved ledger.**
 
 No source datasets have been changed or exported as direct causal PARs.
+
+## 2026-11-09 independent full PDF verification by DevMap-Claude
+
+The original full PDFs were supplied in Claude's independent session. [Claude's completed full-source review](https://app.notion.com/p/41329187800881d7bda2e57e66284612) confirms **both** original case observations at the source individual scope, superseding the earlier abstract-only review limitation.
+
+- Li et al. 2017 HAND1 p.K132X, PMID `28112363`, source PDF `ijmm_39_3_711`, **SHA-256 `39d71ae990a5cacabfe642ac6cb22497e4d644f4570e563280a1a3eb2758a0d3`**, 8 pages. Original text confirms 5-month-old boy with DORV and VSD, de novo absent from healthy parents and 300 unrelated controls; cohort 158 patients. Independent functional reporter check: HeLa ANF wild type ~10-fold versus mutant ~1-fold; NIH3T3 wild type ~4-fold versus mutant ~1-fold, with GATA4 wild type ~22-fold versus mutant ~7-fold.
+- Zhang et al. 2017 MESP1 p.Q118X, PMID `28677747`, source PDF `mmr_16_3_2747`, **SHA-256 `41f90984d494a08a42e04de5180a35b12e6632dd37c16906abd188c241ec2911`**, 8 pages. Original text explicitly describes a **3-month-old female** with DORV and VSD, absent in both parents and 400 reference chromosomes, cohort 178 CHD cases. ClinGen **CCID:008509** lists **Male** for the same paper and variant: document as a **curator-transcription conflict** of one subject, preserve both source and curator values, primary source sex female. The independent source confirms HEK293 E-box E47 wild type ~14-fold versus mutant ~1-fold and co-expression ~7-fold.
+- **Table III source correction:** Zhang 2017 footnote explicitly expands `AA` as **aortic atresia** for the Werner 2016 MESP1 p.K268N phenotype list. A historic source packet's alternative *aortic aneurysm* reading is superseded and should be corrected wherever it remains as a description of that particular Table III abbreviation.
+
+**Scientific dispositions:** Claude recommends both patient-level source records as **SUPPORTED**, awaiting human acceptance at original patient/variant/lesion co-observation scope. Both remain outside the approved SV-003/SV-004 ledger until the user decides. Similarity of Shanghai clinical recruitment environments leaves independence of the broader cohorts unresolved, but the two index patients have distinct genes and variants.
+
+**Gene-specific variant identity:** Figure 1A RBFOX2 P7 has `c.352C>T p.Gln118*`, a cDNA/protein notation collision with the **different gene** MESP1 p.Q118X. Source variant matching keys must include HGNC gene identity and reference transcript to avoid mistaken patient linkage.
