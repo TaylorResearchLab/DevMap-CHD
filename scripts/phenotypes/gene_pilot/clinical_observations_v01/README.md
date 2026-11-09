@@ -51,7 +51,7 @@ The separate secondary curator file records ClinGen `CCID:008432` broad `HP:0001
 - **MESP1 p.Q118X**, source `c.352C>T`, one 3-month-old girl, original report `DORV and VSD`, de novo from parental testing, PMID 28677747, original cohort 178 patients.
 - HPO candidates `HP:0001719` DORV and `HP:0001629` VSD are kept as separate mappings for each case.
 - No published clinical patient ID was available in the reviewed text. The ledger uses internal **gene + cDNA variant + PMID** source keys, distinct from published patient identifiers. **RBFOX2 P7 `c.352C>T` is a different gene and person** from MESP1 p.Q118X.
-- The MESP1 source identifies the patient as **female**; [ClinGen CCID:008509](https://search.clinicalgenome.org/CCID:008509) describes the same individual as **Male**. A separate secondary-curation record retains both values with the same-patient lineage and correction state `user_authorized_not_submitted`. The user authorized a ClinGen correction request, with actual submission pending.
+- The MESP1 source identifies the patient as **female**; [ClinGen CCID:008509](https://search.clinicalgenome.org/CCID:008509) describes the same individual as **Male**. A separate secondary-curation record retains both values with the same-patient lineage and correction state `submitted_by_user_pending_clingen_response`. The user reported submitting the correction request on November 9, 2026. ClinGen acknowledgement and correction verification remain pending.
 
 All seven approved records remain individual **source clinical co-observations**, not causal PARs. Functional evidence from Li and Zhang can be recorded separately from the six Werner assay values after direct original figure transcription if needed.
 
