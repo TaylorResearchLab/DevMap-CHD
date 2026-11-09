@@ -16,7 +16,7 @@ class TestClinicalObservations(unittest.TestCase):
         self.assertEqual(verify(self.data), {
             "status": "passed", "approved_clinical_cases": 5,
             "hpo_mapping_records": 7, "functional_measurement_records": 6,
-            "direct_causal_pars_issued": 0})
+            "direct_causal_pars_issued": 0, "secondary_curator_assignments": 2})
 
     def test_verbatim_source_trailing_space(self):
         bad = copy.deepcopy(self.data)
@@ -50,6 +50,25 @@ class TestClinicalObservations(unittest.TestCase):
             if row["observation_id"] == "SV-003c":
                 row["mapping_kind"] = "source_term_normalization"
         with self.assertRaisesRegex(ValueError, "Conoventricular"):
+            verify(bad)
+
+
+    def test_mesp1_genomic_build_and_cDNA_preserved(self):
+        bad = copy.deepcopy(self.data)
+        bad["observations"][0]["genome_build"] = None
+        with self.assertRaisesRegex(ValueError, "Werner Table 2"):
+            verify(bad)
+
+    def test_mesp1_parental_source_genotypes_preserved(self):
+        bad = copy.deepcopy(self.data)
+        bad["observations"][1]["source_metadata"]["parental_genotypes"]["mother"] = "Carrier"
+        with self.assertRaisesRegex(ValueError, "Werner Table 2"):
+            verify(bad)
+
+    def test_secondary_curator_is_same_original_patient(self):
+        bad = copy.deepcopy(self.data)
+        bad["secondary"][0]["original_primary_patient_id"] = "new_patient"
+        with self.assertRaisesRegex(ValueError, "Secondary curator"):
             verify(bad)
 
     def test_functional_measurement_change_rejected(self):
