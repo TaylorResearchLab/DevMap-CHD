@@ -1,0 +1,36 @@
+[
+  {
+    "curation_id": "ClinGen:CCID:008432:p.S39F",
+    "record_class": "secondary_curator_phenotype_annotation_not_independent_patient",
+    "source_resource": "ClinGen",
+    "source_record_id": "CCID:008432",
+    "gene_symbol": "ROCK2",
+    "primary_case_observation_id": "SV-004a",
+    "original_primary_patient_id": "1-11926",
+    "source_variant": "p.S39F",
+    "curator_hpo_id": "HP:0001710",
+    "curator_hpo_label": "Conotruncal defect",
+    "original_clinical_source_pmid": "28991257",
+    "secondary_variant_reanalysis_pmid": "31941532",
+    "curation_status": "same_PCGC_patient_not_new_evidence",
+    "gene_disease_validity": "Limited",
+    "evidence_role": "curator_broad_category_of_existing_case"
+  },
+  {
+    "curation_id": "ClinGen:CCID:008432:p.D255G",
+    "record_class": "secondary_curator_phenotype_annotation_not_independent_patient",
+    "source_resource": "ClinGen",
+    "source_record_id": "CCID:008432",
+    "gene_symbol": "ROCK2",
+    "primary_case_observation_id": "SV-004b",
+    "original_primary_patient_id": "1-13760",
+    "source_variant": "p.D255G",
+    "curator_hpo_id": "HP:0001627",
+    "curator_hpo_label": "Abnormal heart morphology",
+    "original_clinical_source_pmid": "28991257",
+    "secondary_variant_reanalysis_pmid": "31941532",
+    "curation_status": "same_PCGC_patient_not_new_evidence",
+    "gene_disease_validity": "Limited",
+    "evidence_role": "curator_broad_category_of_existing_case"
+  }
+]
