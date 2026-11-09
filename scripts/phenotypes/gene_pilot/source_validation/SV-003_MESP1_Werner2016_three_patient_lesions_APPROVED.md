@@ -28,7 +28,7 @@ Werner Table 2 contains four other variant/clinical phenotype combinations with 
 - p.P27_D29dup, cVSD, paternal, luciferase 0.77 ± 0.21 WT.
 - p.G70D, cVSD, inheritance unavailable, 0.92 ± 0.24.
 - p.D168G, cVSD, inheritance unavailable, 0.97 ± 0.19 and present in six of 97 African-American controls.
-- p.K268N, mVSD / coarctation / aortic aneurysm, maternal, 1.17 ± 0.18.
+- p.K268N, mVSD / coarctation / **aortic atresia**, maternal, 1.17 ± 0.18. The original abbreviated `AA` is explicitly defined as *aortic atresia* in Zhang et al. 2017 Table III footnote (PMID 28677747), independently verified by DevMap-Claude on November 9, 2026. This is a correction to the contextual unapproved fourth variant, with no change to the three accepted SV-003 observations.
 
 These four remain original source observations and were **not included in this three-item user acceptance decision**. They retain their original evidence and are considered separately when assessing biologically meaningful direct gene disruption relationships.
 
