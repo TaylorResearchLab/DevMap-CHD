@@ -110,6 +110,15 @@ class StructuralMembershipTests(unittest.TestCase):
             terms, alt = parse_obo(f[1])
             before = {x: list(t["parents"]) for x, t in terms.items()}
             members, ancestors = classification(terms, alt)
+            self.assertEqual(set(APPROVED), {
+                "HP:0001642", "HP:0001650", "HP:0001718",
+                "HP:0004381", "HP:0010446", "HP:0011570",
+                "HP:0034348", "HP:0034349", "HP:0034350",
+            })
+            self.assertEqual(set(DEFERRED), {
+                "HP:0001653", "HP:0001659", "HP:0005180",
+                "HP:0010444", "HP:0034376", "HP:0034377",
+            })
             self.assertEqual(len(APPROVED), 9)
             self.assertEqual(len(DEFERRED), 6)
             self.assertTrue(set(APPROVED) <= set(members))
