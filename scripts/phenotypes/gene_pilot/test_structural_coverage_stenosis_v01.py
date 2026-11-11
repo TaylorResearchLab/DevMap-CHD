@@ -1,5 +1,8 @@
 """Synthetic tests for the STENOSIS-001 source-conserving structural view."""
 import csv
+import io
+from contextlib import redirect_stdout
+from audit_stenosis_001_selected_terms_v01 import audit as postrun_audit
 import hashlib
 import json
 import tempfile
@@ -185,6 +188,20 @@ class StructuralMembershipTests(unittest.TestCase):
                 self.assertNotIn("selected_original_hpoa_observations.tsv",
                                  z.namelist())
                 self.assertIn("review_SHA256SUMS.txt", z.namelist())
+
+    def test_postrun_nine_term_diagnostic(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            f = fixture(root)
+            analyze(*f, root / "diagnostic", strict=False, commit="TEST")
+            output = io.StringIO()
+            with redirect_stdout(output):
+                postrun_audit(root / "diagnostic", f[0])
+            report = output.getvalue()
+            self.assertIn("MISSING_QUALIFYING_EXCEPTION_IDS", report)
+            self.assertIn("HP:0034348", report)
+            self.assertIn("CIC_IN_FROZEN_662_REGISTRY\ttrue", report)
+            self.assertIn("LZTR1_IN_FROZEN_662_REGISTRY\ttrue", report)
 
     def test_hard_fail_on_mutated_or_missing_source(self):
         with tempfile.TemporaryDirectory() as d:
