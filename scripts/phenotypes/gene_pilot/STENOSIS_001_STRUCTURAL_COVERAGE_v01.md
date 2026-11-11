@@ -67,3 +67,19 @@ The small STENOSIS-001_review_v01.zip includes only manifest.json, coverage_summ
 Coverage uses the not_negated source claim state as annotation coverage. Observed-zero and frequency-unreported rows retain their actual evidence outcomes. The positive_source_rows metric reports an additional restricted observation set. A source row repeated under multiple gene projections counts once as an original source row using resource, release and source row ID. No source onset is inferred from structural membership. Explicit approved-exception membership is distinguished from native morphology inheritance even when both apply.
 
 Agent 2 should independently check pinned HPO term labels, all nine inclusions, all six deferred exception statuses, source preservation, overlap deduplication, CIC/LZTR1 provenance, coverage calculations and checksums. Report discrepancies to the DevMap Communications Log before claiming independent verification. The user retains scientific acceptance authority.
+
+
+## Compact postrun diagnostic added after first real execution
+
+The November 11 original HPC run passed all recorded SHA-256 checks and produced 448 structural discovery genes, 762 diseases and 305 HPO terms. It identified qualifying annotations for eight of the nine approved stenosis terms. The review ZIP intentionally omits full selected source tables, so the missing term cannot be identified from the review ZIP alone. CIC is absent from the frozen 662-gene registry, although the earlier five-gene source pilot examined CIC. Its absence from the 662-gene examples is therefore expected and does not retract the earlier patient-level record. Preserve the two denominators.
+
+Run this read-only diagnostic against the existing outputs. It makes no new directory and does not rerun the heavy HPOA export.
+
+```bash
+cd /mnt/isilon/taylor_lab/data/projects/DevMap-CHD
+git fetch origin
+git pull --ff-only origin review/stenosis-001-structural-v01-20261111
+python scripts/phenotypes/gene_pilot/audit_stenosis_001_selected_terms_v01.py
+```
+
+The output contains nine lines, one per approved HPO term, with all source projections, eligible source projections, unique genes, disease IDs, original source rows and positive source rows. It identifies the approved term without an eligible observation. It also records whether CIC and LZTR1 are in the 662-gene registry. The selected source files stay on Isilon. No new public release or causal statement is created.
