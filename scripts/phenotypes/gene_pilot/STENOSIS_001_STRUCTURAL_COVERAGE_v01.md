@@ -52,6 +52,7 @@ The runner refuses to overwrite an existing versioned results directory. For a r
 ## Full outputs on Isilon
 
 - structural_membership.tsv has HPO membership, pinned label, native is_a parents and ancestors, two independent routes, rationale, authority, decision and review state.
+- gene_structural_coverage_662.tsv contains exactly 662 registry rows, including genes with no qualifying source annotation, and separate morphology, exception, incremental and union discovery counts.
 - selected_gene_disease_hpo_projections.tsv preserves source projections with canonical HPO ID and structural inclusion route.
 - selected_original_hpoa_observations.tsv preserves all original evidence columns and adds the inclusion route and a separate source-onset-reporting field.
 - coverage_summary.tsv separates morphology, all approved exceptions, exceptions newly added outside morphology, union and net-new unique sets. Units are unique genes, diseases, HPO IDs, original disease-phenotype source claims, original HPOA source rows, projection evidence links, and positive-frequency original rows.
