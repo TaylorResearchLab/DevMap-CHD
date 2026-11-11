@@ -51,7 +51,7 @@ OBS_REQUIRED = {"projection_id", "source_claim_id", "original_subject",
                 "evidence_outcome", "onset"}
 PROJ_REQUIRED = {"projection_id", "gene_id", "gene_symbol", "disease_id",
                  "phenotype_id", "source_claim_id", "claim_polarity",
-                 "projection_role"}
+                 "projection_role", "hpoa_evidence_links"}
 
 
 def digest(path):
@@ -180,7 +180,7 @@ def classification(terms, alt):
             "independent_review_status": "awaiting_Agent_2",
             "developmental_onset_inferred": "no",
         }
-    if not set(APPROVED) <= members:
+    if not set(APPROVED).issubset(members):
         raise ValueError("Approved stenosis term is missing")
     return members, anc
 
