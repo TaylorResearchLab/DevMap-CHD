@@ -157,6 +157,14 @@ class StructuralMembershipTests(unittest.TestCase):
             self.assertEqual(a["disease_mediated_gene_phenotype_promotions"], 0)
             self.assertEqual(a["patient_developmental_onset_inferred"], False)
             self.assertEqual(a["union_source_rows_onset_unspecified"], 2)
+            genes = list(read_tsv(root / "out_1" /
+                                  "gene_structural_coverage_662.tsv",
+                                  {"gene_id", "has_union_annotation"}))
+            self.assertEqual(len(genes), 662)
+            self.assertEqual(sum(x["has_union_annotation"] == "true"
+                                 for x in genes), 3)
+            self.assertEqual(sum(x["newly_covered_gene_vs_morphology"] == "true"
+                                 for x in genes), 1)
             obs = list(read_tsv(root / "out_1" /
                                 "selected_original_hpoa_observations.tsv",
                                 {"original_subject", "onset", "claim_polarity"}))
