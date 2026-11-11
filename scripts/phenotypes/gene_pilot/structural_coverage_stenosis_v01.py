@@ -343,6 +343,35 @@ def analyze(registry, obo, g2p, hpoa, source, out, *,
                                      for key, value in values.items()})
                 for scope, values in metrics.items()]
 
+    # Emit the frozen registry denominator explicitly, including zero-coverage
+    # genes. These are discovery projections, not direct gene observations.
+    gene_projection_ids = {kind: defaultdict(set) for kind in groups}
+    for kind, projection_ids in groups.items():
+        for pid in projection_ids:
+            gene_projection_ids[kind][projections[pid]["gene_id"]].add(pid)
+    gene_rows = []
+    for gene_id, symbol in sorted(genes.items()):
+        morph_n = len(gene_projection_ids["morphology"][gene_id])
+        exception_n = len(gene_projection_ids["approved_exceptions"][gene_id])
+        added_n = len(gene_projection_ids["added_exceptions_only"][gene_id])
+        union_n = len(gene_projection_ids["union"][gene_id])
+        gene_rows.append({
+            "gene_id": gene_id, "gene_symbol": symbol,
+            "morphology_discovery_projection_count": morph_n,
+            "approved_exception_discovery_projection_count": exception_n,
+            "new_exception_discovery_projection_count": added_n,
+            "union_discovery_projection_count": union_n,
+            "has_morphology_annotation": str(morph_n > 0).lower(),
+            "has_approved_exception_annotation": str(exception_n > 0).lower(),
+            "has_union_annotation": str(union_n > 0).lower(),
+            "newly_covered_gene_vs_morphology":
+                str(morph_n == 0 and union_n > 0).lower(),
+            "interpretation": "disease_mediated_discovery_only",
+        })
+    if sum(r["has_union_annotation"] == "true" for r in gene_rows) != len(
+            metrics["union"]["genes"]):
+        raise ValueError("Frozen 662-gene coverage tally inconsistent")
+
     decisions = []
     for hpo_id, label in sorted({**APPROVED, **DEFERRED}.items()):
         t = terms[hpo_id]
@@ -416,6 +445,7 @@ def analyze(registry, obo, g2p, hpoa, source, out, *,
     selected_projections = [projections[i] for i in sorted(projections)]
     outputs = {
         "structural_membership.tsv": membership_rows,
+        "gene_structural_coverage_662.tsv": gene_rows,
         "selected_gene_disease_hpo_projections.tsv": selected_projections,
         "selected_original_hpoa_observations.tsv": observations,
         "coverage_summary.tsv": coverage,
@@ -443,6 +473,7 @@ def analyze(registry, obo, g2p, hpoa, source, out, *,
         "patient_developmental_onset_inferred": False,
         "disease_mediated_gene_phenotype_promotions": 0,
         "frozen_registry_genes": len(genes),
+        "gene_coverage_rows": len(gene_rows),
         "input_sha256": actual,
         "upstream_sha256": upstream,
         "upstream_manifest_sha256": digest(Path(source) / "manifest.json"),
