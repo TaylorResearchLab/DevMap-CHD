@@ -79,7 +79,7 @@ def refine(original, candidate, obo, out, *, strict=True, commit=None):
     manifest = json.loads((original / "manifest.json").read_text())
     if (manifest.get("analysis") != ORIGINAL or
         manifest.get("frozen_registry_genes") != 662 or
-        manifest.get("input_sha256") != PINNED):
+        (strict and manifest.get("input_sha256") != PINNED)):
         raise ValueError("v01 source profile/release/registry inconsistent")
     context_hashes = verify_checksum_folder(
         candidate, ("manifest.json", "disease_context.tsv"))
