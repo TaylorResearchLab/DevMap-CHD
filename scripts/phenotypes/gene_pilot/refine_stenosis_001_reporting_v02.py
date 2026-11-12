@@ -41,7 +41,8 @@ def verify_checksum_folder(folder, names):
                 raise ValueError("Unexpected checksum path or duplicate")
             found[basename] = checksum
     if not set(names).issubset(found):
-        raise ValueError(f"Missing required checksums in {folder}")
+        raise ValueError(f"Missing required checksums in {folder}: "
+                             f"{sorted(set(names) - set(found))}")
     for name in names:
         if digest(folder / name) != found[name]:
             raise ValueError(f"Source checksum mismatch: {folder / name}")
