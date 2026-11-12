@@ -36,7 +36,7 @@ def verify_checksum_folder(folder, names):
             if len(parts) != 2:
                 raise ValueError(f"Invalid checksum line in {folder}")
             checksum, basename = parts
-            basename = basename.lstrip("*")
+            basename = basename.strip().lstrip("*")
             if Path(basename).name != basename or basename in found:
                 raise ValueError("Unexpected checksum path or duplicate")
             found[basename] = checksum
