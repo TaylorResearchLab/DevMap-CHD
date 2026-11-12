@@ -1,0 +1,32 @@
+name: STENOSIS-001 synthetic validation
+
+on:
+  push:
+    branches:
+      - review/stenosis-001-structural-v01-20261111
+  pull_request:
+    paths:
+      - 'scripts/phenotypes/gene_pilot/structural_coverage_stenosis_v01.py'
+      - 'scripts/phenotypes/gene_pilot/test_structural_coverage_stenosis_v01.py'
+      - '.github/workflows/stenosis-001-tests.yml'
+
+jobs:
+  synthetic-validation:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout pinned branch source
+        uses: actions/checkout@v4
+      - name: Configure Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run source-conserving structural membership tests
+        run: |
+          python -m unittest discover \
+            -s scripts/phenotypes/gene_pilot \
+            -p 'test_structural_coverage_stenosis_v01.py' -v
+          python -m unittest discover \
+            -s scripts/phenotypes/gene_pilot \
+            -p 'test_refine_stenosis_001_reporting_v02.py' -v
